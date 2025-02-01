@@ -115,6 +115,18 @@ const config: Config = {
       additionalLanguages: ['bash', 'cmake'],
     },
   } satisfies Preset.ThemeConfig,
+
+  themes: [
+    [
+      "@easyops-cn/docusaurus-search-local",
+      ({
+        hashed: true,
+        language: ["zh", "en"],
+        highlightSearchTermsOnTargetPage: true,
+        explicitSearchResultPath: true,
+      }),
+    ],
+  ],
 };
 
 export default config;
