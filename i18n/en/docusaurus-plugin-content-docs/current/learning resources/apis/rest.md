@@ -2,7 +2,7 @@
 
 REST, or REpresentational State Transfer, is an architectural style for providing standards between computer systems on the web, making it easier for systems to communicate with each other.
 
-:::tip[Visit the following resources to learn more]
+:::info[Visit the following resources to learn more]
 
 - [What is REST?](https://www.codecademy.com/article/what-is-rest)
 - [What is a REST API?](https://www.redhat.com/en/topics/api/what-is-a-rest-api)

@@ -31,14 +31,14 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
 
 - 为构建项目创建一个新目录。
 
-```sh
+```bash
 mkdir build
 cd build
 ```
 
 - 使用 CMake 生成构建文件。
 
-```sh
+```bash
 cmake ..
 ```
 
@@ -46,19 +46,19 @@ cmake ..
 
 - 使用生成的构建文件构建项目。
 
-```sh
+```bash
 make
 ```
 
 或者，在带有 Visual Studio 的 Windows 上，你可以使用：
 
-```sh
+```bash
 msbuild MyProject.sln
 ```
 
 CMake 可以轻松管理大型项目，定义自定义构建配置，并适用于许多不同的编译器和操作系统。这使得它成为管理 C++ 项目构建系统的广泛选择工具。
 
-:::tip[访问以下资源以了解更多信息]
+:::info[访问以下资源以了解更多信息]
 
 - [CMake 官方教程](https://cmake.org/cmake/help/latest/guide/tutorial/index.html)
 - [现代 CMake 入门](https://cliutils.gitlab.io/modern-cmake/)

@@ -6,7 +6,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
   title: '清华大学自动化系学生科协',
-  tagline: 'Dinosaurs are cool',
+  tagline: 'ASTAers are cool',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -33,22 +33,18 @@ const config: Config = {
       'classic',
       {
         docs: {
+          editUrl: ({ locale, docPath }) =>
+            locale === 'zh' ?
+              `https://github.com/thuasta/website/tree/main/docs/${docPath}` : `https://github.com/thuasta/website/tree/main/i18n/en/docusaurus-plugin-content-docs/current/${docPath}`,
           sidebarPath: './src/components/HomepageFeatures/sidebars.ts',
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          // editUrl:
-          //   'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
         blog: {
+          // editUrl: 'https://github.com/thuasta/website/tree/main/',
           showReadingTime: true,
           feedOptions: {
             type: ['rss', 'atom'],
             xslt: true,
           },
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          // editUrl:
-          //   'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
           // Useful options to enforce blogging best practices
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
@@ -116,6 +112,7 @@ const config: Config = {
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
+      additionalLanguages: ['bash', 'cmake'],
     },
   } satisfies Preset.ThemeConfig,
 };

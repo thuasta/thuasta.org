@@ -31,14 +31,14 @@ Here is an example of a simple build process using CMake:
 
 - Create a new directory for the build.
 
-```sh
+```bash
 mkdir build
 cd build
 ```
 
 - Generate build files using CMake.
 
-```sh
+```bash
 cmake ..
 ```
 
@@ -46,19 +46,19 @@ In this example, `..` indicates the parent directory where `CMakeLists.txt` is l
 
 - Build the project using the generated build files.
 
-```sh
+```bash
 make
 ```
 
 Or, on Windows with Visual Studio, you may use:
 
-```sh
+```bash
 msbuild MyProject.sln
 ```
 
 CMake makes it easy to manage large projects, define custom build configurations, and work with many different compilers and operating systems. Making it a widely chosen tool for managing build systems in C++ projects.
 
-:::tip[Visit the following resources to learn more]
+:::info[Visit the following resources to learn more]
 
 - [CMake Official Tutorial](https://cmake.org/cmake/help/latest/guide/tutorial/index.html)
 - [An Introduction to Modern CMake](https://cliutils.gitlab.io/modern-cmake/)

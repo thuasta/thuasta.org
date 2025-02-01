@@ -8,7 +8,7 @@ To understand these commands, read through the manual pages by using `man` comma
 
 After enough exposure and practice to these commands, it will become easier to use these in practice
 
-:::tip[Visit the following resources to learn more]
+:::info[Visit the following resources to learn more]
 
 - [Commandline Challenge](https://cmdchallenge.com/)
 
