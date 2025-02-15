@@ -4,6 +4,7 @@ import Layout from '@theme/Layout';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import SplitText from '@site/src/components/SplitText/SplitText';
 import PixelCard from '@site/src/components/PixelCard/PixelCard';
+import TopBanner from '@site/src/components/TopBanner/TopBanner';
 import Heading from '@theme/Heading';
 
 import styles from './index.module.css';
@@ -58,6 +59,7 @@ function HomepageHeader() {
 export default function Home(): JSX.Element {
   return (
     <Layout title="首页">
+      <TopBanner />
       <HomepageHeader />
       <main className={styles.mainContent}>
         <HomepageFeatures />
