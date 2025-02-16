@@ -18,7 +18,7 @@ const config: Config = {
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'thuasta', // Usually your GitHub org/user name.
-  projectName: 'website', // Usually your repo name.
+  projectName: 'thuata.org', // Usually your repo name.
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -33,10 +33,10 @@ const config: Config = {
       'classic',
       {
         docs: {
+          sidebarPath: './sidebars.ts',
           editUrl: ({ locale, docPath }) =>
             locale === 'zh' ?
               `https://github.com/thuasta/website/tree/main/docs/${docPath}` : `https://github.com/thuasta/website/tree/main/i18n/en/docusaurus-plugin-content-docs/current/${docPath}`,
-          sidebarPath: './src/components/HomepageFeatures/sidebars.ts',
         },
         blog: {
           // editUrl: 'https://github.com/thuasta/website/tree/main/',
@@ -63,6 +63,12 @@ const config: Config = {
       defaultMode: 'light',
       disableSwitch: false,
       respectPrefersColorScheme: true,
+    },
+    docs: {
+      sidebar: {
+        hideable: true,
+        autoCollapseCategories: true,
+      },
     },
     navbar: {
       title: '自动化系学生科协',
