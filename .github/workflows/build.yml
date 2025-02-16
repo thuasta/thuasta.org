@@ -5,6 +5,7 @@ on:
 
 jobs:
   build:
+    needs: typecheck
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -16,6 +17,24 @@ jobs:
       - run: |
           npm ci
           npm run build
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: build/
+
+  deploy:
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    needs: build
+    permissions:
+      id-token: write
+      pages: write
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/deploy-pages@v4
+        id: deployment
 
   typecheck:
     runs-on: ubuntu-latest
