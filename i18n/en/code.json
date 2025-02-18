@@ -1,6 +1,15 @@
 {
+    "homepage.title": {
+        "message": "Home"
+    },
+    "homepage.description": {
+        "message": "Association of Science and Technology of Automation, Tsinghua University"
+    },
     "homepage.topBanner": {
         "message": "Call for Papers, commence!"
+    },
+    "homepage.heroBanner.title": {
+        "message": "Association of Science & Technology of Automation"
     },
     "homepage.features.software.title": {
         "message": "Software Department"
