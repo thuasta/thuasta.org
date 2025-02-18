@@ -15,6 +15,7 @@
   --neon-red: #ff1a1a;
   --neon-white: #ffffff;
   --text-color: #000000;
+  --ifm-link-color: var(--neon-blue);
 }
 
 [data-theme='dark'] {
@@ -29,7 +30,6 @@
   --neon-white: #ffffff;
   --text-color: #f3f3f3;
 }
-
 
 svg {
     fill: var(--text-color);

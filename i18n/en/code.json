@@ -1,0 +1,32 @@
+{
+    "homepage.title": {
+        "message": "Home"
+    },
+    "homepage.description": {
+        "message": "Association of Science and Technology of Automation, Tsinghua University"
+    },
+    "homepage.topBanner": {
+        "message": "Call for Papers, commence!"
+    },
+    "homepage.heroBanner.title": {
+        "message": "Association of Science & Technology of Automation"
+    },
+    "homepage.features.software.title": {
+        "message": "Software Department"
+    },
+    "homepage.features.software.description": {
+        "message": "The software department is responsible for the construction and testing of the artificial intelligence challenge, the student festival game platform, the electronic design competition platform, website maintenance, etc. We pay attention to code quality and team collaboration, and welcome you to join!"
+    },
+    "homepage.features.hardware.title": {
+        "message": "Hardware Department"
+    },
+    "homepage.features.hardware.description": {
+        "message": "The hardware department focuses on hardware innovation and development, and is responsible for the development of electronic design competitions, robot dogs and other competitions. Looking forward to your joining!"
+    },
+    "homepage.features.innovation.title": {
+        "message": "Learning and Innovation Department"
+    },
+    "homepage.features.innovation.description": {
+        "message": "The Department of Learning and Innovation is responsible for docking with various scientific research and training projects of the school, such as the Spark Project, the Challenge Cup, and the enterprise laboratory, to help students complete their life development planning. Welcome you to join!"
+    }
+}
