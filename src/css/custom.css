@@ -16,6 +16,7 @@
   --neon-white: #ffffff;
   --text-color: #000000;
   --ifm-link-color: var(--neon-blue);
+  --ifm-navbar-link-hover-color: var(--neon-blue);
 }
 
 [data-theme='dark'] {
@@ -32,5 +33,5 @@
 }
 
 svg {
-    fill: var(--text-color);
+  fill: var(--text-color);
 }

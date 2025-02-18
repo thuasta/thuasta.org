@@ -4,7 +4,6 @@ import BrowserOnly from '@docusaurus/BrowserOnly';
 import Link from '@docusaurus/Link';
 import Translate, { translate } from '@docusaurus/Translate';
 import Layout from '@theme/Layout';
-import { useBaseUrlUtils } from '@docusaurus/useBaseUrl';
 
 import SplitText from '@site/src/components/SplitText/SplitText';
 import PixelCard from '@site/src/components/PixelCard/PixelCard';
@@ -14,7 +13,6 @@ import Heading from '@theme/Heading';
 import styles from './index.module.css';
 
 function TopBanner() {
-  // TODO: Use latestBlog Title 
   return (
     <div className={styles.topBanner}>
       <div className={styles.topBannerTitle}>
@@ -78,16 +76,10 @@ function HeroBanner() {
 }
 
 function Feature({ feature, className }: { feature: FeatureItem; className?: string; }) {
-  const { withBaseUrl } = useBaseUrlUtils();
-
+  const SvgComponent = feature.Svg;
   return (
     <div className={clsx('col', className)}>
-      <img
-        className={styles.featureSvg}
-        alt={feature.title}
-        src={withBaseUrl(feature.Svg)}
-        loading="lazy"
-      />
+      <SvgComponent className={styles.featureSvg} aria-label={feature.title} role="img" />
       <Heading as="h3" className={clsx(styles.featureHeading)}>
         {feature.title}
       </Heading>
