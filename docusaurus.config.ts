@@ -1,30 +1,52 @@
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
+
 import { themes as prismThemes } from 'prism-react-renderer';
+
 import type { Config } from '@docusaurus/types';
+
 import type * as Preset from '@docusaurus/preset-classic';
+import type { Options as DocsOptions } from '@docusaurus/plugin-content-docs';
+import type { Options as BlogOptions } from '@docusaurus/plugin-content-blog';
 
 const config: Config = {
   title: '清华大学自动化系学生科协',
   tagline: 'ASTAers are cool',
   favicon: 'img/favicon.ico',
-
-  // Set the production url of your site here
   url: 'https://thuasta.org',
-  // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
+  organizationName: 'thuasta',
+  projectName: 'thuata.org',
 
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'thuasta', // Usually your GitHub org/user name.
-  projectName: 'thuata.org', // Usually your repo name.
-
-  onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
+  stylesheets: [
+    {
+      href: '/katex/dist/katex.min.css',
+      type: 'text/css',
+    },
+  ],
 
   i18n: {
     defaultLocale: 'zh',
     locales: ['zh', 'en'],
   },
+
+  markdown: {
+    format: 'detect',
+    // mermaid: true,
+  },
+
+  themes: [
+    '@docusaurus/theme-live-codeblock',
+    [
+      "@easyops-cn/docusaurus-search-local",
+      ({
+        hashed: true,
+        language: ["zh", "en"],
+        highlightSearchTermsOnTargetPage: true,
+        explicitSearchResultPath: true,
+      }),
+    ],
+  ],
 
   presets: [
     [
@@ -34,23 +56,33 @@ const config: Config = {
           sidebarPath: './sidebars.ts',
           editUrl: ({ locale, docPath }) =>
             locale === 'zh' ?
-              `https://github.com/thuasta/website/tree/main/docs/${docPath}` : `https://github.com/thuasta/website/tree/main/i18n/en/docusaurus-plugin-content-docs/current/${docPath}`,
-        },
+              `https://github.com/thuasta/thuasta.org/tree/main/docs/${docPath}` : `https://github.com/thuasta/thuasta.org/tree/main/i18n/en/docusaurus-plugin-content-docs/current/${docPath}`,
+          remarkPlugins: [remarkMath],
+          rehypePlugins: [rehypeKatex],
+        } satisfies DocsOptions,
         blog: {
           // editUrl: 'https://github.com/thuasta/website/tree/main/',
           showReadingTime: true,
           feedOptions: {
-            type: ['rss', 'atom'],
+            type: 'all',
+            copyright: `Copyright © ${new Date().getFullYear()} ASTA.`,
             xslt: true,
+            language: 'zh',
           },
-          // Useful options to enforce blogging best practices
-          onInlineTags: 'warn',
-          onInlineAuthors: 'warn',
-          onUntruncatedBlogPosts: 'warn',
-        },
+        } satisfies BlogOptions,
         theme: {
           customCss: './src/css/custom.css',
         },
+        // sitemap: {
+        //   lastmod: 'date',
+        //   priority: null,
+        //   changefreq: null,
+        // },
+        // svgr: {
+        //   svgrConfig: {
+        //     svgoConfig: undefined,
+        //   },
+        // },
       } satisfies Preset.Options,
     ],
   ],
@@ -62,11 +94,19 @@ const config: Config = {
       disableSwitch: false,
       respectPrefersColorScheme: true,
     },
+    prism: {
+      theme: prismThemes.github,
+      darkTheme: prismThemes.dracula,
+      additionalLanguages: ['bash', 'cmake', 'powershell'],
+    },
     docs: {
       sidebar: {
         hideable: true,
         autoCollapseCategories: true,
       },
+    },
+    liveCodeBlock: {
+      playgroundPosition: 'bottom',
     },
     announcementBar: {
       id: 'announcementBar',
@@ -79,6 +119,7 @@ const config: Config = {
         alt: '自动化系学生科协',
         src: 'img/logo.svg',
         srcDark: 'img/logo-dark.svg',
+        href: 'https://thuasta.org',
       },
       items: [
         {
@@ -125,24 +166,7 @@ const config: Config = {
       ],
       copyright: `Copyright © ${new Date().getFullYear()} ASTA. Built with Docusaurus.`,
     },
-    prism: {
-      theme: prismThemes.github,
-      darkTheme: prismThemes.dracula,
-      additionalLanguages: ['bash', 'cmake', 'powershell'],
-    },
   } satisfies Preset.ThemeConfig,
-
-  themes: [
-    [
-      "@easyops-cn/docusaurus-search-local",
-      ({
-        hashed: true,
-        language: ["zh", "en"],
-        highlightSearchTermsOnTargetPage: true,
-        explicitSearchResultPath: true,
-      }),
-    ],
-  ],
-};
+} satisfies Config;
 
 export default config;
