@@ -68,6 +68,10 @@ const config: Config = {
         autoCollapseCategories: true,
       },
     },
+    announcementBar: {
+      id: 'announcementBar',
+      content: '🎉️ <b><a target="_blank" href="https://thuasta.org/blog/welcome">征稿，启动！</a></b> 🥳️',
+    },
     navbar: {
       hideOnScroll: true,
       title: '自动化系学生科协',

@@ -35,3 +35,30 @@
 svg {
   fill: var(--text-color);
 }
+
+div[class^='announcementBar_'] {
+  font-size: 20px;
+
+  --site-announcement-bar-stripe-color1: #e8d7ff;
+  --site-announcement-bar-stripe-color2: #ffe9d1;
+
+  background: repeating-linear-gradient(35deg,
+      var(--site-announcement-bar-stripe-color1),
+      var(--site-announcement-bar-stripe-color1) 20px,
+      var(--site-announcement-bar-stripe-color2) 10px,
+      var(--site-announcement-bar-stripe-color2) 40px);
+  font-weight: bold;
+}
+
+.screen-reader-only {
+  border: 0;
+  clip: rect(0 0 0 0);
+  clip-path: polygon(0 0, 0 0, 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
+}
