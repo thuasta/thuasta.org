@@ -1,7 +1,8 @@
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 
-import { themes as prismThemes } from 'prism-react-renderer';
+import PrismLight from './src/utils/prismLight';
+import PrismDark from './src/utils/prismDark';
 
 import type { Config } from '@docusaurus/types';
 
@@ -9,7 +10,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 import type { Options as DocsOptions } from '@docusaurus/plugin-content-docs';
 import type { Options as BlogOptions } from '@docusaurus/plugin-content-blog';
 
-const config: Config = {
+export default {
   title: '清华大学自动化系学生科协',
   tagline: 'ASTAers are cool',
   favicon: 'img/favicon.ico',
@@ -61,7 +62,7 @@ const config: Config = {
           rehypePlugins: [rehypeKatex],
         } satisfies DocsOptions,
         blog: {
-          // editUrl: 'https://github.com/thuasta/website/tree/main/',
+          // editUrl: 'https://github.com/thuasta/thuasta.org/tree/main/',
           showReadingTime: true,
           feedOptions: {
             type: 'all',
@@ -95,8 +96,8 @@ const config: Config = {
       respectPrefersColorScheme: true,
     },
     prism: {
-      theme: prismThemes.github,
-      darkTheme: prismThemes.dracula,
+      theme: PrismLight,
+      darkTheme: PrismDark,
       additionalLanguages: ['bash', 'cmake', 'powershell'],
     },
     docs: {
@@ -168,5 +169,3 @@ const config: Config = {
     },
   } satisfies Preset.ThemeConfig,
 } satisfies Config;
-
-export default config;
