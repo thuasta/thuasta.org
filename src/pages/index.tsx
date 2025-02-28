@@ -22,7 +22,7 @@ function TopBanner() {
           className={styles.topBannerTitleText}>
           <Translate
             id="homepage.topBanner">
-            征稿，启动！
+            具身智能挑战赛，启动！
           </Translate>
         </Link>
         {'\xa0🥳'}
@@ -102,7 +102,7 @@ function FeaturesContainer() {
 
 export default function Home(): JSX.Element {
   return (
-    <Layout title={translate({ "message": '首页', "id": "homepage.title" })} description={translate({ "message": '清华大学自动化系学生科协', "id": "homepage.description" })}>
+    <Layout title={translate({ "message": '首页', "id": "homepage.title" })} description={translate({ "message": '清华大学自动化系学生科协网站', "id": "homepage.description" })}>
       <TopBanner />
       <HeroBanner />
       <div className={styles.section}>

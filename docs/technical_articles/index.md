@@ -1,0 +1,5 @@
+# 技术文章
+
+这些文章来源于[**紫冬话语**](https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzkxMzUyMzU4OQ==)上的**紫冬 Hub** 栏目。
+
+**紫冬 Hub** 是紫冬科协创立的一个学习实用技术、交流前沿科技的平台。我们诚邀自动化系全体学生参与[投稿](https://thuasta.org/blog/welcome)，分享你们在开发技术、学科问题、经典论文、前沿成果等方面的知识和见解。

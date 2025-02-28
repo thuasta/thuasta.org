@@ -1,5 +1,8 @@
 /**
- * This file is from https://github.com/facebook/docusaurus/blob/main/website/src/utils/prismLight.ts
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in https://github.com/facebook/docusaurus/tree/main.
  */
 
 import { themes, type PrismTheme } from 'prism-react-renderer';
