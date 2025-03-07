@@ -31,7 +31,7 @@ export default {
 
   i18n: {
     defaultLocale: 'zh',
-    locales: ['zh', 'en'],
+    locales: ['zh'],
   },
 
   markdown: {
@@ -44,8 +44,9 @@ export default {
     [
       "@easyops-cn/docusaurus-search-local",
       ({
+        docsRouteBasePath: '/',
+        language: ['zh', 'en'],
         hashed: true,
-        language: ["zh", "en"],
         highlightSearchTermsOnTargetPage: true,
         explicitSearchResultPath: true,
       }),
@@ -57,10 +58,9 @@ export default {
       'classic',
       {
         docs: {
+          routeBasePath: '/',
           sidebarPath: './sidebars.ts',
-          editUrl: ({ locale, docPath }) =>
-            locale === 'zh' ?
-              `https://github.com/thuasta/thuasta.org/tree/main/docs/${docPath}` : `https://github.com/thuasta/thuasta.org/tree/main/i18n/en/docusaurus-plugin-content-docs/current/${docPath}`,
+          editUrl: 'https://github.com/thuasta/thuasta.org/tree/main/',
           remarkPlugins: [remarkMath],
           rehypePlugins: [rehypeKatex],
         } satisfies DocsOptions,
@@ -128,7 +128,7 @@ export default {
       items: [
         {
           type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
+          sidebarId: 'docs',
           position: 'left',
           label: '文档',
         },
@@ -136,10 +136,6 @@ export default {
         {
           href: 'https://github.com/thuasta',
           label: 'GitHub',
-          position: 'left',
-        },
-        {
-          type: 'localeDropdown',
           position: 'right',
         },
       ],

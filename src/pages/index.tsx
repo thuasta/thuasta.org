@@ -2,7 +2,6 @@ import React from 'react';
 import clsx from 'clsx';
 import BrowserOnly from '@docusaurus/BrowserOnly';
 import Link from '@docusaurus/Link';
-import Translate, { translate } from '@docusaurus/Translate';
 import Layout from '@theme/Layout';
 
 import SplitText from '@site/src/components/SplitText/SplitText';
@@ -16,16 +15,13 @@ function TopBanner() {
   return (
     <div className={styles.topBanner}>
       <div className={styles.topBannerTitle}>
-        {'🎉\xa0'}
+        {'🤖\xa0'}
         <Link
           to={`/blog/`}
           className={styles.topBannerTitleText}>
-          <Translate
-            id="homepage.topBanner">
-            具身智能挑战赛，启动！
-          </Translate>
+          具身智能挑战赛，启动！
         </Link>
-        {'\xa0🥳'}
+        {'\xa0🦾'}
       </div>
     </div>
   );
@@ -36,7 +32,7 @@ function HeroBannerText() {
     <div className="container" style={{ position: "absolute" }}>
       <Heading as='h1'>
         <SplitText
-          text={translate({ "message": '自动化系学生科协', "id": "homepage.heroBanner.title" })}
+          text='自动化系学生科协'
           className="text-center hero__title"
           delay={50}
           animationFrom={{ opacity: 0, transform: 'translate3d(0,50px,0)' }}
@@ -102,7 +98,7 @@ function FeaturesContainer() {
 
 export default function Home(): JSX.Element {
   return (
-    <Layout title={translate({ "message": '首页', "id": "homepage.title" })} description={translate({ "message": '清华大学自动化系学生科协网站', "id": "homepage.description" })}>
+    <Layout title='首页' description='清华大学自动化系学生科协网站'>
       <TopBanner />
       <HeroBanner />
       <div className={styles.section}>
