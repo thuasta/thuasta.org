@@ -1,4 +1,4 @@
-# Containerization vs. Virtualization
+# Containerization & Virtualization
 
 Containers and virtual machines are the two most popular approaches to setting up a software infrastructure for your organization.
 

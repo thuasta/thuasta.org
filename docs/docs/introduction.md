@@ -8,7 +8,7 @@ slug: /docs/
 
 ## 参与我们
 
-我们欢迎所有人参与此项目，包括且不限于：`Issue`、`Pull Request`。
+我们欢迎所有人参与[此项目](https://github.com/thuasta/thuasta.org)，包括且不限于：`Issue`、`Pull Request`。
 
 ### Issue
 
