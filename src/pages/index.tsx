@@ -17,7 +17,7 @@ function TopBanner() {
       <div className={styles.topBannerTitle}>
         {'🤖\xa0'}
         <Link
-          to={'/games/DAEI1/'}
+          to={'/games/THUEI1/'}
           className={styles.topBannerTitleText}>
           具身智能挑战赛，启动！
         </Link>
