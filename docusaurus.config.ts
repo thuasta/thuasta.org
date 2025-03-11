@@ -9,6 +9,7 @@ import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 import type { Options as DocsOptions } from '@docusaurus/plugin-content-docs';
 import type { Options as BlogOptions } from '@docusaurus/plugin-content-blog';
+import type { Options as IdealImageOptions } from '@docusaurus/plugin-ideal-image';
 
 export default {
   title: '清华大学自动化系学生科协',
@@ -40,16 +41,27 @@ export default {
   },
 
   themes: [
-    '@docusaurus/theme-live-codeblock',
+    'live-codeblock',
     [
       "@easyops-cn/docusaurus-search-local",
-      ({
+      {
         docsRouteBasePath: '/',
         language: ['zh', 'en'],
         hashed: true,
         highlightSearchTermsOnTargetPage: true,
         explicitSearchResultPath: true,
-      }),
+      },
+    ],
+  ],
+
+  plugins: [
+    [
+      'ideal-image',
+      {
+        max: 1030,
+        min: 640,
+        disableInDev: true,
+      } satisfies IdealImageOptions,
     ],
   ],
 
@@ -131,6 +143,12 @@ export default {
           sidebarId: 'docs',
           position: 'left',
           label: '文档',
+        },
+        {
+          type: 'docSidebar',
+          sidebarId: 'games',
+          position: 'left',
+          label: '赛事',
         },
         { to: '/blog', label: '推送', position: 'left' },
         {
