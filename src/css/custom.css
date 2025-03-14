@@ -1,43 +1,21 @@
-/**
- * Global CSS for Docusaurus with neon style modifications.
- * This file also supports dark mode and custom primary colors.
- */
-
 :root {
-  --neon-blue: #0066ff;
-  --neon-red: #ff1a1a;
-  --neon-white: #ffffff;
+  --ifm-color-primary: #2160fd;
+  --ifm-color-primary-dark: #1959fc;
+  --ifm-color-primary-darker: #0f51f8;
+  --ifm-color-primary-darkest: #0042e7;
+  --ifm-color-primary-light: #3d72f8;
+  --ifm-color-primary-lighter: #477af8;
+  --ifm-color-primary-lightest: #6791fc;
 
-  --ifm-color-primary: #222222;
-  --ifm-color-primary-dark: #1a1a1a;
-  --ifm-color-primary-darker: #0d0d0d;
-  --ifm-color-primary-light: #333333;
-  --ifm-color-primary-lighter: #4d4d4d;
-  --ifm-font-size: 100%;
   --docusaurus-highlighted-code-line-bg: rgb(0 0 0 / 10%);
-  --text-color: #000000;
-  --ifm-link-color: var(--neon-blue);
-  --ifm-navbar-link-hover-color: var(--neon-blue);
-  --ifm-menu-color-active: var(--neon-blue);
-  --ifm-breadcrumb-color-active: var(--neon-blue);
 }
 
 [data-theme='dark'] {
-  --neon-blue: #66b3ff;
-  --neon-red: #ff6666;
-  --neon-white: #ffffff;
-
-  --ifm-color-primary: #f3f3f3;
-  --ifm-color-primary-dark: #e6e6e6;
-  --ifm-color-primary-darker: #cccccc;
-  --ifm-color-primary-light: #fcfcfc;
-  --ifm-color-primary-lighter: #ffffff;
   --docusaurus-highlighted-code-line-bg: rgb(66 66 66 / 35%);
-  --text-color: #f3f3f3;
 }
 
-svg {
-  fill: var(--text-color);
+[data-theme='dark'] svg {
+  fill: #f3f3f3;
 }
 
 div[class^='announcementBar_'] {
@@ -52,17 +30,4 @@ div[class^='announcementBar_'] {
       var(--site-announcement-bar-stripe-color2) 10px,
       var(--site-announcement-bar-stripe-color2) 40px);
   font-weight: bold;
-}
-
-.screen-reader-only {
-  border: 0;
-  clip: rect(0 0 0 0);
-  clip-path: polygon(0 0, 0 0, 0 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-  white-space: nowrap;
 }
