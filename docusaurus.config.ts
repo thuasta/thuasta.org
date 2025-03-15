@@ -43,7 +43,7 @@ export default {
   themes: [
     'live-codeblock',
     [
-      "@easyops-cn/docusaurus-search-local",
+      '@easyops-cn/docusaurus-search-local',
       {
         docsRouteBasePath: '/',
         language: ['zh', 'en'],
