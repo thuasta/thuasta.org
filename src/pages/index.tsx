@@ -1,4 +1,4 @@
-import React from 'react';
+import { type ReactNode } from 'react';
 import clsx from 'clsx';
 import BrowserOnly from '@docusaurus/BrowserOnly';
 import Link from '@docusaurus/Link';
@@ -96,7 +96,7 @@ function FeaturesContainer() {
   );
 }
 
-export default function Home(): JSX.Element {
+export default function Home(): ReactNode {
   return (
     <Layout title='首页' description='清华大学自动化系学生科协网站'>
       <TopBanner />
