@@ -33,7 +33,7 @@ export default {
       },
     },
     {
-      types: [/*'atrule', */'tag'],
+      types: ['atrule', 'tag'],
       style: {
         color: '#22863A',
       },
