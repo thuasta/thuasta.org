@@ -9,7 +9,7 @@ import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 import type { Options as DocsOptions } from '@docusaurus/plugin-content-docs';
 import type { Options as BlogOptions } from '@docusaurus/plugin-content-blog';
-import type { Options as IdealImageOptions } from '@docusaurus/plugin-ideal-image';
+// import type { Options as IdealImageOptions } from '@docusaurus/plugin-ideal-image';
 
 export default {
   title: '清华大学自动化系学生科协',
@@ -54,16 +54,16 @@ export default {
     ],
   ],
 
-  plugins: [
-    [
-      'ideal-image',
-      {
-        max: 1030,
-        min: 640,
-        disableInDev: true,
-      } satisfies IdealImageOptions,
-    ],
-  ],
+  // plugins: [
+  //   [
+  //     'ideal-image',
+  //     {
+  //       max: 1030,
+  //       min: 640,
+  //       disableInDev: true,
+  //     } satisfies IdealImageOptions,
+  //   ],
+  // ],
 
   presets: [
     [
