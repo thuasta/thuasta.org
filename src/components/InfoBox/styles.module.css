@@ -1,0 +1,122 @@
+.container {
+  text-align: left;
+  justify-content: flex-start;
+  display: flex;
+  flex-flow: row;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.gradientWrapper {
+  display: inline-block;
+  width: 100%;
+  vertical-align: top;
+  align-self: flex-start;
+  flex: 0 0 auto;
+  border-width: 0;
+  border-radius: 10px;
+  border-style: none;
+  overflow: hidden;
+  background-image: linear-gradient(to right, rgb(255 184 184) 0%, rgb(255 255 255 / 0%) 100%);
+  padding: 10px;
+}
+
+.whiteContainer {
+  display: inline-block;
+  width: 100%;
+  vertical-align: top;
+  align-self: flex-start;
+  flex: 0 0 auto;
+  background-color: rgb(255 255 255);
+  padding: 2px;
+  border-width: 0;
+  border-radius: 8px;
+  border-style: none;
+  overflow: hidden;
+}
+
+.content {
+  justify-content: flex-start;
+  display: flex;
+  flex-flow: row;
+}
+
+.contentInner {
+  display: inline-block;
+  width: 100%;
+  vertical-align: top;
+  align-self: flex-start;
+  flex: 0 0 auto;
+  padding: 15px;
+  border-width: 1px;
+  border-radius: 5px;
+  border-style: solid;
+  border-color: rgb(225 151 161);
+  overflow: hidden;
+}
+
+.flexContainer {
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  flex-flow: row;
+}
+
+.imageContainer {
+  display: inline-block;
+  vertical-align: middle;
+  align-self: center;
+  flex: 0 0 auto;
+  height: auto;
+}
+
+.imageWrapper {
+  line-height: 0;
+}
+
+.image {
+  vertical-align: middle;
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.textContainer {
+  display: inline-block;
+  vertical-align: middle;
+  width: auto;
+  flex: 100 100 0%;
+  height: auto;
+  padding-left: 15px;
+  align-self: center;
+}
+
+.textContent {
+  color: rgb(133 49 145);
+}
+
+.title {
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.description {
+  margin-top: 0;
+  font-size: 0.9em;
+}
+
+@media (width <= 768px) {
+  .flexContainer {
+    flex-direction: column;
+  }
+  
+  .imageContainer {
+    width: 50% !important;
+    margin-bottom: 10px;
+  }
+  
+  .textContainer {
+    padding-left: 0;
+    text-align: center;
+  }
+}

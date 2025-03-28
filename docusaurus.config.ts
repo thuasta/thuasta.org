@@ -79,11 +79,13 @@ export default {
         blog: {
           // editUrl: 'https://github.com/thuasta/thuasta.org/tree/main/',
           showReadingTime: true,
+          blogSidebarCount: 'ALL',
           feedOptions: {
-            type: 'all',
-            copyright: `Copyright © ${new Date().getFullYear()} ASTA.`,
-            xslt: true,
-            language: 'zh',
+            type: null,
+            // type: 'all',
+            // copyright: `Copyright © ${new Date().getFullYear()} ASTA.`,
+            // xslt: true,
+            // language: 'zh',
           },
         } satisfies BlogOptions,
         theme: {
@@ -146,7 +148,7 @@ export default {
         },
         {
           type: 'docSidebar',
-          sidebarId: 'games',
+          sidebarId: 'contests',
           position: 'left',
           label: '赛事',
         },
