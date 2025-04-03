@@ -87,7 +87,6 @@
   width: auto;
   flex: 100 100 0%;
   height: auto;
-  padding-left: 15px;
   align-self: center;
 }
 
@@ -107,16 +106,24 @@
 
 @media (width <= 768px) {
   .flexContainer {
-    flex-direction: column;
+    flex-direction: row;
   }
   
   .imageContainer {
-    width: 50% !important;
-    margin-bottom: 10px;
+    width: 25% !important;
   }
   
   .textContainer {
-    padding-left: 0;
     text-align: center;
+  }
+
+    .textContent {
+      font-size: 0.9em;
+    }
+}
+
+@media (width <=480px) {
+  .imageContainer {
+    width: 30% !important;
   }
 }

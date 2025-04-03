@@ -6,11 +6,12 @@ tags: [contests]
 originalUrl: https://mp.weixin.qq.com/s/XS3RWjzcMLvoIkkhs8r35Q
 ---
 
-#
+<center>
 
 ![具身智能挑战赛](img/1.png)
+<h2>
 
-# ![png](img/2.png) 让你的机器人管家“活”起来！![png](img/2.png)
+![图片](img/2.png)让你的机器人管家“活”起来！![图片](img/2.png)</h2></center>
 
 ## 大赛简介
 

@@ -8,7 +8,7 @@
 git clone https://github.com/thuasta/thuei-1.git
 ```
 
-详情可见[克隆仓库文档](../servo/#克隆仓库)，推荐使用在 root 用户中进行克隆。
+详情可见[克隆仓库文档](servo/#克隆仓库)，推荐使用在 root 用户中进行克隆。
 
 :::warning
 
@@ -25,18 +25,17 @@ git clone https://github.com/thuasta/thuei-1.git
 
 ## 电机驱动板的接线
 
-小车套件中有一个扩展板，将其接到香橙派开发板的 PIN40 接口上，小车的硬连接指导详见[安装文档](https://cloud.tsinghua.edu.cn/d/bdc2a9d976ec45e58f2f/?p=%2FMasterPi%E6%99%BA%E8%83%BD%E8%A7%86%E8%A7%89%E5%B0%8F%E8%BD%A6%2F1%20%E6%95%99%E7%A8%8B%E8%B5%84%E6%96%99%2F1.%E5%85%A5%E9%97%A8%E8%AF%BE%E7%A8%8B%2F1.%E5%AD%A6%E5%89%8D%E5%85%88%E7%9C%8B%2F%E7%AC%AC3%E8%AF%BE%20%E5%8A%A8%E6%89%8B%E7%BB%84%E8%A3%85&mode=list)。
+小车套件中有一个扩展板，将其接到香橙派开发板的 PIN40 接口上，小车的硬连接指导详见[组装文档](https://cloud.tsinghua.edu.cn/d/bdc2a9d976ec45e58f2f/?p=%2FMasterPi%E6%99%BA%E8%83%BD%E8%A7%86%E8%A7%89%E5%B0%8F%E8%BD%A6%2F1%20%E6%95%99%E7%A8%8B%E8%B5%84%E6%96%99%2F1.%E5%85%A5%E9%97%A8%E8%AF%BE%E7%A8%8B%2F1.%E5%AD%A6%E5%89%8D%E5%85%88%E7%9C%8B%2F%E7%AC%AC3%E8%AF%BE%20%E5%8A%A8%E6%89%8B%E7%BB%84%E8%A3%85&mode=list)。
 
 如下图所示，扩展板上有四个小型的电机驱动接口与电机线对应，选手需要将电机与驱动口相连接，注意插口不要接反；四个电机所连接的驱动口顺序不作要求，稍后将通过软件调试进行配置。
 
-![小车驱动扩展板](img/1.jpg)
-![车轮驱动电机](img/2.jpg)
+<img src="https://cloud.tsinghua.edu.cn/thumbnail/24f8d1997d1848ec9c72/1024/img/THUDAEI1/move/1.jpg" alt="小车驱动扩展板" loading="lazy" />
+<img src="https://cloud.tsinghua.edu.cn/thumbnail/24f8d1997d1848ec9c72/1024/img/THUDAEI1/move/2.jpg" alt="车轮驱动电机" loading="lazy" />
 
 :::warning
 
 因为香橙派板子较大，电机线长度不够，小车左侧（远端）电机可能需要公母延长线与驱动口相连，切勿强行连接，以免损坏线缆。
-
-![连接示意图](img/3.jpg)
+<img src="https://cloud.tsinghua.edu.cn/thumbnail/24f8d1997d1848ec9c72/1024/img/THUDAEI1/move/3.jpg" alt="连接示意图" loading="lazy" />
 
 :::
 

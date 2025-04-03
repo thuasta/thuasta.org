@@ -15,13 +15,13 @@ function TopBanner() {
   return (
     <div className={styles.topBanner}>
       <div className={styles.topBannerTitle}>
-        {'🤖\xa0'}
+        {'🪐\xa0'}
         <Link
-          to={'/contests/THUDAEI1/'}
+          to={'/blog/2025/03-29'}
           className={styles.topBannerTitleText}>
-          具身智能挑战赛，启动！
+          THUAI8，报名启动！
         </Link>
-        {'\xa0🦾'}
+        {'\xa0🚀'}
       </div>
     </div>
   );

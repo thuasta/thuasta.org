@@ -6,8 +6,8 @@
 
 舵机的连接方法如下所示：
 
-![舵机线安装方向](img/1.jpg)
-![舵机线插接位置](img/2.jpg)
+<img src="https://cloud.tsinghua.edu.cn/thumbnail/24f8d1997d1848ec9c72/1024/img/THUDAEI1/servo/1.jpg" alt="舵机连接示意图" loading="lazy" />
+<img src="https://cloud.tsinghua.edu.cn/thumbnail/24f8d1997d1848ec9c72/1024/img/THUDAEI1/servo/2.jpg" alt="舵机连接示意图" loading="lazy" />
 
 :::tip
 
@@ -19,21 +19,17 @@
 
 首先展示一下香橙派的端口：
 
-![端口示意图](img/3.jpg)
+<img src="https://cloud.tsinghua.edu.cn/thumbnail/24f8d1997d1848ec9c72/1024/img/THUDAEI1/servo/3.jpg" alt="端口示意图" loading="lazy" />
 
 香橙派与拓展版的通讯采用的是 i2c 协议。需要连接三根线：SDA、SCL 和 GND，即 3、5、6 引脚。
   
 拓展板的 3、5、6 引脚如下图所示：
-![拓展板引脚](img/4.jpg)
+<img src="https://cloud.tsinghua.edu.cn/thumbnail/24f8d1997d1848ec9c72/1024/img/THUDAEI1/servo/4.jpg" alt="拓展板引脚" loading="lazy" />
 
 香橙派的 3、5、6 引脚如下图所示：
-![香橙派引脚](img/5.jpg)
-
-:::tip
+<img src="https://cloud.tsinghua.edu.cn/thumbnail/24f8d1997d1848ec9c72/1024/img/THUDAEI1/servo/5.jpg" alt="香橙派引脚" loading="lazy" />
 
 将二者对应的 3、5、6 顺序连接，注意不要插错。
-
-:::
 
 ## 克隆仓库
 
@@ -75,7 +71,7 @@ python ColorDetect.py
 <summary>可能的问题及解决方案</summary>
 
 - 摄像头没有显示
-  - 驱动问题，解决方案参考[摄像头调试文档](../camera/#常见问题排查)。
+  - 驱动问题，解决方案参考[摄像头调试文档](camera/#常见问题排查)。
   - 硬件连接问题，摄像头不支持热插拔，连接好以后重启香橙派。
 - 程序无法运行
   - 库缺失，使用 `pip install` 安装相应的库。
