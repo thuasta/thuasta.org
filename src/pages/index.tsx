@@ -17,7 +17,7 @@ function TopBanner() {
       <div className={styles.topBannerTitle}>
         {'🪐\xa0'}
         <Link
-          to={'/blog/2025/03-29'}
+          to={'/blog/tags/thuai-8'}
           className={styles.topBannerTitleText}>
           THUAI8，报名启动！
         </Link>
