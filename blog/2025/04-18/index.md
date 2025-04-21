@@ -1,6 +1,6 @@
 ---
 slug: /2025/04-18
-title: THUAI-8 | 倒计时：规则展示
+title: THUAI8 | 倒计时：规则展示
 authors: [zidonghuayu]
 tags: [THUAI8, contests]
 originalUrl: https://mp.weixin.qq.com/s/Tbq9iug8hzfhHfpL-Dde7Q
@@ -10,7 +10,7 @@ originalUrl: https://mp.weixin.qq.com/s/Tbq9iug8hzfhHfpL-Dde7Q
 
 清华大学人工智能挑战赛自动化系赛道已成功举办多年，在校内形成了广泛的影响力和良好的口碑。每届比赛都吸引近百名学生积极参与，参赛选手不仅来自系内，更有众多跨院系的同学踊跃报名。至今，本赛事已然成为本科生深入理解程序设计原理、探索人工智能前沿、提升实践能力的重要平台。
 
-**清华大学第八届人工智能挑战赛**（THUAI-8）**自动化系赛道“异格重构”** 接收报名中。比赛中，选手需要使用 C++/Python 两种语言之一编程控制游戏角色，与另一名选手展开对战，决出胜负。
+**清华大学第八届人工智能挑战赛**（THUAI8）**自动化系赛道“异格重构”** 接收报名中。比赛中，选手需要使用 C++/Python 两种语言之一编程控制游戏角色，与另一名选手展开对战，决出胜负。
 
 <!-- truncate -->
 
@@ -30,7 +30,8 @@ originalUrl: https://mp.weixin.qq.com/s/Tbq9iug8hzfhHfpL-Dde7Q
 
 小局将在正方形平面地图中进行开展。地图内会出现的实体主要包括游戏角色、墙体与子弹。<center>
 
-![小局内预览](img/1.png)</center>
+![小局内预览](img/1.png)  
+<small>小局内预览</small></center>
 
 ### 墙体
 
@@ -54,7 +55,8 @@ originalUrl: https://mp.weixin.qq.com/s/Tbq9iug8hzfhHfpL-Dde7Q
 
 角色的技能是可以在对局中主动释放的能力。每个技能具有冷却时间；未在冷却状态时，技能可以释放，释放后产生一定效果并进入冷却。<center>
 
-![局内属性示意](img/2.png)</center>
+![局内属性示意](img/2.png)  
+<small>局内属性示意</small></center>
 
 ## 奖励细则
 
