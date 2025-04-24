@@ -15,7 +15,7 @@ jobs:
           node-version: 22.x
 
       - run: |
-          npm ci
+          npm install --omit=dev
           npm run build
 
       - uses: actions/upload-pages-artifact@v3
@@ -46,5 +46,5 @@ jobs:
           node-version: 22.x
 
       - run: |
-          npm ci
+          npm install
           npm run typecheck
