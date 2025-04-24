@@ -1,0 +1,79 @@
+# 快速入门指南
+
+:::tip
+
+您可以参考往年的[**快速入门视频**](https://cloud.tsinghua.edu.cn/f/131ba3787c304ff280e2/)。
+
+:::
+
+## 下载前端、后端和 SDK
+
+- **前端**：提供图形化界面，展示回放中的比赛情况。
+- **后端**：作为服务器，控制比赛进行，并生成比赛回放。
+- **SDK**：是若干不同编程语言的程序文件，提供编写比赛程序所需的接口。选手可以选用 C++ SDK 或 Python SDK 编写程序。
+
+请从[此链接](https://github.com/thuasta/thuai-8/releases)下载**最新版本**（Latest）的前端（client）和后端（server）。下载完成后，解压文件至您的工作目录。
+
+此外，请从[此链接](https://github.com/thuasta/thuai-8/tree/main/sdk)下载 SDK 仓库，以便开始编写比赛程序。
+
+:::tip
+
+- 务必根据您的操作系统版本选择适当的版本。例如，您的操作系统为 Windows 11，您应该下载 `thuai-8-client-StandaloneWindows64.zip` 和 `thuai-8-server-windows-arm64.zip`。
+- github 中的 releases 会折叠一部分 Assets，若您没有找到对应的版本，请点击 `show all assets`。
+- 若您在运行后端的可执行文件出现了闪退或报错等情况，可能是因为您没有安装 .NET Core 运行时环境。请根据您的操作系统版本下载并安装 .NET Core 运行时环境，版本至少为 8.0。可使用如下 Windows 下载地址：[.NET Core](https://dotnet.microsoft.com/zh-cn/download/dotnet/thank-you/sdk-8.0.408-windows-x64-installer)
+
+:::
+
+## 编写比赛程序
+
+配置好代码环境后，选手需要使用提供的 SDK 编写比赛程序，根据战场形势决定最优策略。选手的所有逻辑包括条件判断、动态的检测与决策等都必须在代码中完成，一旦开始对战就无法通过任何形式（如命令行）改变逻辑或手动输入命令。
+
+环境配置请参考[编写 Agent 文档](sdk#配置开发环境)；详细接口信息请参考 [C++ SDK 文档](sdk/cpp_sdk) 或 [Python SDK 文档](sdk/python_sdk)。
+
+## 启动后端和 SDK 程序
+
+编写完成后，请先后启动后端的 `GameServer` 可执行文件以及 SDK 的可执行文件 `.exe`，开始比赛。后端默认需要 2 个玩家，因此在启动后端后，您需要同时启动两个 SDK 程序。注意，两个 SDK 程序的 `token` 必须不同，您可以在命令行中指定 `token`，也可以在代码中指定。
+
+## 使用前端查看回放文件
+
+打开前端，在 `ADD` 界面，选择后端生成的回放文件 `*.dat`，即可查看回放。具体操作请参考[前端使用指南](viewer)。您也可以用修改 `.dat` 文件属性为 `.zip` 解压，然后查看其中的 JSON 文件，以了解比赛的详细信息。
+
+## 提交代码
+
+在线评测平台已经上线，各位调试者可以访问 [saiblo 平台](https://www.saiblo.net/game/45) 将代码提交到我们的比赛服务器，与其他选手进行对战，评测自己精心编写的代码。可在服务器上查看天梯比赛结果。
+
+选手最终提交一个 `zip` 文件，其中必须包括所有的代码，目录结构应该类似于下面这样：
+
+{/* ```mdx-code-block  */}
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs>
+  <TabItem value="cpp" label="C++" default>
+    ```plaintext
+    cpp_code.zip/
+    ├── src/
+    │   ├── agent/
+    │   |   └── ...
+    │   ├── main.cpp
+    │   ├── logic.cpp
+    │   └── ...
+    ├── Dockerfile
+    └── xmake.lua
+    ```
+  </TabItem>
+  <TabItem value="python" label="Python">
+    ```plaintext
+    py_code.zip/
+    ├── src/
+    │   ├── agent/
+    │   |   └── ...
+    │   ├── main.py
+    │   ├── logic.py
+    │   └── ...
+    ├── Dockerfile
+    └── requirements.txt
+    ```
+  </TabItem>
+</Tabs>
+{/* ``` */}

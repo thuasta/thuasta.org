@@ -16,14 +16,14 @@ pip install -r requirements.txt
 
 你可以在 `logic.py` 中编写你的代码。对于有经验的开发者，你也可以修改项目中的其他任何文件。
 
-在命令行中运行以下命令来启动 agent：
+在命令行中运行以下命令来启动 Agent：
 
 ```bash
 python main.py --server <server> --token <token>
 ```
 
 - `<server>`：游戏的服务器地址。（默认值：`ws://localhost:14514`）  
-- `<token>`：agent 的令牌。（默认值：`1919810`）
+- `<token>`：Agent 的令牌。（默认值：`1919810`）
 
 例如：
 
@@ -35,37 +35,11 @@ python main.py --server ws://localhost:14514 --token 1919810
 
 - 运行此模板前，请确保你的环境满足 Python 版本要求，并已正确安装所有依赖项。
 - 如果修改了模板内容，可能需要相应地调整运行命令或代码逻辑。
-- 在运行前，请务必检查你的服务器地址和令牌是否正确，以确保 agent 能够成功连接到游戏服务器。
+- 在运行前，请务必检查你的服务器地址和令牌是否正确，以确保 Agent 能够成功连接到游戏服务器。
 
 :::
 
 ## 接口介绍
-
-### 初始化
-
-```python
-from sdk import Agent
-
-agent = Agent("<TOKEN>")
-```
-
-通过实例化 Agent 类并传入您的身份 `token` 字符串来初始化一个代理对象。该 `token` 是您在比赛中的唯一标识。
-
-### 连接比赛服务器
-
-```python
-await agent.connect("比赛服务器地址")
-```
-
-使用 `connect` 方法连接到比赛服务器。您需要提供比赛服务器的地址。若本地测试，可使用默认地址 `ws://localhost:14514`。
-
-### 断开连接
-
-```python
-await agent.disconnect()
-```
-
-使用 `disconnect` 方法断开与比赛服务器的连接。
 
 ### 获取游戏状态信息
 
@@ -235,12 +209,22 @@ await agent.disconnect()
 
 ### 其他
 
-- 判断游戏是否准备就绪
+1. **判断是否连接到服务器**
 
-  ```python
-  ready = agent.is_game_ready()
-  ```
+    ```python
+    connected = agent.is_connected()
+    ```
 
-  - 返回类型：`bool`
+    - 返回类型：`bool`
 
-  `is_game_ready` 方法将返回一个布尔值，指示游戏是否已准备就绪，即是否已获取到所有必要的游戏状态信息。
+    `is_connected` 方法指示 Agent 是否已连接到服务器。
+
+2. **判断游戏是否准备就绪**
+
+    ```python
+    ready = agent.is_game_ready()
+    ```
+
+    - 返回类型：`bool`
+
+    `is_game_ready` 方法指示游戏是否已准备就绪，即是否已获取到所有必要的游戏状态信息。

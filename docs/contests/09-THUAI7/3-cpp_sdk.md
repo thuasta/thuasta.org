@@ -8,7 +8,7 @@
 
 :::tip
 
-使用 Windows 操作系统的选手可参考如下[**视频教程**](https://cloud.tsinghua.edu.cn/f/9f18a58882614cbea368/)，了解如何使用 C++ SDK 开发自己的 Agent。
+使用 Windows 操作系统的选手可参考如下[**视频教程**](https://cloud.tsinghua.edu.cn/f/9f18a58882614cbea368/)，了解如何配置 C++ SDK 开发环境。
 
 :::
 
@@ -16,7 +16,7 @@
 
 - 要求 XMake >= 2.8.8，安装方法请参考 [XMake 官方文档](https://xmake.io/#/zh-cn/guide/installation)。若您没有开启代理，可以使用如下Windows 下载地址：[XMake 直链下载](https://hub.nuaa.cf/xmake-io/xmake/releases/download/v2.9.1/xmake-v2.9.1.win64.exe)
 
-- 具备 C++20 支持的 C++ 编译器工具链。推荐使用 MSVC。VS Build Tools 下载地址：[Visual Studio Build Tools](https://aka.ms/vs/17/release/vs_BuildTools.exe)
+- 具备 C++20 支持的 C++ 编译器工具链。推荐使用 MSVC。可使用如下 VS Build Tools 下载地址：[Visual Studio Build Tools](https://aka.ms/vs/17/release/vs_BuildTools.exe)
 
   :::warning
 
@@ -86,32 +86,6 @@ xmake
 :::
 
 ## 接口介绍
-
-### 初始化
-
-```cpp
-#include "agent.h"
-
-Agent agent("<TOKEN>", event_loop, loop_interval);
-```
-
-通过实例化 `Agent` 类并传入您的身份令牌、事件循环对象和主循环的时间间隔来初始化一个代理对象。
-
-### 连接服务器
-
-```cpp
-agent.Connect("比赛服务器地址");
-```
-
-使用 `Connect` 方法连接到比赛服务器。您需要提供比赛服务器的地址。若本地测试，可使用默认地址 `ws://localhost:14514`。
-
-### 断开连接
-
-```cpp
-agent.Disconnect();
-```
-
-使用 `Disconnect` 方法断开与比赛服务器的连接。
 
 ### 获取游戏状态信息
 
@@ -275,14 +249,24 @@ agent.Disconnect();
 
     使用 `Attack` 方法使无人作战系统攻击指定位置的敌人。
 
-### 其他
+### 状态查询
 
-- 判断游戏是否准备就绪
+1. **判断是否连接到服务器**
 
-  ```cpp
-  bool ready = agent.IsGameReady();
-  ```
+    ```cpp
+    bool connected = agent.IsConnected();
+    ```
 
-  - 返回类型：`bool`
+    - 返回类型：`bool`
 
-  `IsGameReady` 方法将返回一个布尔值，指示游戏是否已准备就绪，即是否已获取到所有必要的游戏状态信息。
+    `IsConnected` 方法指示 Agent 是否已连接到服务器。
+
+2. **判断游戏是否准备就绪**
+
+    ```cpp
+    bool ready = agent.IsGameReady();
+    ```
+
+    - 返回类型：`bool`
+
+    `IsGameReady` 方法指示游戏是否已准备就绪，即是否已获取到所有必要的游戏状态信息。
