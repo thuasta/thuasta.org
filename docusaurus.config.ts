@@ -77,15 +77,13 @@ export default {
           rehypePlugins: [rehypeKatex],
         } satisfies DocsOptions,
         blog: {
+          blogTitle: '推送',
+          blogDescription: '自动化系学生科协推送',
+          blogSidebarTitle: '所有推送',
           // editUrl: 'https://github.com/thuasta/thuasta.org/tree/main/',
-          showReadingTime: true,
           blogSidebarCount: 'ALL',
           feedOptions: {
             type: null,
-            // type: 'all',
-            // copyright: `Copyright © ${new Date().getFullYear()} ASTA.`,
-            // xslt: true,
-            // language: 'zh',
           },
         } satisfies BlogOptions,
         theme: {
