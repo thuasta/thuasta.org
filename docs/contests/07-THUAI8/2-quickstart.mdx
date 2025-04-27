@@ -16,7 +16,7 @@
 
 :::tip
 
-- 务必根据您的操作系统版本选择适当的版本。例如，您的操作系统为 Windows 11，您应该下载 `thuai-8-client-StandaloneWindows64.zip` 和 `thuai-8-server-windows-arm64.zip`。
+- 务必根据您的操作系统版本选择适当的版本。例如，您的操作系统为 Windows 11，您应该下载 `thuai-8-client-StandaloneWindows64.zip` 和 `thuai-8-server-windows-x64.zip`。
 - github 中的 releases 会折叠一部分 Assets，若您没有找到对应的版本，请点击 `show all assets`。
 - 若您在运行后端的可执行文件出现了闪退或报错等情况，可能是因为您没有安装 .NET Core 运行时环境。请根据您的操作系统版本下载并安装 .NET Core 运行时环境，版本至少为 8.0。可使用如下 Windows 下载地址：[.NET Core](https://dotnet.microsoft.com/zh-cn/download/dotnet/thank-you/sdk-8.0.408-windows-x64-installer)
 
@@ -30,11 +30,11 @@
 
 ## 启动后端和 SDK 程序
 
-编写完成后，请先后启动后端的 `GameServer` 可执行文件以及 SDK 的可执行文件 `.exe`，开始比赛。后端默认需要 2 个玩家，因此在启动后端后，您需要同时启动两个 SDK 程序。注意，两个 SDK 程序的 `token` 必须不同，您可以在命令行中指定 `token`，也可以在代码中指定。
+编写或编译完成后，由于后端默认需要 2 个玩家，因此需要同时运行两个 SDK 程序。注意，两个 SDK 程序的 `token` 必须不同，您可以在命令行中指定 `token`，也可以在代码中指定。随后启动后端的可执行程序 `Thuai.Server.exe`，开始比赛。比赛完成后，后端的 `data` 目录下会生成一个回放文件 `*.dat`。
 
 ## 使用前端查看回放文件
 
-打开前端，在 `ADD` 界面，选择后端生成的回放文件 `*.dat`，即可查看回放。具体操作请参考[前端使用指南](viewer)。您也可以用修改 `.dat` 文件属性为 `.zip` 解压，然后查看其中的 JSON 文件，以了解比赛的详细信息。
+打开前端，在 `ADD` 界面，选择后端生成的回放文件 `*.dat`，即可查看回放。具体操作请参考[前端使用指南](viewer)。您也可以用修改 `.dat` 文件属性为 `.zip` 后解压，然后查看其中的 JSON 文件，以了解比赛的详细信息。
 
 ## 提交代码
 

@@ -64,8 +64,7 @@ VSCode 的默认快捷键 `Ctrl+Shift+~` 可以在下方呼出一个命令行，
 
 1. 如果之前安装了 VS2022，检查一下是否更新到 17.13.0 以上。
 2. 如果之前安装了 clangd 插件，可以 `Ctrl+Shift+P` 搜索 clangd，有 `Check for language server update` 选项以更新到 clangd 19.1.2。
-3. 可以使用 `xmake repo --update` 更新本地 repo 文件。
-4. 如果使用 gcc 编译器，请使用 gcc 13。
+3. 如果使用 gcc 编译器，请使用 gcc 13。
 
 :::
 

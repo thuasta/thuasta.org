@@ -2,7 +2,7 @@
 
 欢迎使用我们为比赛编写的 Python SDK！本文档将详细介绍可供选手调用的接口和功能，包括参数、返回值类型以及用法示例，帮助您更好地理解如何使用该 SDK 来控制您的 Agent 参与比赛。
 
-仓库链接：[agent-python](https://github.com/thuasta/thuai-8/releases/download/v0.1.0/thuai-8-agent-python.zip)
+仓库链接：[agent-python](https://github.com/thuasta/thuai-8/releases/download/v0.1.0.1/thuai-8-agent-python.zip)
 
 ## 模版说明
 
