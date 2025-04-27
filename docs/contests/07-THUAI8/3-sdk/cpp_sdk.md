@@ -2,7 +2,7 @@
 
 欢迎使用 THUAI8 C++ SDK！本文档详细介绍了可供选手调用的接口和功能，包括参数、返回值类型以及用法示例，帮助您更好地理解如何使用该 SDK 来控制您的 Agent 参与比赛。
 
-仓库链接：[agent-cpp](https://github.com/thuasta/thuai-8/tree/main/sdk/cpp)
+仓库链接：[agent-cpp](https://github.com/thuasta/thuai-8/releases/download/v0.1.0/thuai-8-agent-cpp.zip)
 
 ## 准备工作
 

@@ -4,7 +4,7 @@
 
 ## 命令
 
-> ![Important]
+> ! [Important]
 >
 > 要求 Node.js >= 18
 

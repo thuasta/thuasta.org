@@ -4,7 +4,7 @@
 
 SDK (Software Development Kit) 在 THUAI 比赛中充当比赛选手的代码框架，它完成了运行比赛幕后的与后端通信、更新 Agent 状态等工作。选手只需要专注于比赛的策略和逻辑即可。
 
-SDK 可从[此链接](https://github.com/thuasta/thuai-8/tree/main/sdk)获取。可以在 C++ 和 Python 两个语言中选择 ~~（当然手搓一个其他语言的 SDK 也不是不行）~~。
+SDK 可从[此链接](https://github.com/thuasta/thuai-8/releases)获取。可以在 C++ 和 Python 两个语言中选择 ~~（当然手搓一个其他语言的 SDK 也不是不行）~~。
 
 ## 配置开发环境
 
@@ -36,14 +36,15 @@ C++ 的编译和包管理等相对 Python 复杂很多 ~~（因为 Python 压根
 
 为了辅助多文件编译和包管理，我们采用了 xmake 作为构建工具，可以参考[官方文档](https://xmake.io/#/zh-cn/guide/installation)进行安装。
 
-:::tip
+<details>
+<summary>投向命令行界面的怀抱！</summary>
 
-在 THUAI 的比赛和之后的开发中，一个建议是抛弃 VSCode 右上角的运行键，转而投向命令行界面的怀抱，原因有两点：
+在 THUAI 的比赛和之后的开发中，一个建议是抛弃 VSCode 右上角的运行键，转而投向[命令行](../.././../docs/learning_resources/os/terminal.md)界面的怀抱，原因有两点：
 
 1. 图形界面总是具有极限，当我们需要图形界面所没有提供的操作，命令行可以帮我们完成。
 2. 你可能很难搞清楚右上角的哪个运行键是由哪个插件提供的，尤其是当我们在 VSCode 上安装很多插件以后，出现问题将更加难以调试。
 
-:::
+</details>
 
 VSCode 的默认快捷键 `Ctrl+Shift+~` 可以在下方呼出一个命令行，输入 `xmake` 即可以完成编译。之所以 xmake 知道我们要做什么，是因为 SDK 目录下的 `xmake.lua` 告诉了 xmake 应该做什么。
 
