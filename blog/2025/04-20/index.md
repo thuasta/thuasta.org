@@ -16,8 +16,6 @@ originalUrl: https://mp.weixin.qq.com/s/-jNfFCVv-t8_AV6kv1xXBA
 
 ## 比赛流程
 
-![图片](../03-29/img/2.png)
-
 比赛共分为初赛与决赛两个阶段，依托 [saiblo 平台](https://www.saiblo.net/game/45)进行。选手可**组队**参赛，队伍人数**至多三人**。
 
 **初赛阶段**：4 月 22 日至 **5 月 7 日**  
@@ -31,8 +29,6 @@ originalUrl: https://mp.weixin.qq.com/s/-jNfFCVv-t8_AV6kv1xXBA
 
 ## 奖项设定
 
-![图片](../03-29/img/2.png)
-
 本次比赛奖项唯一评定依据为**决赛排名**。设立奖项及对应奖金如下：
 
 - **一等奖 1 队**，每队**4000 元**；
@@ -40,8 +36,6 @@ originalUrl: https://mp.weixin.qq.com/s/-jNfFCVv-t8_AV6kv1xXBA
 - **三等奖 3 队**，每队**1000 元**。
 
 ## 推送预告
-
-![图片](../03-29/img/2.png)
 
 - [故事揭晓（点击获取推送）](03-29)
 - [规则展示（点击获取推送）](04-18)

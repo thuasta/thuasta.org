@@ -16,7 +16,6 @@ originalUrl: https://mp.weixin.qq.com/s/80H7kbvBCvH_TMeJshYFIg
 
 ## 赛题解析
 
-![图片](img/2.png)
 <center>
 
 每一个我们，  
@@ -32,8 +31,6 @@ originalUrl: https://mp.weixin.qq.com/s/80H7kbvBCvH_TMeJshYFIg
 在遥远的星际，在危险的黑洞边缘，那个与我分享着面孔和力量的你，究竟来自何处？在一而再再而三的战斗后，在指数决策树的最深处，在九局比赛的最后半场，谁能够坚定地游走腾挪，发射出至关重要的那颗子弹？
 
 ## 故事揭晓
-
-![图片](img/2.png)
 
 ### 零
 
@@ -79,8 +76,6 @@ originalUrl: https://mp.weixin.qq.com/s/80H7kbvBCvH_TMeJshYFIg
 
 ## 推送预告
 
-![图片](img/2.png)
-
 - **故事揭晓**
 - 规则展示
 - 赛程公布
@@ -96,7 +91,7 @@ originalUrl: https://mp.weixin.qq.com/s/80H7kbvBCvH_TMeJshYFIg
 或[点击链接](https://wenjuan.tsinghua.edu.cn/s/Qfyyiy)，  
 填写问卷并进入选手微信群，  
 我们期待你的到来！  
-![报名二维码](img/3.png)</center>
+![报名二维码](img/2.png)</center>
 
 ---
 
