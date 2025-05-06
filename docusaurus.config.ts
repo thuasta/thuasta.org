@@ -135,7 +135,6 @@ export default {
         alt: '自动化系学生科协',
         src: 'img/logo.svg',
         srcDark: 'img/logo-dark.svg',
-        href: 'https://thuasta.org',
       },
       items: [
         {
