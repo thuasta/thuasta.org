@@ -14,7 +14,7 @@ originalUrl: https://mp.weixin.qq.com/s/MY5UguD5emTGbX8Dwz2RYw
 
 ![具身智能挑战赛](img/2.webp)
 ![决赛来袭](img/3.webp)  
-🎉 <strong>智能与创意的巅峰对决，即将上演！</strong>🎉
+🎉 <strong>智能与创意的巅峰对决，即将上演！</strong>🎉</center>
 
 <!--truncate-->
 
