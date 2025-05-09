@@ -92,23 +92,23 @@ THUAI8 的游戏类似坦克动荡，玩家发射子弹、子弹碰壁反弹、�
 
 虽然名字叫做 THUAI，但是用训练 AI 的方法解决这一比赛并不现实，更可行的做法还是构建有限状态机（FSM），或称 if-else 大法。这种思路写出一版有竞争力的 Agent 可能需要一些算法基础，如 BFS、A* 等寻路算法；还可能需要一些对于子弹轨迹的预测来防止受伤，以及如何利用技能来占据优势等。
 
-## 一些友情提示
+## 友情提示
 
 ### 依赖管理
 
-对于C++和Python SDK, 如果需要利用第三方库不仅需要本地安装, 还需要在`requirement.txt`或`xmake.lua`中记载. 对于C++SDK, `xmake.lua`的编写教程可以参考[这里](https://xmake.io/mirror/zh-cn/package/remote_package.html). 对于Python SDK, `requirements.txt`的生成可以参考[此工具](https://pypi.org/project/pipreqs/).
+对于 C++ 和 Python SDK，如果需要利用第三方库不仅需要本地安装，还需要在 `xmake.lua` 或 `requirements.txt` 中记载。对于 C++ SDK，`xmake.lua` 的编写可参考[官方教程](https://xmake.io/#/zh-cn/package/remote_package)；对于 Python SDK，`requirements.txt` 的生成可以参考[此工具](https://pypi.org/project/pipreqs/)。
 
-如果你不进行这几项操作, 对于C++SDK, 将直接编译失败; 对于Python SDK, 危害则更加隐性一些: 程序将编译通过, 但在对局时尝试导入则直接RE, 报告`ModuleNotFoundError`. 这是因为在编译时评测机做的工作主要是下载`requirements.txt`中记载的依赖, 并将这些依赖文件和你的代码打包(这一过程记载在要求大家打包的神秘文件——`Dockerfile`中), 并不包含语法检查. 如果你对Docker有一定了解, 可以尝试把生成`requirements.txt`的过程写到`Dockerfile`中.
+如果你不进行这几项操作，对于 C++ SDK，将直接编译失败；对于 Python SDK，危害则更加隐性一些：程序将编译通过，但在对局时尝试导入则导致 `ModuleNotFoundError` 直接 RE。这是因为在编译时评测机做的工作主要是下载 `requirements.txt` 中的依赖，并将这些依赖文件和你的代码打包（这一过程记载在要求大家打包的神秘文件——`Dockerfile` 中），并不包含语法检查。如果你对 [Docker](../../../docs/learning_resources/container/docker.md) 有一定了解，可以尝试把生成 `requirements.txt` 的过程写到 `Dockerfile` 中。
 
-### 好长的调试信息......
+### 好长的调试信息……
 
-如果你RE了想要看程序输出的信息, 一看——好长, 看不懂! 里面可能充斥着这样的信息:
+对于 Python SDK，如果 RE 了想要看程序输出的信息——好长，看不懂！里面可能充斥着这样的信息：
 
-```
+```bash
 [2025-05-07 14:58:19,771] [DEBUG] < TEXT '{"messageType":"ALL_PLAYER_INFO","players":[{"t...:0.9863405227661133}}]}' [1044 bytes]
 [2025-05-07 14:58:19,819] [DEBUG] < TEXT '{"messageType":"GAME_STATISTICS","currentStage"...cks":11337,"scores":[]}' [97 bytes]
 [2025-05-07 14:58:19,820] [DEBUG] < TEXT '{"messageType":"ENVIRONMENT_INFO","walls":[{"x"...llets":[],"mapSize":10}' [2187 bytes]
 [2025-05-07 14:58:19,820] [DEBUG] < TEXT '{"messageType":"ALL_PLAYER_INFO","players":[{"t...:0.9863405227661133}}]}' [1044 bytes]
 ```
 
-这些信息是关于你的SDK和server是如何通讯的. 当然对于我们这些参赛选手, 我们大可以把可供调用的函数看成黑盒, 只要能拿到信息, 进行操作就可以了, 没必要知道到底是怎么通讯的~~并且这些通讯信息也被截断了看不到全貌~~. 在`main.py`中有一个常量名为`DEFAULT_LOGGING_LEVEL`, 将其改为`logging.INFO`, 那么就只剩下有用的信息啦~. 如果你要打印信息, 可以按照不同级别使用`logging.info()`, `logging.warn()`, `logging.error()`等函数.
+这些信息是关于你的 SDK 和 server 是如何通讯的。对于我们这些参赛选手，我们大可以把可供调用的函数看成黑盒，只要能拿到信息、进行操作就可以了，没必要知道到底是怎么通讯的~~并且这些通讯信息也被截断了看不到全貌~~。在 `main.py` 中有一个常量名为 `DEFAULT_LOGGING_LEVEL`，将其改为 `logging.INFO`，那么就只剩下有用的信息啦。如果你要打印信息，可以按照不同级别使用 `logging.info()`、`logging.warn()`、`logging.error()` 等函数。
