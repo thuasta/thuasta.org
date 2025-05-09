@@ -91,3 +91,11 @@ VSCode 的默认快捷键 `Ctrl+Shift+~` 可以在下方呼出一个命令行，
 THUAI8 的游戏类似坦克动荡，玩家发射子弹、子弹碰壁反弹、一段时间后消失、玩家发射的子弹数有上限、每小局结束后开始新一局...不同的点在于子弹并非秒杀，且第二小局开始玩家就可以选择 Buff 来辅助战斗，并且可以释放（强力？）主动技能。
 
 虽然名字叫做 THUAI，但是用训练 AI 的方法解决这一比赛并不现实，更可行的做法还是构建有限状态机（FSM），或称 if-else 大法。这种思路写出一版有竞争力的 Agent 可能需要一些算法基础，如 BFS、A* 等寻路算法；还可能需要一些对于子弹轨迹的预测来防止受伤，以及如何利用技能来占据优势等。
+
+## 一些友情提示
+
+### 依赖管理
+
+对于C++和Python SDK, 如果需要利用第三方库不仅需要本地安装, 还需要在`requirement.txt`或`xmake.lua`中记载. 对于C++SDK, `xmake.lua`的编写教程可以参考[这里](https://xmake.io/mirror/zh-cn/package/remote_package.html). 对于Python SDK, `requirements.txt`的生成可以参考[此工具](https://pypi.org/project/pipreqs/).
+
+如果你不进行这几项操作, 对于C++SDK, 将直接编译失败; 对于Python SDK, 危害则更加隐性一些: 程序将编译通过, 但在对局时尝试导入则直接RE, 报告`ModuleNotFoundError`. 这是因为在编译时评测机做的工作主要是下载`requirements.txt`中记载的依赖, 并将这些依赖文件和你的代码打包(这一过程记载在要求大家打包的神秘文件——`Dockerfile`中), 并不包含语法检查. 如果你对Docker有一定了解, 可以尝试把生成`requirements.txt`的过程写到`Dockerfile`中.
