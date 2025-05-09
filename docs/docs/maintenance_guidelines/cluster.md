@@ -80,8 +80,6 @@
 
 ### 无效容器、镜像、卷、网络清理
 
-注意 image 中的版本需要和前面配置中的 docker 大版本一致。
-
 ```yml
 services:
   cleaner:
@@ -100,6 +98,12 @@ services:
       restart_policy:
         condition: on-failure
 ```
+
+:::warning
+
+image 中的版本需要和前面配置中的 docker 大版本一致。
+
+:::
 
 ### Saiblo Worker
 
