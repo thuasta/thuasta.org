@@ -14,9 +14,9 @@
 pip install -r requirements.txt
 ```
 
-你可以在 `logic.py` 中编写你的代码，`main.py` 会调用 `setup()`和 `loop()`函数以运行你的代码。对于有经验的开发者，你也可以修改项目中的其他任何文件。
+你可以在 `logic.py` 中编写你的代码，`main.py` 会调用 `setup()` 和 `loop()` 函数以运行你的代码。对于有经验的开发者，你也可以修改项目中的其他任何文件。
 
-在在命令行中运行以下命令来启动 Agent：
+在命令行中运行以下命令来启动 Agent：
 
 ```bash
 python main.py --server <server> --token <token>
