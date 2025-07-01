@@ -8,19 +8,17 @@ originalUrl: https://mp.weixin.qq.com/s/MY5UguD5emTGbX8Dwz2RYw
 
 <center>
 
-![紫冬口号](img/1.gif)
-
 <h3>2025<br />COMPETITION</h3>
 
-![具身智能挑战赛](img/2.webp)
-![决赛来袭](img/3.webp)  
+![具身智能挑战赛](img/1.webp)
+![决赛来袭](img/2.webp)  
 🎉 <strong>智能与创意的巅峰对决，即将上演！</strong>🎉</center>
 
 <!--truncate-->
 
 ## 决赛介绍
 
-![智能小车](img/4.webp)
+![智能小车](img/3.webp)
 
 由**清华大学自动化系**和**清华大学基础工业训练中心**主办，**自动化系学生科协**承办的**具身智能挑战赛**，经过前期的报名、准备、培训，终于迎来了万众期待的**决赛**！各路高手已经整装待发，准备在决赛中一展身手！无论你是参赛选手，还是对智能硬件感兴趣的观众，这场科技盛宴都不容错过！本次比赛得到了**昇腾 AI 硬件**的大力赞助！感谢他们对智能硬件与自动化技术创新的支持，为参赛选手提供了更广阔的舞台，也为活动注入了更多科技力量！
 
@@ -36,7 +34,7 @@ originalUrl: https://mp.weixin.qq.com/s/MY5UguD5emTGbX8Dwz2RYw
 
 ## 决赛看点
 
-![比赛场地](img/5.webp)
+![比赛场地](img/4.webp)
 
 - **科技感满满**
 

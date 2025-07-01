@@ -6,8 +6,6 @@ tags: [signups]
 originalUrl: https://mp.weixin.qq.com/s/w9EnKJ9ueU3IjKB9RtMDiA
 ---
 <!-- truncate -->
-![紫冬口号](img/1.gif)
-
-![活动内容](img/2.png)
+![活动内容](img/1.png)
 
 ---
