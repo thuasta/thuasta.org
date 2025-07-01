@@ -20,6 +20,11 @@ export default {
   organizationName: 'thuasta',
   projectName: 'thuata.org',
 
+  future: {
+    v4: true,
+    experimental_faster: true,
+  },
+
   stylesheets: [
     {
       href: 'https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css',
