@@ -18,7 +18,7 @@ export default {
   url: 'https://thuasta.org',
   baseUrl: '/',
   organizationName: 'thuasta',
-  projectName: 'thuata.org',
+  projectName: 'thuasta.org',
 
   future: {
     v4: true,
