@@ -1,0 +1,189 @@
+# 扩展知识
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+:::note
+
+本部分供感兴趣的同学参考了解。
+
+:::
+
+## 工具和构建
+
+### 打包工具
+
+Webpack 是一个模块打包工具，它能够将各种资源（如 JavaScript、CSS、图像）打包成浏览器可理解的格式，并优化资源的加载速度。
+
+- 模块打包：Webpack 将应用的所有模块及其依赖关系打包成一个或多个 bundle 文件，优化加载性能。
+- 插件和加载器：插件（如 HtmlWebpackPlugin）用于扩展 Webpack 的功能，而加载器（如 babel-loader）用于在打包前转换文件内容。
+
+```js title="webpack.config.js"
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+module.exports = {
+  entry: './src/index.js',
+  output: {
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist')
+  },
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: 'babel-loader'
+      }
+    ]
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './src/index.html'
+    })
+  ]
+};
+```
+
+### 任务运行器
+
+npm scripts 和 Gulp 是前端开发中的任务自动化工具，帮助开发者管理重复性任务，如代码编译、文件压缩和服务器重启。
+
+- npm scripts：通过 [`package.json`](index.md#packagejson) 中的 `scripts` 字段定义任务脚本，可以通过命令行运行。适合简单的自动化任务。
+- Gulp：一个流式构建工具，它通过定义任务（如 `gulp.task`）和使用插件执行复杂的自动化流程，如 CSS 预处理、文件压缩和实时重载。
+
+在项目中，你可以通过 npm scripts 快速运行开发服务器或构建项目；而 Gulp 则适合处理更复杂的构建任务，如编译 Sass 或打包资源。
+
+<Tabs>
+  <TabItem value="npm" label="npm scripts" default>
+    ```json title="package.json"
+    {
+      "scripts": {
+        "start": "webpack serve --config webpack.config.js",
+        "build": "webpack --config webpack.config.js"
+      }
+    }
+      ```
+  </TabItem>
+  <TabItem value="gulp" label="Gulp">
+    ```js title="gulpfile.js"
+    const gulp = require('gulp');
+    const sass = require('gulp-sass')(require('sass'));
+    const cleanCSS = require('gulp-clean-css');
+
+    gulp.task('styles', function() {
+      return gulp.src('src/scss/*.scss')
+        .pipe(sass().on('error', sass.logError))
+        .pipe(cleanCSS())
+        .pipe(gulp.dest('dist/css'));
+    });
+
+    gulp.task('watch', function() {
+      gulp.watch('src/scss/*.scss', gulp.series('styles'));
+    });
+    ```
+  </TabItem>
+</Tabs>
+
+## 部署和性能优化
+
+### 静态网站托管
+
+静态网站托管平台（如 Netlify 和 Vercel）为开发者提供了简便的方式来发布和管理网站。这些平台通常与 GitHub 等代码托管平台集成，当代码库有更新时会自动触发构建和部署流程（CI/CD），确保最新的代码能自动部署到生产环境。
+
+- 在 Netlify 中，创建一个新站点并连接到你的 GitHub 仓库，配置构建命令（如 `npm run build`）和发布目录（如 `dist/`）。代码更新后，Netlify 会自动进行构建和部署。
+- 在 Github Pages 中，新建一个名为 `<username>.github.io` 的仓库，将网站文件推送到 `main` 分支，即可通过 `https://<username>.github.io` 访问。
+
+### 前端性能优化
+
+前端性能优化是提高网页加载速度和用户体验的重要手段。通过优化图像、懒加载、缓存策略等技术，可以显著减少页面加载时间。
+
+- 图片优化：使用压缩图像文件和现代图像格式（如 WebP）可以减少图像的加载时间。
+- 懒加载：允许在页面滚动到特定位置时再加载内容（如图像），减少初始加载的资源占用。
+- 缓存策略：通过配置 HTTP 缓存头，可以让浏览器缓存静态资源，减少重复加载的资源请求。
+- 在开发中，你可以使用工具（如 ImageOptim）压缩图像，配置懒加载库（如 react-lazyload），并通过设置服务器响应头来控制缓存策略。
+
+```js
+// 使用 JavaScript 实现简单的懒加载
+document.addEventListener('DOMContentLoaded', function() 
+{
+  const lazyImages = document.querySelectorAll('img.lazy');
+  const lazyLoad = () => {
+    lazyImages.forEach(image => {
+      if (image.getBoundingClientRect().top < window.innerHeight) {
+        image.src = image.dataset.src;
+        image.classList.remove('lazy');
+      }
+    });
+  };
+  document.addEventListener('scroll', lazyLoad);
+});
+```
+
+## 其他前端技术
+
+### API 和 AJAX
+
+#### API
+
+[API（应用程序接口）](../../../learning_resources/apis/index.md) 是不同软件系统之间进行通信的一种方式，它定义了系统之间的数据交换规则和接口。在前端开发中，API 通常指的是 Web API。通过调用 API，你可以从服务器获取数据并在网页中展示，如通过 AJAX 请求获取用户信息或文章列表。
+
+- RESTful API：[REST](../../../learning_resources/apis/rest) 是一种设计风格，它使用 HTTP 方法（如 GET、POST、PUT、DELETE）和 URL 来定义资源的操作。
+- GraphQL：一种查询语言，它允许客户端按需获取数据，避免了 REST API 中的多次请求和响应。
+
+#### AJAX
+
+AJAX（异步 JavaScript 和 XML）是一种在不重新加载整个页面的情况下，通过 JavaScript 发起 HTTP 请求并获取数据的技术。它使得网页能够实现动态更新内容和交互。
+
+- XMLHttpRequest：AJAX 的核心对象，它允许你在不刷新页面的情况下发送和接收数据。
+- Fetch API：一种现代的替代方案，它提供了更简洁和强大的方式来处理网络请求。
+
+```js
+// 使用 Fetch API 发起 GET 请求
+fetch('https://api.example.com/data')
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error(error));
+
+// 使用 Fetch API 发起 POST 请求
+fetch('https://api.example.com/data', {
+  method: 'POST',
+  body: JSON.stringify({ key: 'value' }),
+  headers: {
+    'Content-Type': 'application/json'
+  }
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error(error));
+```
+
+### 前端安全
+
+- **跨站脚本（XSS）**：一种常见的网络安全漏洞，攻击者通过在网页中插入恶意脚本，盗取用户信息或执行恶意操作。
+  - 防范：
+    - 输入验证：对用户输入的数据进行验证和过滤，避免插入恶意脚本。
+    - 转义输出：在输出用户数据到页面时，使用转义字符（如 `&lt;` 和 `&gt;`）来防止脚本执行。
+- **跨站请求伪造（CSRF）**：一种利用用户已登录状态下的权限发起恶意请求的攻击方式，通常通过伪装成合法请求来实现。
+  - 防范：使用 CSRF Token 来验证请求的合法性，确保请求是由合法用户发起的。
+
+### 前端工程化
+
+前端工程化是通过工具和流程来提高前端开发效率和质量的一种方法。它包括构建工具、代码规范、自动化测试等。
+
+- 构建工具：Webpack、Rollup 等用于打包和优化前端资源。
+- 代码规范：ESLint、Prettier 等用于规范代码风格和格式。
+- 自动化测试：Jest、Mocha 等用于编写和运行自动化测试。
+
+```json title="package.json"
+{
+  "scripts": {
+    "lint": "eslint .",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "eslint": "latest",
+    "jest": "latest"
+  }
+}
+```

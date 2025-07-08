@@ -1,0 +1,545 @@
+# HTML & CSS
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import { Sandpack } from "@codesandbox/sandpack-react";
+
+:::note
+
+这里介绍的知识比较基础，因为大家后面写网站的时候很少直接写 HTML & CSS，这里是为了让大家简单了解网页的机制。
+
+:::
+
+## HTML
+
+HTML（HyperText Markup Language，超文本标记语言）是前端开发的基石，是构建网页结构的标记语言。它好比建筑物的框架，决定了页面的整体布局和内容的排布。HTML 使用**标签**来定义”不同类型的内容。
+
+:::info 参考资料
+
+- [MDN Web Docs - HTML](https://developer.mozilla.org/zh-CN/docs/Web/HTML)
+- [W3School - HTML Tutorial](https://www.w3school.com.cn/html/index.asp)
+
+:::
+
+### 元素和标签
+
+HTML 文档由**元素**组成，每个元素通常由一个**开始标签**和一个**结束标签**包裹内容，如：
+
+```html
+<p>这是一个段落</p>
+```
+
+有些标签是自闭合的，如 `<img>` 和 `<br>`。HTML 元素可以进行嵌套，如：
+
+```html
+<p><em>欢迎</em>大家加入<strong>科协</strong></p>
+```
+
+可以使用属性来给元素提供附加信息，一般以名称-值对（如 `key="value"`）的形式出现，放在开始标签中（单引号双引号都可）。如：
+
+```html
+<p class="highlight">这是一个高亮的段落</p>
+```
+
+常用属性有：
+- `class`: 为元素定义类名，方便 CSS 选择器选中。
+- `id`: 为元素定义唯一标识符，通常用于 JavaScript 操作。
+- `style`: 为元素定义内联样式，直接在标签中写 CSS。
+- `src`: 用于链接外部资源，如图片、脚本等。
+- `href`: 超链接，用于链接外部网页。
+
+### 常用 HTML 标签
+
+:::info
+
+在[这里](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element)可以找到更多 HTML 标签的详细说明。
+
+:::
+
+#### 文本相关
+
+- **标题**: `<h1>`-`<h6>`，最高级别到最低级别
+- **段落**: `<p>`
+- **加粗**: `<strong>` 或 `<b>`
+- **斜体**: `<em>` 或 `<i>`
+- **换行**: `<br>`
+- **链接**: `<a>`
+    > `<a>` 标签说明：`href` 属性指定了链接的目标地址；`target="_blank"` 表示在新标签页中打开链接。
+
+<Sandpack
+          files={{
+              "/index.html": `<h2>欢迎加入软件部！</h2>
+<p>
+    我们是自动化系学生科协软件部<br>
+    一个充满<strong>激情</strong>和<em>创造力</em>的团队<br>
+    科协网站：<a href="https://thuasta.org" target="_blank">ASTA</a>
+</p>
+`,
+          }}
+    options={{
+    initMode: "user-visible",
+          }}
+    template="static"
+/>
+
+#### 列表
+
+- **无序列表**: `<ul>` 和 `<li>`
+- **有序列表**: `<ol>` 和 `<li>`
+
+<Sandpack
+          files={{
+              "/index.html": `<h4>我们的技术栈</h4>
+<ul>
+    <li>前端: HTML, CSS, JavaScript</li>
+    <li>后端: Python, C#</li>
+    <li>其它: Git, Docker</li>
+</ul>
+
+<h4>入门步骤</h4>
+<ol>
+    <li>学习 HTML</li>
+    <li>学习 CSS</li>
+    <li>学习 JavaScript</li>
+</ol>
+`,
+          }}
+          options={{
+              initMode: "user-visible",
+          }}
+          template="static"
+/>
+
+#### 表格与表单
+
+- **表格**: `<table>`, `<tr>`, `<th>`, `<td>`
+- **表单**: `<form>`, `<input>`, `<label>`, `<button>`，用于用户输入和数据提交
+
+<Sandpack
+          files={{
+              "/index.html": `<h4>部门分工</h4>
+<table border="1">
+    <tr>
+        <th>小组</th>
+        <th>人数</th>
+        <th>职责</th>
+    </tr>
+    <tr>
+        <td>逻辑组</td>
+        <td>3</td>
+        <td>THUAI 比赛平台后端功能实现</td>
+    </tr>
+    <tr>
+        <td>界面组</td>
+        <td>3</td>
+        <td>THUAI 的 Unity 前端界面实现</td>
+    </tr>
+</table>
+
+<h4>加入我们</h4>
+<form>
+    <label for="name">姓名:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="email">邮箱:</label>
+    <input type="email" id="email" name="email" required>
+
+    <button type="submit">提交</button>
+</form>
+`,
+          }}
+          options={{
+              initMode: "user-visible",
+          }}
+          template="static"
+/>
+
+#### 媒体
+
+- **图片**: `<img>`
+    > `<img>` 标签说明：`src` 为图片的路径或 URL；`alt` 为当图片无法加载时显示的替代文本，便于无障碍阅读（屏幕阅读器）。
+- **视频**: `<video>`
+    > `<video>` 标签说明：`src` 为视频的路径或 URL；`controls` 为是否显示播放控件（如播放按钮、音量控制等）。
+- **音频**: `<audio>`
+
+```html
+<img src="path/to/your/image.jpg" alt="示例图片">
+<video src="path/to/your/video.mp4" controls>
+    您的浏览器不支持视频标签。
+</video>
+<audio src="path/to/your/audio.mp3" controls>
+    您的浏览器不支持音频标签。
+</audio>
+```
+
+#### 结构标签
+
+- `<header>`: 页眉，通常包含标题、Logo 等。
+- `<nav>`: 导航栏。
+- `<main>`: 主内容。
+- `<article>`: 一篇独立的、完整的内容，如博客文章、新闻报道。
+- `<section>`: 页面中的一个子内容区段。
+- `<aside>`: 侧边栏。
+- `<footer>`: 页脚，通常包含版权信息、联系方式。
+- `<div>`: 万能盒子，用于创建块级容器。
+- `<span>`: 用于创建行内容器。
+
+<Sandpack
+          files={{
+              "/index.html": `<header>
+    <h1>软件部主页</h1>
+    <nav>
+        <a href="/home">首页</a> |
+        <a href="/tutorials">教程</a> |
+        <a href="/about">关于我们</a>
+    </nav>
+</header>
+
+<main>
+    <section>
+        <h2>最新动态</h2>
+        <article>
+            <h3>2025 招新圆满结束</h3>
+            <p>欢迎新同学的加入！...</p>
+        </article>
+    </section>
+<footer>
+    <p>&copy; 2025 自动化系学生科协软件部. All Rights Reserved.</p>
+</footer>
+`,
+          }}
+          options={{
+              initMode: "user-visible",
+          }}
+          template="static"
+/>
+
+### HTML 文件的结构
+
+```html title="index.html"
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的第一个网页</title>
+</head>
+<body>
+    <h1>你好，软件部！</h1>
+    <p>这是我用 HTML 创建的第一个网页</p>
+</body>
+</html>
+```
+
+:::tip 动手试试！
+
+照着上面的例子尝试自己写一个简单的 HTML 文件，保存为 `xxx.html`，然后用浏览器打开。
+
+:::
+
+**代码解析**:
+
+- `<!DOCTYPE html>`: 文档类型声明，告诉浏览器这是一个标准的 HTML5 页面。
+- `<html>...</html>`: 根标签，网页的所有内容必须包裹在里面。
+- `<head>...</head>`: 里面的内容不会直接显示在页面上，但包含了页面的元信息（meta-information）。
+- `<meta charset="UTF-8">`: 定义了页面的字符编码为 UTF-8；`<meta name="viewport" content="width=device-width, initial-scale=1.0">`: 使页面在移动设备上适配屏幕宽度。在不同的应用场景可以设置很多不同的元数据。
+- `<title>...</title>`: 浏览器标签页上显示的标题。
+- `<body>...</body>`: 包含所有显示在页面上的内容。
+
+## CSS
+
+CSS（Cascading Style Sheets，层叠样式表）是用于控制网页样式和布局的语言。如果 HTML 是建筑物的框架，CSS 就是建筑物的外观和装饰，它决定了页面的视觉效果。比如，你可以使用 CSS 来更改内容的字体、颜色、大小、间距、对齐方式，或者添加动画及其他的装饰效果。
+
+:::info 参考资料
+
+- [MDN Web Docs - CSS](https://developer.mozilla.org/zh-CN/docs/Web/CSS)
+- [W3School - CSS Tutorial](https://www.w3school.com.cn/css/index.asp)
+
+:::
+
+### 在 HTML 中使用 CSS
+
+1. 内联样式: 直接在 HTML 标签中使用 `style` 属性。
+
+    ```html
+    <p style="color: red; font-size: 20px;">这段文字是红色的，20 像素大</p>
+    ```
+
+2. 内部样式表: 在 HTML 文件的 `<head>` 区域使用 `<style>` 标签。
+
+    ```html
+    <head>
+        <style>
+            p {
+                color: blue;
+                font-size: 18px;
+            }
+        </style>
+    </head>
+    <body>
+        <p>这段文字是蓝色的，18 像素大</p>
+    </body>
+    ```
+
+3. 外部样式表：创建一个独立的 `.css` 文件（如 `style.css`），然后在 HTML 的 `<head>` 中通过 `<link>` 标签引入它。
+
+<Tabs>
+  <TabItem value="html" label="index.html" default>
+        ```html
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>我的第一个网页</title>
+            // highlight-next-line
+            <link rel="stylesheet" href="style.css">
+        </head>
+        <body>
+            <p>这段文字是绿色的，16 像素大</p>
+        </body>
+        </html>
+        ```
+  </TabItem>
+  <TabItem value="css" label="style.css">
+    ```css
+    p {
+        color: green;
+        font-size: 16px;
+    }
+    ```
+  </TabItem>
+</Tabs>
+
+### 选择器
+
+CSS 的工作原理是：选中某个或某些 HTML 元素，然后对它们应用样式。选择器是 CSS 的核心部分，语法为 `选择器 { 属性: 值; }`。
+
+#### 元素选择器（Element Selector）
+
+直接使用 HTML 标签名。
+
+```css
+h1 {
+    color: blue; /* 设置所有 h1 标题颜色为蓝色 */
+}
+```
+
+#### 类选择器（Class Selector）
+
+最常用的选择器。利用元素的 `class` 属性，可以给任意多个元素定义一个 `class`，然后用 `.` 来选中它们。
+
+<Tabs>
+  <TabItem value="html" label="HTML" default>
+    ```html
+    <p class="highlight">这是一个高亮段落</p>
+    <h3 class="blue">这是一段蓝色文字</h3>
+    <div class="blue">这是另一段蓝色文字</div>
+    ```
+  </TabItem>
+  <TabItem value="css" label="CSS">
+    ```css
+    /* 以点 . 开头 */
+    .highlight {
+        background-color: yellow;
+        font-weight: bold;
+    }
+
+    .blue {
+        color: blue;
+    }
+    ```
+  </TabItem>
+</Tabs>
+
+#### ID 选择器（ID Selector）
+
+利用元素的 `id` 属性，然后用 `#` 来选中它。
+
+:::warning
+
+一个页面中的 ID 必须是唯一的！通常用于标识页面中的独特结构。
+
+:::
+
+<Tabs>
+  <TabItem value="html" label="HTML" default>
+    ```html
+    <h1 id="main-header">这是主标题</h1>
+    <h1>这是另一个标题</h1>
+    ```
+  </TabItem>
+  <TabItem value="css" label="CSS">
+    ```css
+    /* 以井号 # 开头 */
+    #main-header {
+        color: navy;
+    }
+    ```
+  </TabItem>
+</Tabs>
+
+#### 伪类
+
+用于定义元素在特定状态下的样式，比如鼠标悬停、被点击等。常见的伪类有：
+
+- `:hover`: 当鼠标悬停在元素上时应用的样式。
+- `:active`: 当元素被点击时应用的样式。
+- `:focus`: 当元素获得焦点时应用的样式。
+
+```css
+a:hover {
+    color: red; /* 鼠标悬停时链接变为红色 */
+}
+
+button:active {
+    background-color: blue; /* 点击时按钮变为蓝色 */
+}
+
+input:focus {
+    border: 2px solid green; /* 输入框获得焦点时边框变为绿色 */
+}
+```
+
+### 常用 CSS 属性
+
+:::info
+
+在[这里](https://developer.mozilla.org/en-US/docs/Web/CSS/Properties)可以找到更多 CSS 属性的详细说明。
+
+:::
+
+#### 颜色与背景
+
+- `color`: 文本颜色
+- `background-color`: 背景颜色
+
+```css
+body {
+    background-color: #6791fc; /* 淡蓝色背景 */
+    color: #0f0f0f; /* 深色文本 */
+}
+```
+
+:::tip
+
+可以使用十六进制颜色代码（如 `#f0f8ff`）或 RGB/RGBA 颜色值（如 `rgb(240, 248, 255)`）来定义颜色。在[调色板](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_colors/Color_picker_tool)中寻找你喜欢的颜色。
+
+:::
+
+#### 字体与文本
+
+- `font-family`: 字体类型（如 `Arial, sans-serif`）
+- `font-size`: 字体大小（如 `16px`, `1.2em`）
+- `font-weight`: 字体粗细（如 `normal`, `bold`）
+- `text-align`: 文本对齐（如 `left`, `center`, `right`）
+
+```css
+h1 {
+    font-family: 'Georgia', serif;
+    font-size: 32px;
+    text-align: center;
+}
+```
+
+### 布局
+
+CSS 提供了多种布局方式，最基础的是盒模型。在盒模型里，所有的元素都被一个个的“矩形盒子（box）”包围着，而组成一个块级盒子需要：
+
+![盒模型图示](img/1.png)
+
+- **Content box**: 内容区，如文本和图片；大小通过 [`width`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/width) 和 [`height`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/height) 设置。
+- **Padding box**: 内边距，包围在内容区域外部的空白区域；大小通过 [`padding`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/padding) 属性设置。
+- **Border box**: 边框，包裹内容和内边距；大小通过 [`border`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border) 属性设置。
+- **Margin box**: 外边距，边框与其它元素之间的空白；大小通过 [`margin`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/margin) 属性设置。
+
+下面以一个按钮为例展示利用盒模型属性来设置按钮的样式。
+
+<Sandpack
+          files={{
+              "/index.html": `<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>盒模型示例</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <a href="#" class="button">点我！</a>
+</body>
+</html>`,
+              "/style.css": `.button {
+/* 视觉样式 */
+display: inline-block; /* 让 a 标签像块级元素一样可以设置宽高 */
+background-color: #007BFF; /* 蓝色背景 */
+color: white; /* 白色文字 */
+text-decoration: none; /* 去掉下划线 */
+border-radius: 5px; /* 圆角边框 */
+
+/* 盒模型属性 */
+padding: 10px 20px; /* 上下 10px, 左右 20px 的内边距 */
+border: 2px solid #0056b3; /* 2 像素宽的深蓝色实线边框 */
+margin: 10px; /* 距离周围元素 10px 的外边距 */
+}
+
+/* 添加鼠标悬浮效果 */
+.button:hover {
+    background-color: #0056b3;
+}`,
+          }}
+          options={{
+              initMode: "user-visible",
+              activeFile: "/style.css",
+          }}
+          template="static"
+/><br />
+
+:::info
+
+CSS 布局方式还有浮动、Flexbox 和 Grid 等。使用 Flexbox 或 Grid 可以创建复杂的响应式布局，如自适应网格系统，确保页面在手机和桌面设备上都有良好的展示效果。
+
+:::
+
+### 响应式设计
+
+通过媒体查询 `@media`，CSS 可以根据设备的屏幕大小调整页面布局，使其在不同设备上都能有良好的显示效果。
+
+<Sandpack
+          files={{
+              "/index.html": `<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>响应式布局示例</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="item">栏目一</div>
+    <div class="item">栏目二</div>
+  </div>
+</body>
+</html>`,
+              "/style.css": `.container {
+display: flex; /* 使用 Flexbox 布局，即可伸缩盒子布局 */
+}
+
+.item {
+    flex: 1; /* 让每个 item 平分空间 */
+    background-color: lightblue;
+    text-align: center;
+    padding: 10px;
+    margin: 5px;
+}
+/* 当屏幕宽度不超过600px时，改为垂直布局 */
+@media (max-width: 600px) {
+    .container {
+        flex-direction: column;
+    }
+}`,
+          }}
+          options={{
+              initMode: "user-visible",
+              activeFile: "/style.css",
+          }}
+          template="static"
+/>

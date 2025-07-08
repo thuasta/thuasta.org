@@ -1,0 +1,902 @@
+# JavaScript
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import { Sandpack } from "@codesandbox/sandpack-react";
+
+JavaScript 是一门跨平台、面向对象的脚本语言，使网页具有动态交互能力。它能响应用户的操作、动态修改 HTML 和 CSS、与服务器进行数据交换，实现诸如动画、表单验证、数据处理等功能。
+
+<details>
+<summary>一些概念</summary>
+
+JavaScript 是一个在宿主环境（host environment）下运行的脚本语言，任何与外界沟通的机制都是由宿主环境提供的。浏览器是最常见的宿主环境，但在非常多的程序中也包含 JavaScript 解释器，如 Adobe Photoshop、SVG 图像、Node.js 之类的服务器端环境。
+
+有时候会看到 ECMAScript 或者 ES6 之类的称呼，ECMA 是 JavaScript 的标准化组织，ECMAScript 是针对 JavaScript 语言制定的标准。ES6 是 ECMAScript 的第六个版本，通常指现代 JavaScript 的语法和特性。
+</details>
+
+:::info 参考资料
+
+- [MDN Web Docs - JavaScript](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript)
+- [JavaScript.info](https://zh.javascript.info/)
+
+:::
+
+## JS 基础语法
+
+JS 是一种多范式的动态语言，它包含类型、运算符、标准内置（built-in）对象和方法。在基本语法上，JS 有很多和 C++ 或 Python 相似的地方。
+
+### 变量声明
+
+JS 有三种声明变量的方式。
+
+- [`var`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/var)：声明一个**全局或函数作用域**的变量，可选初始化一个值。
+- [`let`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/let)：声明一个**块作用域**的局部变量，可选初始化一个值。
+- [`const`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/const)：声明一个**块作用域**的常量，必须初始化一个值。
+
+```js
+{
+  var globalVar = 1;
+  let blockVar = 2;
+  const PI = 3.14;
+}
+
+console.log(globalVar); // 1
+console.log(blockVar); // ReferenceError: blockVar is not defined
+```
+
+### 基本数据类型
+
+JS 支持以下基本数据类型：
+
+1. [`Number`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Number)（数字）
+    
+    - 不区分整数和浮点数，统一使用浮点数表示。
+    - 特殊值 [`NaN`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/NaN)（Not a Number）
+        - 把 `NaN` 作为参数进行任何数学运算，结果也是 `NaN`。
+        - `NaN` 通过 `==`、`!=`、`===`、`!==` 与**任何值**比较都将不相等，必须使用 [`Number.isNaN()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Number/isNaN) 或 [`isNaN()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/isNaN) 函数。
+    - 特殊值 [`Infinity`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Infinity)（正无穷大）。
+    - 内置对象 [`Math`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math) 支持一些数学常数属性和数学函数方法。
+
+2. [`String`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String)（字符串）
+
+    - 任意使用 `'` 和 `"` 来表示。
+    - 是原始值，是不可改变的（与 Python 类似）。对 `string` 的任何操作会返回新的 `string` 值，而不是对旧的值做部分修改。
+    - 允许任意变量和字符串相加，如：
+        ```js
+        "Hello " + "World"; // "Hello World"
+        "Hello " + 123; // "Hello 123"
+        "Hello " + true; // "Hello true"
+        ```
+    - 支持相当多的常用函数，如：
+        ```js
+        const str = "Hello World";
+        str.length; // 11
+        str.charAt(0); // "H"
+        str.indexOf("o"); // 4
+        str.slice(1, 4); // "ell"
+        str.toUpperCase(); // "HELLO WORLD"
+        str.replace("World", "JavaScript"); // "Hello JavaScript"
+        ```
+    - [`parseInt()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/parseInt) 和 [`parseFloat()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/parseFloat) 可将字符串转为数字。
+    - [模板字符串](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/template_strings)，使用反引号 `` ` `` 来代替单双引号，内部使用占位符 `${expression}` 来插入代码块，如：
+        ```js
+        let a = 5;
+        let b = 10;
+        console.log(`Fifteen is ${a + b} and not ${2 * a + b}.`);
+        ```
+
+3. [`Boolean`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Boolean)（布尔）
+
+4. [`Symbol`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Symbol)（符号）（ES2015 新增）
+
+5. [`undefined`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/undefined)（未定义）
+
+    - 产生：访问没有赋值的变量；数组越界访问；访问对象上不存在的属性；获取没有返回值的函数的返回值。
+    - `?.` 运算符：在属性访问出错的时候中断属性访问并返回 `undefined` 而不是抛出错误，如：
+        ```js
+        let obj = { a: 1 };
+        obj.b; // undefined
+        obj.b.c; // Uncaught TypeError: Cannot read properties of undefined (reading 'c')
+        obj.b?.c; // undefined
+        ```
+
+6. [`null`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/null)（空）
+
+    - 常见于 [React](react) 框架中表示这里不需要渲染：
+        ```jsx
+        function App() {
+          return (
+            <div>
+              {needToRender ? <p> This part is necessary! </p> : null}
+            </div>
+          );
+        }
+        ```
+    - 直接访问 `null` 上的属性也会报错，同样可使用 `?.` 来避免报错。
+
+可以使用 `typeof` 运算符来检查变量的类型：
+
+JS 是弱类型的，重新给变量赋值时可以改变类型。可以使用 `typeof` 运算符来检查变量的类型。
+
+```js
+let x = 42;
+console.log(typeof x); // "number"
+x = "Hello";
+console.log(typeof x); // "string"
+```
+
+### 对象和数组
+
+`Object`（对象）由若干的键值对组成，每一个键值对中的值可以是任何类型的变量，同时也允许对象的嵌套，与 Python 的字典类似。每一个键值对中的键称为这个对象的属性，访问属性使用 `.` 或 `[]` 运算符
+
+```js
+let obj = {
+    foo: 0,
+    bar: "bar",
+    foobar: {
+        a: 1,
+        b: "I am a value",
+    },
+};
+console.log(obj.foobar.a); // 1
+console.log(obj["foobar"]["b"]); // "I am a value"
+```
+
+[`Array`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array)（数组）使用中括号，元素之间使用逗号分隔。数组的长度和元素类型都是非固定的，其数据在内存中也可以不连续。访问数组的元素使用 `[]` 运算符。
+
+```js
+let arr = [1, "two", { three: 3 }, [4, 5]];
+console.log(arr[0]); // 1
+```
+
+数组提供丰富的内置方法，除取索引、切片方法外，还支持传入回调函数的遍历、映射、迭代、过滤、排序方法。
+
+```js
+const numbers = [1, 2, 3, 4];
+
+numbers.length; // 4
+numbers.indexOf(2); // 1
+numbers.indexOf(5); // -1 (not found)
+numbers.slice(1, 3); // [2, 3] (slice from index 1 to 2)
+numbers.join(", "); // "1, 2, 3, 4"
+
+numbers.forEach(num => { // 遍历
+  console.log(num);
+});
+const doubled = numbers.map(num => num * 2); // 映射
+const filtered = numbers.filter(num => num > 2); // 过滤
+const sorted = numbers.sort((a, b) => a - b); // 升序排序
+const reduced = numbers.reduce((acc, num) => acc + num, 0); // 归约
+const elem = numbers.find(num => num > 2); // 查找第一个满足条件的元素
+```
+
+<details>
+<summary>其他内置对象</summary>
+
+- [`RegExp`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/RegExp)（正则表达式）
+    
+    ```js
+    let reg = /sast/;
+    ```
+
+- [`Date`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Date)（日期）
+    
+    ```js
+    let date = new Date();
+    console.log(date.toLocaleString()); // 构造 Date 对象并获取当前时间
+    ```
+
+- [`Set`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Set)（集合）
+
+    ```js
+    let docs = new Set();
+    docs.add('JavaScript');
+    ```
+
+- 一些内置对象只用作存储一类方法或值，称为命名空间对象，如：
+
+    ```js
+    // 数学常数和常用函数
+    Math.PI;           // => 3.141592653589793
+    Math.floor(5 / 2); // => 2
+    Math.sin(Math.PI); // => 1.2246467991473532e-16
+
+    // 序列化和反序列化 JSON
+    JSON.stringify({ sast: 'yyds' }); // => '{"sast":"yyds"}'
+    JSON.parse('{"sast":"yyds"}');    // => { sast: 'yyds' }
+
+    // 控制台对象
+    console.log('Hello, world');
+    console.error('Some error occurred!');
+    ```
+</details>
+
+#### 展开语法
+
+[展开语法（Spread syntax）](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Spread_syntax)允许在构造对象、数组字面量和函数调用时，将数组和对象展开，如：
+
+```js
+// 构造对象
+let obj1 = { foo: 'bar', x: 42 };
+let obj2 = { foo: 'barrrr', y: 13 };
+let clonedObj = { ...obj1 };            // 与 obj1 完全相同
+let mergedObj = { ...obj1, ...obj2 };   // 包含两者的内容，相同的键后出现的会覆盖先出现的
+let halfClonedObj = { ...obj1, x: 13 }; // 也可以另外覆盖或添加部分内容
+
+// 构造数组
+let arr1 = [1, 2, 3];
+let arr2 = [...arr1, 4, 5];   // => [1, 2, 3, 4, 5]
+
+// 函数调用
+console.log(...arr2);  // => 1 2 3 4 5
+```
+
+#### 解构赋值
+
+[解构赋值（Destructuring assignment）](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)可以将属性/值从对象/数组中取出，赋值给其他变量。可以忽略一部分值，也可以提供默认值。
+
+```js
+let a, b, rest;
+[a, b] = [1, 2];  // => a = 1, b = 2
+[a, b] = [b, a];    // => a = 2, b = 1
+[a, b, ...rest] = [1, 2, 3, 4, 5]; // => a = 1, b = 2, rest = [3, 4, 5]
+
+[, b] = [1, 2]; // => b = 2
+[a, b = 2] = [1]; // => a = 1, b = 2
+
+// 最外层的括号是为了消歧义，防止将大括号认为是代码块
+({ a, b } = { a: 1, b: 2 }); // => a = 1, b = 2
+({ a, b, ...rest } = { a: 1, b: 2, c: 30 }); // => a = 1, b = 2, rest = { c: 30 }
+```
+
+### 运算符和流程控制
+
+JS 的控制语句关键字包括 `if`, `else`, `switch`, `case`, `while`, `do`, `for`，其用法和 C++ 语言几乎完全一致。补充三个新关键字：
+
+1. `===` 和 `!==`：严格相等和不相等运算符，比较时不会进行类型转换（推荐使用）。`==` 和 `!=` 则会进行类型转换。
+
+    ```js
+    console.log(1 === 1); // true
+    console.log(1 === '1'); // false
+    console.log(1 == '1'); // true
+    ```
+
+2. `for...in`：用于遍历对象的键。
+
+    ```js
+    const obj = { a: 1, b: 2 };
+    for (const key in obj) {
+        console.log(`${key}: ${obj[key]}`);
+    }
+    ```
+
+3. `for...of`：在可迭代对象（如 `Array`、`Set`、`String`）上创建迭代循环。
+
+    ```js
+    const arr = [1, 2, 3];
+    for (const num of arr) {
+        console.log(num);
+    }
+    ```
+
+### 函数
+
+#### 函数声明
+
+声明一个函数的语法为：
+
+```js
+function sum(x, y) {
+    return x + y;
+}
+```
+
+一般把 JS 的函数也认为是一种变量，因为函数的行为很大程度上和变量类似。下面这种声明方式的就是把函数当成一种变量：
+
+```js
+const sum = function (x, y) {
+    return x + y;
+};
+```
+
+这里 `sum` 作为一个变量，它的类型是一个对象，构造函数是 `Function`。
+
+<details>
+<summary>无用的参数列表</summary>
+
+实际上 JS 从来不检查你函数调用是不是符合参数列表，既不检查变量类型，也不检查调用的时候传入的参数个数。给 `sum` 函数传入一个参数或三个参数，都正常工作：
+
+```js
+sum(1); // NaN
+sum(1, 2, 3); // 3
+```
+
+其处理逻辑为**声明了却没有传入的参数当成 `undefined`，多余的参数则需要手动捕获**。也就是说 `sum(1)` 执行时，参数 `x` 是 `1`，而参数 `y` 是 `undefined`，结果自然是 `NaN`。
+
+捕获多余参数的方法有两种。一种是在参数列表中加入可变长参数 `...rest`。这个可变长参数会被赋值为一个**数组**，并且在没有多于参数的时候被赋值为**空数组**而非 `undefined`。
+
+```js
+function sum(x, y, ...rest) {
+    let s = 0;
+    for (let i = 0; i < rest.length; ++i) s += rest[i];
+    return x + y + s;
+}
+```
+
+另一种是在函数中使用 `arguments` 变量，它存储了函数接受的所有参数并包装为一个数组。所以理论上甚至都不需要声明参数列表：
+
+```js
+function sum() {
+    let s = 0;
+    for (let i = 0; i < arguments.length; ++i) s += arguments[i];
+    return s;
+}
+```
+</details>
+
+可以在一个函数内部定义函数，它们可以访问父函数作用域中的变量。
+
+```js
+function parentFunc() {
+  let a = 1;
+  function nestedFunc() {
+    let b = 4; // parentFunc 无法访问 b
+    return a + b;
+  }
+  return nestedFunc(); // 5
+}
+```
+
+#### 箭头函数
+
+[箭头函数](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/Arrow_functions)有两个方面的作用：更简短的函数并且不绑定 `this`。基本语法为：
+
+```js
+const func1 = (param1, param2, …, paramN) => { statements }
+
+// 当函数体只有一个返回语句时，可省略外层的括号和 return 关键字
+const func2 = (param1, param2, …, paramN) => expression
+
+// 若只有一个参数，可省略参数列表的小括号
+const func3 = singleParam => { statements }
+
+// 没有参数应写成一对圆括号
+const func4 = () => { statements }
+```
+
+在使用匿名函数时，箭头函数是十分常见的。但箭头函数没有单独的 `this`，不绑定 `arguments`，不能用作构造函数，不太适合作为方法。
+
+### 模块化
+
+JS 支持模块化编程，可以将代码分成多个文件，每个文件称为一个模块。模块可以导出（export）变量、函数或类，其他模块可以导入（import）这些导出的内容。
+
+<Tabs>
+  <TabItem value="export" label="导出">
+    ```js title="math.js"
+    export const add = (a, b) => a + b;
+    export const PI = 3.14159;
+
+    const multiply = (a, b) => a * b;
+    export { multiply };
+
+    // 默认导出，可省略名称
+    export default function() { /* ... */ }
+    ```
+  </TabItem>
+  <TabItem value="import" label="导入">
+    ```js title="main.js"
+    import { add, PI } from "./math.js"; // 导入指定的变量和函数
+    import myFunction from "./math.js"; // 导入默认导出，可自命名
+    import * as math from "./math.js"; // 所有导出作为 math 对象的属性
+    ```
+  </TabItem>
+</Tabs>
+
+### 异步
+
+:::note
+
+本部分施工中……参考 [MDN Web Docs - 异步](https://developer.mozilla.org/zh-CN/docs/Learn/JavaScript/Asynchronous)
+
+:::
+
+#### 事件循环与消息队列机制
+
+`setTimeout` 函数接受两个参数，第一个参数为一个回调函数，第二个参数为多长时间后执行上述回调函数。这个函数的等待过程会异步于主线程执行，而回调函数会在等待完毕后放入消息队列。在等待异步的过程中，主线程可以完成其他的任务：
+
+```js
+const fetchData = () => {
+    setTimeout(() => {
+        console.log("Data get!");
+    }, 1000);
+};
+
+fetchData(); // Dispatch async task
+console.log("Rendering template...");
+console.log("Loading local storage..."); // Main thread doing other tasks
+```
+
+#### `Promise` 对象
+
+[Promise](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise) 是新派的异步代码，常用于现代的 [web APIs](others#api-和-ajax)。`Promise` 对象本质上表示的是一系列操作的中间状态，或者说是未来某时刻一个操作完成或失败后返回的结果。Promise 并不保证操作在何时完成并返回结果，但是保证在操作成功后执行您对操作结果的处理代码；或在操作失败后处理操作失败的情况。一个展示 Promise 基本语法的例子如下：
+
+```js
+fetch("products.json")
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (json) {
+    products = json;
+    initialize();
+  })
+  .catch(function (err) {
+    console.log("Fetch problem: " + err.message);
+  });
+```
+
+这里的 `fetch()` 返回一个 `Promise`，它是表示异步操作完成或失败的对象。在返回的 `Promise` 后面的是：
+
+- 两个 `then()` 块，每个都包含一个回调函数。如果前一个操作成功，回调将执行，且每个回调都接收前一个成功操作的结果作为输入，因此可以继续对它执行其他操作。每个 `.then()` 块返回另一个 `Promise`，这意味着可以将多个 `.then()` 块链接，依次执行多个异步操作。
+- 如果其中任何一个 `then()` 块失败，则执行末尾的 `catch()` 块——它提供了一个错误对象，可用来报告发生的错误类型。
+
+#### `async` 和 `await`
+
+用 `async` 关键字将一个函数声明为[异步函数](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/async_function)。调用异步函数的时候，其会立刻返回并派遣一个异步，同时将函数的返回值包装为 `Promise` 对象，那我们也可以按照 `Promise` 的 `then` 链写法使用异步函数。
+
+```js
+const foo = async () => {
+  setTimeout(() => {
+      console.log("Async over!");
+  }, 1000);
+};
+
+typeof foo(); // "object"
+```
+
+`await` 关键字后面可以接一个变量，如果这个变量不是 `Promise` 对象，那么 `await` 不产生任何效果；如果是 `Promise` 对象，那么 `await` 会阻塞代码运行，直到这个 `Promise` 对象代表的异步执行完毕。
+
+```js
+async function myFetch() {
+  try {
+    let response = await fetch("coffee.jpg");
+    let myBlob = await response.blob();
+
+    let objectURL = URL.createObjectURL(myBlob);
+    let image = document.createElement("img");
+    image.src = objectURL;
+    document.body.appendChild(image);
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+myFetch();
+```
+
+通过 `async`, `await` 关键字，异步过程可以写得很像同步代码，因为它实际上就是在顺序执行，但是在等待 `await` 的时候并不会产生阻塞而影响其他渲染任务。
+
+## DOM 操作
+
+JS 可以操作 DOM 树，进而改变页面内容。`document` 对象是当前页面整个 DOM 树的根节点。
+
+:::info 什么是 DOM 树
+
+HTML 所表示的页面中各个元素是按照树的结构安排的，树上的每一个节点都是一个 HTML 元素，这棵树就是所谓的 DOM 树（Document Object Model Tree）。
+
+:::
+
+:::warning 很多时候你不需要直接操作 DOM 树
+
+虽然 JS 语言开放了相当多且功能强劲的函数以操作 DOM 树，但如果利用不当很有可能造成网页崩溃等意料之外的结果。为了避免这种情况以及方便编程人员，许多网页前端框架已经将对 DOM 树的操作封装成相关的函数或者语法。只需了解、知晓这些 DOM 树语法即可。
+
+:::
+
+:::tip 使用我们提供的样例
+
+可以点击进入[样例网页](@site/static/html/dom.html)并按下 `F12` 打开调试，在控制台里运行本节提供的样例代码来理解 DOM 树操作。
+
+也可以点击右下方的 `Open Sandbox` 按钮，进入在线代码编辑器，编写和运行本节提供的代码；或者直接在下方代码沙盒的 `script.js` 文件中编写代码，点击 `Run` 按钮运行。
+
+<Sandpack
+      files={{
+        "/index.html": {
+          code: `<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <title>DOM 操作方法演示网页</title>
+  <style>
+    .circle {
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="red-block" class="block" style="background-color: red;width: 60px;height: 60px;"></div>
+  <div id="green-block" class="block" style="background-color: green;width: 60px;height: 60px;"></div>
+  <div id="blue-block" class="block" style="background-color: blue;width: 60px;height: 60px;"></div>
+  <div id="purple-block" class="block" style="background-color: purple;width: 60px;height: 60px;"></div>
+
+  <div id="circle-wrapper">
+      <div id="red-circle" class="circle" style="background-color: red;"></div>
+      <div id="green-circle" class="circle" style="background-color: green;"></div>
+      <div id="blue-circle" class="circle" style="background-color: blue;"></div>
+  </div>
+
+  <p id="test-text"> This is a test text node. </p>
+
+  <script src="script.js"></script>
+</body>
+
+</html>`,
+          readOnly: true,
+        },
+        "/styles.css": ``,
+        "/script.js": `let node = document.getElementById("test-text");`,
+      }}
+      options={{
+        activeFile: "/script.js",
+        autorun: false,
+        autoReload: false,
+        showConsole: true,
+        showConsoleButton: true,
+        visibleFiles: ["/index.html", "/script.js"],
+      }}
+      template='static'
+/>
+
+:::
+
+### 查找 DOM 节点
+
+可以使用下几种方法查找符合要求的 DOM 节点：
+
+1. `document.getElementById`：根据节点 ID 查找，节点 ID 是唯一的，故返回的是具体的 DOM 节点。
+
+    <Tabs groupId="code-place">
+      <TabItem value="console" label="控制台">
+        ```js
+        document.getElementById("red-block");
+        ```
+      </TabItem>
+      <TabItem value="js-file" label="script.js">
+        ```js
+        console.log(document.getElementById("red-block"));
+        ```
+      </TabItem>
+    </Tabs>
+
+    上述代码会返回一个 DOM 元素，在控制台里显示为一个 HTML 标签，鼠标悬浮于标签上可以看到网页上对应元素高亮显示。
+
+2. `getElementsByClassName`：在以该节点为根的子树内查找所有 `class` 属性为给定值的节点，返回一个 DOM 节点的列表。
+
+    <Tabs groupId="code-place">
+      <TabItem value="console" label="控制台">
+        ```js
+        document.getElementsByClassName("block");
+        ```
+      </TabItem>
+      <TabItem value="js-file" label="script.js">
+        ```js
+        console.log(document.getElementsByClassName("block"));
+        ```
+      </TabItem>
+    </Tabs>
+
+    上述代码返回了所有 `class` 为 `block` 的 DOM 节点构成的列表。
+
+    方法间可以联合使用：
+
+    <Tabs groupId="code-place">
+      <TabItem value="console" label="控制台">
+        ```js
+        document.getElementById("circle-wrapper").getElementsByClassName("circle");
+        ```
+      </TabItem>
+      <TabItem value="js-file" label="script.js">
+        ```js
+        console.log(document.getElementById("circle-wrapper").getElementsByClassName("circle"));
+        ```
+      </TabItem>
+    </Tabs>
+
+    这段代码表示先根据 ID 查找到一个 DOM 节点，再在其内部查找所有 `class` 属性为 `circle` 的节点。
+
+3. `getElementsByTagName`：在以该节点为根的子树内查找所有标签名为给定值的节点（如 `<p />` 节点的标签名就是 `'p'`），返回一个 DOM 节点的列表。
+
+    <Tabs groupId="code-place">
+      <TabItem value="console" label="控制台">
+        ```js
+        document.getElementById("circle-wrapper").getElementsByTagName("div");
+        ```
+      </TabItem>
+      <TabItem value="js-file" label="script.js">
+        ```js
+        console.log(document.getElementById("circle-wrapper").getElementsByTagName("div"));
+        ```
+      </TabItem>
+    </Tabs>
+
+4. `querySelector` 和 `querySelectorAll`：利用选择器语法进行更精确的查找。`querySelector` 返回以该 DOM 节点为根的子树中满足选择器要求的**第一个** DOM 节点。而 `querySelectorAll` 会返回子树内所有满足选择器要求的 DOM 节点构成的列表。具体的选择器语法可以参考 [CSS 选择器](html_css#选择器)。
+
+### 更新 DOM 树节点
+
+:::warning
+
+这一节中，使用控制台操作的，需要先在控制台中运行下列代码来获取用于演示的 DOM 节点：
+
+```js
+let node = document.getElementById("test-text");
+```
+
+:::
+
+DOM 节点对象拥有 `innerHTML` 属性，其值是一对闭合的 HTML 标签之间的文本。如下面 `<p>` 节点：
+
+```html
+<p> The color is <span style="color:red"> RED </span> ! </p>
+```
+
+其 `innerHTML` 属性值是 `' The color is <span style="color:red"> RED </span> ! '`。
+
+这个属性可以**随意读写**，所以完全可以通过修改这个属性值来直接调整 DOM 节点。如在控制台或 `script.js` 运行下列代码：
+
+```js
+node.innerHTML = ' The color is <span style="color:red"> RED </span> ! '
+```
+
+此时原先的文本 `This is a test text node.` 替换成了新设置的文本。
+
+另一个常用属性是 `innerText`，与 `innerHTML` 属性基本类似，但它会进行字符转义，比如 `<` 字符会转义为 `&lt;`，这样保证了字符串就是字符串，不会被解读为新 DOM 节点。
+
+还可以修改节点的样式，只需要修改其 `style` 属性即可。注意 CSS 中允许属性名中包含短划线 `-`，但 JS 中不允许，所以遇到这类属性名时，请使用驼峰命名法转写：
+
+```js
+node.style.color = "red";
+node.style.fontSize = "20px";
+```
+<details>
+<summary>XSS 攻击</summary>
+
+你可能已经意识到，赋给 `innerHTML` 属性的字符串值中可以包括新的 HTML 节点，这意味着通过编写特定的字符串值就可以给 DOM 树插入新节点，甚至通过 `<script>` 标签引入恶意 JS 代码。
+
+这就是 [XSS 攻击](others#前端安全)。防范这种攻击最简单的方法就是，严格控制 `innerHTML` 属性的赋值或使用 `innerText` 属性。
+</details>
+
+### 调整 DOM 树结构
+
+1. `appendChild`：将一个已存在的 DOM 节点添加到指定父节点的子节点列表的**末尾**，并返回被添加的子元素。注意：如果增添的子节点是原先 DOM 树上具有的节点，则首先会将这个节点**摘除后添加到指定位置**。
+
+    在控制台或 `script.js` 中运行下列代码：
+
+    ```js
+    let wrapper = document.getElementById("circle-wrapper");
+    let redCircle = document.getElementById("red-circle");
+    wrapper.appendChild(redCircle);
+    ```
+
+    可以发现三个圆形调换了位置，红色的圆形成为位于最底部的圆形。
+
+2. `insertBefore`：将一个已存在的 DOM 节点插入到指定位置，并返回被插入的元素。该方法需要两个参数，第一个是要插入的节点，第二个是一个参考节点，表示要在其前面插入新节点。
+
+    在控制台或 `script.js` 中运行下列代码：
+
+    ```js
+    let wrapper = document.getElementById("circle-wrapper");
+    let redCircle = document.getElementById("red-circle");
+    let blueCircle = document.getElementById("blue-circle");
+    wrapper.insertBefore(redCircle, blueCircle); // The 2nd param is the reference node
+    ```
+
+    这样红色的圆形就插入在蓝色的圆形之前。
+
+3. `document.createElement`：创造一个指定类型的 DOM 树节点。随后可以设置其各种属性值，最后使用各种插入方法将新节点插入到 DOM 树中：
+
+    ```js
+    let purpleCircle = document.createElement("div");
+    purpleCircle.id = "purple-circle";
+    purpleCircle.className = "circle";
+    purpleCircle.style.backgroundColor = "purple";
+
+    let wrapper = document.getElementById("circle-wrapper");
+    wrapper.appendChild(purpleCircle);
+    ```
+
+4. `removeChild`：删除一个节点并返回删除掉的节点。需要获取被删除的节点以及其父节点，然后在父结点上调用 `removeChild` 方法。
+
+    ```js
+    let wrapper = document.getElementById("circle-wrapper");
+    let redCircle = document.getElementById("red-circle");
+    let removedCircle = wrapper.removeChild(redCircle);
+
+    console.log(redCircle === removedCircle);
+    ```
+
+## 在 HTML 中使用 JS
+
+1. HTML 中可以使用 `<script>` 标签插入 JS 代码。
+
+    ```html
+    <body>
+        <h1>Hello, World!</h1>
+        <script>
+            console.log("Hello, World!");
+        </script>
+    </body>
+    ```
+
+2. 和 CSS 类似，将 JS 代码放在一个独立的 `.js` 文件中，然后通过 `<script>` 标签在 `<body>` 标签的**底部**引入它，以确保 JS 执行时，所有 HTML 元素都已加载完毕
+
+    <Sandpack
+          files={{
+            "/index.html": `<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>GenRandomString</title>
+    </head>
+    <body>
+        <p>This is a random string:</p>
+        <p id="random-string"></p>
+        <script src="script.js"></script> <!-- 引入 JS 文件 -->
+    </body>
+    </html>`,
+            "/script.js": `const randomString = (length) => {
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        let result = '';
+        for (let i = 0; i < length; i++) {
+          result += characters.charAt(Math.floor(Math.random() * characters.length));
+        }
+        return result;
+    }
+
+    document.getElementById("random-string").innerText = randomString(10);`,
+          }}
+          options={{
+            activeFile: "/script.js",
+            autoReload: false,
+            initMode: "user-visible",
+          }}
+          template='static'
+    />
+
+    若在 `<script>` 标签中使用 `type="module"` 属性，可以将 JS 文件作为模块导入，即可使用 `import` 和 `export` 语法。
+
+## 事件监听
+
+事件监听是 JS 与 HTML 交互的核心机制，允许在特定事件发生时执行代码。用户点击某一个 HTML 组件或者在文本框中输入、文档树加载等行为都可以是事件，这些事件的信息会被包装为一个对象传入到 JS 的事件处理循环，JS 引擎接受到事件后就会调用相应的回调函数，而交互行为就定义在这些回调函数之中。
+
+### 常用事件类型
+
+1. 鼠标事件：`click` 点击；`dblclick` 双击；`mouseenter/mouseleave` 进入/离开元素；`mousemove` 鼠标移动
+2. 键盘事件：`keydown/keyup` 按键按下/释放
+3. 表单事件：`submit` 表单提交；`change` 值改变（如输入框、选择框）；`focus/blur` 获取/失去焦点
+4. 窗口事件：`load` 资源加载完成；`resize` 窗口大小改变；`scroll` 滚动
+5. 触摸事件：`touchstart` 触摸开始；`touchmove` 触摸移动；`touchend` 触摸结束
+
+### 事件监听方法
+
+1. HTML 属性方式：直接在 HTML 元素上通过属性添加事件处理。
+
+    <Sandpack
+          files={{
+            "/index.html": `<button onclick="handleClick()">点我</button>
+
+    <script>
+    function handleClick() {
+        alert("按钮被点击");
+    }
+    </script>`,
+          }}
+          options={{
+            autoReload: false,
+            initMode: "user-visible",
+          }}
+          template='static'
+    />
+
+
+2. DOM 属性方式：通过 JS 为 DOM 元素的属性赋值。同一事件只能绑定一个处理函数。
+
+    <Sandpack
+          files={{
+            "/index.html": `<button id="myButton">点我</button>
+
+    <script>
+    const btn = document.getElementById("myButton");
+    btn.onclick = function() {
+        alert("第一次点击");
+    };
+    btn.onclick = function() {
+        alert("第二次点击");
+    }; // 第二个事件处理函数会覆盖第一个
+    </script>`,
+          }}
+          options={{
+            autoReload: false,
+            initMode: "user-visible",
+          }}
+      template='static'
+    />
+
+3. `addEventListener` 方法。
+
+    <Sandpack
+          files={{
+            "/index.html": { code: `<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>addEventListener</title>
+        <style>
+            #clickBox {
+                width: 200px;
+                height: 200px;
+                background-color: lightblue;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="clickBox">点我</div>
+        <p id="message"></p>
+
+        <script src="script.js"></script>
+    </body>
+    </html>`,
+              readOnly: true },
+            "/styles.css": ``,
+            "/script.js": `const box = document.getElementById('clickBox');
+    const message = document.getElementById('message');
+
+    box.addEventListener('click', function() {
+        message.textContent = '盒子被点击了!';
+        this.style.backgroundColor = 'lightcoral';
+    });
+
+    box.addEventListener('mouseenter', function() {
+        this.style.transform = 'scale(1.05)';
+    });
+
+    box.addEventListener('mouseleave', function() {
+        message.textContent = '';
+        this.style.backgroundColor = 'lightblue';
+        this.style.transform = 'scale(1)';
+    });`,
+          }}
+          options={{
+            activeFile: "/script.js",
+            autoReload: false,
+            initMode: "user-visible",
+            visibleFiles: ["/index.html", "/script.js"],
+          }}
+          template='static'
+    />
+
+    添加事件监听器后，可使用 `removeEventListener` 方法移除事件监听器。注意：匿名函数无法被移除，必须使用具名函数引用。
+
+    ```js
+    element.removeEventListener("click", eventHandler);
+    ```
+
+<details>
+<summary>事件对象</summary>
+
+事件对象包含了事件发生时的相关信息，如鼠标位置、触发事件的元素等。可通过 `event` 参数访问它们。
+
+```js
+document.addEventListener('click', function(event) {
+  console.log(event.clientX, event.clientY); // 鼠标点击位置
+  console.log(event.target); // 触发事件的元素
+  event.preventDefault(); // 阻止默认行为
+  event.stopPropagation(); // 阻止事件冒泡
+});
+```
+</details>
