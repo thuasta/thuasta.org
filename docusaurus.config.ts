@@ -46,7 +46,6 @@ export default {
   },
 
   themes: [
-    'live-codeblock',
     [
       '@easyops-cn/docusaurus-search-local',
       {
