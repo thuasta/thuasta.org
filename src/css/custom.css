@@ -31,3 +31,70 @@
       var(--site-announcement-bar-stripe-color2) 40px);
   font-weight: bold;
 }
+
+/* 日程表容器 */
+.schedule-table-container {
+  overflow-x: auto;
+  margin: 2rem 0;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* 表格样式 */
+.schedule-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.schedule-table th {
+  background-color: var(--ifm-color-primary);
+  color: white;
+  padding: 12px 15px;
+  text-align: left;
+}
+
+.schedule-table td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #eee;
+}
+
+/* 日程项高亮 */
+.schedule-item:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+
+.schedule-item:hover {
+  background-color: #f0f7ff;
+}
+
+/* 徽章样式 */
+.schedule-badge {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+/* 主题标签 */
+.schedule-theme {
+  background: linear-gradient(120deg, #e0f7fa, #bbdefb);
+  padding: 4px 10px;
+  border-radius: 15px;
+  font-size: 0.9rem;
+}
+
+/* 响应式适配 */
+@media (max-width: 996px) {
+  .schedule-table th:nth-child(5),
+  .schedule-table td:nth-child(5) {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .schedule-table th,
+  .schedule-table td {
+    padding: 8px 10px;
+    font-size: 0.9rem;
+  }
+}
