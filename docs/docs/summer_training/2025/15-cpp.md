@@ -36,7 +36,7 @@ target("agent")
 
     after_build(function (target)
         os.cp(
-            target:targetfile(), 
+            target:targetfile(),
             path.join(os.projectdir(), "bin", path.filename(target:targetfile()))
         )
     end)
@@ -58,10 +58,12 @@ foo(nullptr);    // 调用 foo(char*)
 ```
 
 > 在 C++11 之后的标准中，`NULL` 可以是一个整数类型的 0，也可以是一个 `std::nullptr_t`。因此，类似下面的两种编译器实现都是可以的。
+>
 > ```c++
 > #define NULL 0
 > #define NULL nullptr
 > ```
+>
 > 在 MSVC 中，`NULL` 的实现为 `#define NULL 0`，因此上面的代码是可以通过编译的；而在 GCC 和 Clang 中，`NULL` 的实现为 `#define NULL __null`，此处 `__null` 是一个 `long` 类型的 0，同样是符合标准的。
 >
 > 因此，对于 `foo(NULL)` 而言，`foo(int)` 和 `foo(char*)` 都不是精确的参数类型匹配，因此不能通过编译（会提示 `foo` 的调用是不明确的）；而如果加入 `void foo(long);` 的声明，则 `foo(NULL)` 精确地匹配到了 `foo(long)`，因此可以通过编译。
@@ -731,8 +733,7 @@ int main(){
 
 `std::forward` 不会造成任何多余的拷贝，同时**完美转发**函数的实参给内部调用的其他函数：
 
-当实参是右值（int、或者 int 的引用），T 被推导为 int，T&& 是 int&&；
-当实参是左值（int、或者 int 的引用），T 被推导为 int&，T&& 是 int&。
+当实参是右值（int、或者 int 的引用），T 被推导为 int，T&& 是 int&&；当实参是左值（int、或者 int 的引用），T 被推导为 int&，T&& 是 int&。
 
 `std::forward` 和 `std::move` 一样，只是类型转换，`std::move` 单纯的将左值转化为右值， `std::forward` 也只是单纯的将参数做了一个类型的转换，从现象上来看， `std::forward<T>(v)` 和 `static_cast<T&&>(v)` 是完全一样的。
 

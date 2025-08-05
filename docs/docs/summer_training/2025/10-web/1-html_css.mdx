@@ -2,7 +2,7 @@
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import { Sandpack } from "@codesandbox/sandpack-react";
+import {Sandpack} from '@codesandbox/sandpack-react';
 
 :::note
 
@@ -42,6 +42,7 @@ HTML 文档由**元素**组成，每个元素通常由一个**开始标签**和�
 ```
 
 常用属性有：
+
 - `class`: 为元素定义类名，方便 CSS 选择器选中。
 - `id`: 为元素定义唯一标识符，通常用于 JavaScript 操作。
 - `style`: 为元素定义内联样式，直接在标签中写 CSS。
@@ -64,22 +65,22 @@ HTML 文档由**元素**组成，每个元素通常由一个**开始标签**和�
 - **斜体**: `<em>` 或 `<i>`
 - **换行**: `<br>`
 - **链接**: `<a>`
-    > `<a>` 标签说明：`href` 属性指定了链接的目标地址；`target="_blank"` 表示在新标签页中打开链接。
+  > `<a>` 标签说明：`href` 属性指定了链接的目标地址；`target="_blank"` 表示在新标签页中打开链接。
 
 <Sandpack
-          files={{
-              "/index.html": `<h2>欢迎加入软件部！</h2>
+  files={{
+    '/index.html': `<h2>欢迎加入软件部！</h2>
 <p>
     我们是自动化系学生科协软件部<br>
     一个充满<strong>激情</strong>和<em>创造力</em>的团队<br>
     科协网站：<a href="https://thuasta.org" target="_blank">ASTA</a>
 </p>
 `,
-          }}
-    options={{
-    initMode: "user-visible",
-          }}
-    template="static"
+  }}
+  options={{
+    initMode: 'user-visible',
+  }}
+  template="static"
 />
 
 #### 列表
@@ -98,17 +99,15 @@ HTML 文档由**元素**组成，每个元素通常由一个**开始标签**和�
 
 <h4>入门步骤</h4>
 <ol>
-    <li>学习 HTML</li>
-    <li>学习 CSS</li>
-    <li>学习 JavaScript</li>
+  <li>学习 HTML</li>
+  <li>学习 CSS</li>
+  <li>学习 JavaScript</li>
 </ol>
-`,
-          }}
-          options={{
-              initMode: "user-visible",
-          }}
-          template="static"
-/>
+`, }} options=
+{{
+  initMode: 'user-visible',
+}}
+template="static" />
 
 #### 表格与表单
 
@@ -145,6 +144,7 @@ HTML 文档由**元素**组成，每个元素通常由一个**开始标签**和�
     <input type="email" id="email" name="email" required>
 
     <button type="submit">提交</button>
+
 </form>
 `,
           }}
@@ -157,19 +157,15 @@ HTML 文档由**元素**组成，每个元素通常由一个**开始标签**和�
 #### 媒体
 
 - **图片**: `<img>`
-    > `<img>` 标签说明：`src` 为图片的路径或 URL；`alt` 为当图片无法加载时显示的替代文本，便于无障碍阅读（屏幕阅读器）。
+  > `<img>` 标签说明：`src` 为图片的路径或 URL；`alt` 为当图片无法加载时显示的替代文本，便于无障碍阅读（屏幕阅读器）。
 - **视频**: `<video>`
-    > `<video>` 标签说明：`src` 为视频的路径或 URL；`controls` 为是否显示播放控件（如播放按钮、音量控制等）。
+  > `<video>` 标签说明：`src` 为视频的路径或 URL；`controls` 为是否显示播放控件（如播放按钮、音量控制等）。
 - **音频**: `<audio>`
 
 ```html
-<img src="path/to/your/image.jpg" alt="示例图片">
-<video src="path/to/your/video.mp4" controls>
-    您的浏览器不支持视频标签。
-</video>
-<audio src="path/to/your/audio.mp3" controls>
-    您的浏览器不支持音频标签。
-</audio>
+<img src="path/to/your/image.jpg" alt="示例图片" />
+<video src="path/to/your/video.mp4" controls>您的浏览器不支持视频标签。</video>
+<audio src="path/to/your/audio.mp3" controls>您的浏览器不支持音频标签。</audio>
 ```
 
 #### 结构标签
@@ -219,15 +215,15 @@ HTML 文档由**元素**组成，每个元素通常由一个**开始标签**和�
 ```html title="index.html"
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>我的第一个网页</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1>你好，软件部！</h1>
     <p>这是我用 HTML 创建的第一个网页</p>
-</body>
+  </body>
 </html>
 ```
 
@@ -261,25 +257,25 @@ CSS（Cascading Style Sheets，层叠样式表）是用于控制网页样式和�
 
 1. 内联样式: 直接在 HTML 标签中使用 `style` 属性。
 
-    ```html
-    <p style="color: red; font-size: 20px;">这段文字是红色的，20 像素大</p>
-    ```
+   ```html
+   <p style="color: red; font-size: 20px;">这段文字是红色的，20 像素大</p>
+   ```
 
 2. 内部样式表: 在 HTML 文件的 `<head>` 区域使用 `<style>` 标签。
 
-    ```html
-    <head>
-        <style>
-            p {
-                color: blue;
-                font-size: 18px;
-            }
-        </style>
-    </head>
-    <body>
-        <p>这段文字是蓝色的，18 像素大</p>
-    </body>
-    ```
+   ```html
+   <head>
+     <style>
+       p {
+         color: blue;
+         font-size: 18px;
+       }
+     </style>
+   </head>
+   <body>
+     <p>这段文字是蓝色的，18 像素大</p>
+   </body>
+   ```
 
 3. 外部样式表：创建一个独立的 `.css` 文件（如 `style.css`），然后在 HTML 的 `<head>` 中通过 `<link>` 标签引入它。
 
@@ -320,7 +316,7 @@ CSS 的工作原理是：选中某个或某些 HTML 元素，然后对它们应�
 
 ```css
 h1 {
-    color: blue; /* 设置所有 h1 标题颜色为蓝色 */
+  color: blue; /* 设置所有 h1 标题颜色为蓝色 */
 }
 ```
 
@@ -348,6 +344,7 @@ h1 {
         color: blue;
     }
     ```
+
   </TabItem>
 </Tabs>
 
@@ -388,15 +385,15 @@ h1 {
 
 ```css
 a:hover {
-    color: red; /* 鼠标悬停时链接变为红色 */
+  color: red; /* 鼠标悬停时链接变为红色 */
 }
 
 button:active {
-    background-color: blue; /* 点击时按钮变为蓝色 */
+  background-color: blue; /* 点击时按钮变为蓝色 */
 }
 
 input:focus {
-    border: 2px solid green; /* 输入框获得焦点时边框变为绿色 */
+  border: 2px solid green; /* 输入框获得焦点时边框变为绿色 */
 }
 ```
 
@@ -415,8 +412,8 @@ input:focus {
 
 ```css
 body {
-    background-color: #6791fc; /* 淡蓝色背景 */
-    color: #0f0f0f; /* 深色文本 */
+  background-color: #6791fc; /* 淡蓝色背景 */
+  color: #0f0f0f; /* 深色文本 */
 }
 ```
 
@@ -435,9 +432,9 @@ body {
 
 ```css
 h1 {
-    font-family: 'Georgia', serif;
-    font-size: 32px;
-    text-align: center;
+  font-family: 'Georgia', serif;
+  font-size: 32px;
+  text-align: center;
 }
 ```
 
@@ -475,23 +472,12 @@ color: white; /* 白色文字 */
 text-decoration: none; /* 去掉下划线 */
 border-radius: 5px; /* 圆角边框 */
 
-/* 盒模型属性 */
-padding: 10px 20px; /* 上下 10px, 左右 20px 的内边距 */
-border: 2px solid #0056b3; /* 2 像素宽的深蓝色实线边框 */
-margin: 10px; /* 距离周围元素 10px 的外边距 */
-}
+/_ 盒模型属性 _/ padding: 10px 20px; /_ 上下 10px, 左右 20px 的内边距 _/ border: 2px solid #0056b3; /_ 2 像素宽的深蓝色实线边框 _/ margin: 10px; /_ 距离周围元素 10px 的外边距 _/ }
 
-/* 添加鼠标悬浮效果 */
-.button:hover {
-    background-color: #0056b3;
-}`,
-          }}
-          options={{
+/_ 添加鼠标悬浮效果 _/ .button:hover { background-color: #0056b3; }`, }} options={{
               initMode: "user-visible",
               activeFile: "/style.css",
-          }}
-          template="static"
-/><br />
+          }} template="static" /><br />
 
 :::info
 
@@ -523,23 +509,7 @@ CSS 布局方式还有浮动、Flexbox 和 Grid 等。使用 Flexbox 或 Grid �
 display: flex; /* 使用 Flexbox 布局，即可伸缩盒子布局 */
 }
 
-.item {
-    flex: 1; /* 让每个 item 平分空间 */
-    background-color: lightblue;
-    text-align: center;
-    padding: 10px;
-    margin: 5px;
-}
-/* 当屏幕宽度不超过600px时，改为垂直布局 */
-@media (max-width: 600px) {
-    .container {
-        flex-direction: column;
-    }
-}`,
-          }}
-          options={{
+.item { flex: 1; /_ 让每个 item 平分空间 _/ background-color: lightblue; text-align: center; padding: 10px; margin: 5px; } /_ 当屏幕宽度不超过600px时，改为垂直布局 _/ @media (max-width: 600px) { .container { flex-direction: column; } }`, }} options={{
               initMode: "user-visible",
               activeFile: "/style.css",
-          }}
-          template="static"
-/>
+          }} template="static" />

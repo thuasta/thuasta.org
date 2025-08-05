@@ -24,6 +24,7 @@ originalUrl: https://mp.weixin.qq.com/s/80H7kbvBCvH_TMeJshYFIg
 在同一的宇宙里，  
 那些些微的变化，  
 是怎样让我们成为不同的我们？
+
 </center>
 
 异格重构（Refactor: Doppelganger），Refactor 意为重构，Doppelganger 意为"面貌相似的人，另一个我"。

@@ -26,13 +26,11 @@ originalUrl: https://mp.weixin.qq.com/s/QK4TDeszIBz9n9G4HAuZoQ
 
 小小电路板的接线，蕴含着不小的门道。倘若单纯追求搭建速度，一通操作猛如虎，接通电源，惊觉每个灯的亮灭都在意料之外，在“鸟巢”般的飞线中排查 bug，则令人倍感头秃：<center>
 
-![飞线](img/2.png)
-<small>漫天飞线一时爽，飞完 debug 火葬场</small></center>
+![飞线](img/2.png) <small>漫天飞线一时爽，飞完 debug 火葬场</small></center>
 
 本次“飞线杯”，旨在探索我们理工院系特色的工程之美。美不只有琴棋书画、歌舞雕刻，还体现在面包板接线的整洁、元件排布的大气，抑或代码仓库的规范、变量命名的优雅。<center>
 
-![整洁接线](img/3.png)
-<small>如果这样的话，debug 应该会方便一些吧？</small></center>
+![整洁接线](img/3.png) <small>如果这样的话，debug 应该会方便一些吧？</small></center>
 
 本次比赛以面包板搭建为主题，提供给同学们展现自己审美力和借鉴他人审美力的平台，帮助同学们提高电路的布局设计能力，欢迎大家参与~
 
@@ -48,7 +46,7 @@ originalUrl: https://mp.weixin.qq.com/s/QK4TDeszIBz9n9G4HAuZoQ
 
 参赛同学将自己的作品提交到云盘链接即可。
 
-- 【命名格式】：`班级_姓名`（如“自21_张三”）
+- 【命名格式】：`班级_姓名`（如“自21\_张三”）
 - 【截止时间】：2023 年 12 月 17 日 24:00
 - 【云盘链接】：[https://cloud.tsinghua.edu.cn/u/d/fa441d54acad43d99fc9/](https://cloud.tsinghua.edu.cn/u/d/fa441d54acad43d99fc9/)
 
@@ -59,12 +57,12 @@ originalUrl: https://mp.weixin.qq.com/s/QK4TDeszIBz9n9G4HAuZoQ
 
 1. 漫步者 TWS1 Pro 无线蓝牙耳机
 
-    ![蓝牙耳机](img\4.png)
+   ![蓝牙耳机](img\4.png)
 
 2. 3D-JP 城市建筑拼图 puzzle
 
-    ![拼图](img\5.png)
-    <center><small>（拼图具体图案可能与上图不同）</small></center>
+   ![拼图](img\5.png)
+   <center><small>（拼图具体图案可能与上图不同）</small></center>
 
 ---
 

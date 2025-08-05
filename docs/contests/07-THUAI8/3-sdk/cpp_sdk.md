@@ -50,15 +50,15 @@ xmake
 
 - 若您需要生成 `compile_commands.json` 文件，可以使用以下命令：
 
-    ```bash
-    xmake project -k compile_commands
-    ```
+  ```bash
+  xmake project -k compile_commands
+  ```
 
 - 若配置项目时报错找不到某个依赖，说明本地的 xmake repo 没有更新到最新版本。可以使用以下命令：
 
-    ```bash
-    xmake repo --update
-    ```
+  ```bash
+  xmake repo --update
+  ```
 
 :::
 
@@ -110,183 +110,183 @@ xmake
 
 1. **获取自身令牌**
 
-    ```cpp
-    auto token{agent.token()};
-    ```
+   ```cpp
+   auto token{agent.token()};
+   ```
 
-    - 返回类型：`std::string_view`
+   - 返回类型：`std::string_view`
 
-    `token` 方法将返回玩家自身的令牌。
+   `token` 方法将返回玩家自身的令牌。
 
 2. **获取自身玩家信息**
 
-    ```cpp
-    const auto& self_info{agent.self_info()};
-    ```
+   ```cpp
+   const auto& self_info{agent.self_info()};
+   ```
 
-    - 返回类型：`const Player&`
+   - 返回类型：`const Player&`
 
-    `self_info` 方法将返回自身玩家信息，包括玩家的位置、武器、护甲和技能库等。
+   `self_info` 方法将返回自身玩家信息，包括玩家的位置、武器、护甲和技能库等。
 
-    :::info
+   :::info
 
-    - 位置 `position` 包括坦克的坐标和朝向。
-    - 武器 `weapon` 包括武器和武器类技能的基本情况。
-    - 护甲 `armor` 包括护甲和护甲类技能的基本情况。
-    - 技能库 `skills` 包括所拥有的技能类别、技能的冷却时间、技能的剩余冷却时间等。
+   - 位置 `position` 包括坦克的坐标和朝向。
+   - 武器 `weapon` 包括武器和武器类技能的基本情况。
+   - 护甲 `armor` 包括护甲和护甲类技能的基本情况。
+   - 技能库 `skills` 包括所拥有的技能类别、技能的冷却时间、技能的剩余冷却时间等。
 
-    :::
+   :::
 
 3. **获取对方玩家信息**
 
-    ```cpp
-    const auto& opponent_info{agent.opponent_info()};
-    ```
+   ```cpp
+   const auto& opponent_info{agent.opponent_info()};
+   ```
 
-    - 返回类型：`const Player&`
+   - 返回类型：`const Player&`
 
-    `opponent_info` 方法将返回对方玩家信息。玩家信息同上。
+   `opponent_info` 方法将返回对方玩家信息。玩家信息同上。
 
 4. **获取环境信息**
 
-    ```cpp
-    const auto& environment_info{agent.environment_info()};
-    ```
+   ```cpp
+   const auto& environment_info{agent.environment_info()};
+   ```
 
-    - 返回类型：`const EnvironmentInfo&`
+   - 返回类型：`const EnvironmentInfo&`
 
-    `environment_info` 方法将返回环境信息，包括普通墙体的列表、技能墙体的列表和当前子弹的列表。
+   `environment_info` 方法将返回环境信息，包括普通墙体的列表、技能墙体的列表和当前子弹的列表。
 
-    :::info
+   :::info
 
-    - 普通墙体 `wall` 包括普通墙体的位置。
-    - 技能墙体 `fence` 包括技能墙体的位置和当前生命值。
-    - 子弹 `bullet` 包括子弹的位置、速度、伤害值和已经经过的距离。
+   - 普通墙体 `wall` 包括普通墙体的位置。
+   - 技能墙体 `fence` 包括技能墙体的位置和当前生命值。
+   - 子弹 `bullet` 包括子弹的位置、速度、伤害值和已经经过的距离。
 
-    :::
+   :::
 
 5. **获取游戏状态信息**
 
-    ```cpp
-    const auto& game_statistics{agent.game_statistics()};
-    ```
+   ```cpp
+   const auto& game_statistics{agent.game_statistics()};
+   ```
 
-    - 返回类型：`const GameStatistics&`
+   - 返回类型：`const GameStatistics&`
 
-    `game_statistics` 方法将返回游戏状态信息，包括游戏的当前阶段、游戏的倒计时、游戏当前的 ticks 和每位玩家的累计分数。
+   `game_statistics` 方法将返回游戏状态信息，包括游戏的当前阶段、游戏的倒计时、游戏当前的 ticks 和每位玩家的累计分数。
 
 6. **获取奖励信息**
 
-    ```cpp
-    const auto& available_buffs{agent.available_buffs()};
-    ```
+   ```cpp
+   const auto& available_buffs{agent.available_buffs()};
+   ```
 
-    - 返回类型：`const AvailableBuffs& /*using AvailableBuffs = std::vector<BuffKind>*/`
+   - 返回类型：`const AvailableBuffs& /*using AvailableBuffs = std::vector<BuffKind>*/`
 
-    `agent.available_buffs` 方法将返回可选择的奖励列表。
+   `agent.available_buffs` 方法将返回可选择的奖励列表。
 
 ### 操作 Agent
 
 1. **向前移动**
 
-    ```cpp
-    agent.MoveForward(float distance = 1.0f);
-    ```
+   ```cpp
+   agent.MoveForward(float distance = 1.0f);
+   ```
 
-    - 参数：
-      - `distance`：移动距离，默认为 1.0f。
-    - 返回类型：无
+   - 参数：
+     - `distance`：移动距离，默认为 1.0f。
+   - 返回类型：无
 
-    使用 `MoveForward` 方法使 Agent 向前移动指定距离。
+   使用 `MoveForward` 方法使 Agent 向前移动指定距离。
 
 2. **向后移动**
 
-    ```cpp
-    agent.MoveBackward(float distance = 1.0f);
-    ```
+   ```cpp
+   agent.MoveBackward(float distance = 1.0f);
+   ```
 
-    - 参数：
-      - `distance`：移动距离，默认为 1.0f。
-    - 返回类型：无
+   - 参数：
+     - `distance`：移动距离，默认为 1.0f。
+   - 返回类型：无
 
-    使用 `MoveBackward` 方法使 Agent 向后移动指定距离。
+   使用 `MoveBackward` 方法使 Agent 向后移动指定距离。
 
 3. **顺时针旋转**
 
-    ```cpp
-    agent.TurnClockwise(int angle = 45);
-    ```
+   ```cpp
+   agent.TurnClockwise(int angle = 45);
+   ```
 
-    - 参数：
-      - `angle`：旋转角度，默认为 45 度。
-    - 返回类型：无
+   - 参数：
+     - `angle`：旋转角度，默认为 45 度。
+   - 返回类型：无
 
-    使用 `TurnClockwise` 方法使 Agent 顺时针旋转指定角度。
+   使用 `TurnClockwise` 方法使 Agent 顺时针旋转指定角度。
 
 4. **逆时针旋转**
 
-    ```cpp
-    agent.TurnCounterClockwise(int angle = 45);
-    ```
+   ```cpp
+   agent.TurnCounterClockwise(int angle = 45);
+   ```
 
-    - 参数：
-      - `angle`：旋转角度，默认为 45 度。
-    - 返回类型：无
+   - 参数：
+     - `angle`：旋转角度，默认为 45 度。
+   - 返回类型：无
 
-    使用 `TurnCounterClockwise` 方法使 Agent 逆时针旋转指定角度。
+   使用 `TurnCounterClockwise` 方法使 Agent 逆时针旋转指定角度。
 
 5. **攻击**
 
-    ```cpp
-    agent.Attack();
-    ```
+   ```cpp
+   agent.Attack();
+   ```
 
-    - 返回类型：无
+   - 返回类型：无
 
-    使用 `Attack` 方法使 Agent 攻击。
+   使用 `Attack` 方法使 Agent 攻击。
 
 6. **使用技能**
 
-    ```cpp
-    agent.UseSkill(SkillKind skill);
-    ```
+   ```cpp
+   agent.UseSkill(SkillKind skill);
+   ```
 
-    - 参数：
-      - `skill`：技能种类。
-    - 返回类型：无
+   - 参数：
+     - `skill`：技能种类。
+   - 返回类型：无
 
-    使用 `UseSkill` 方法使用指定技能。
+   使用 `UseSkill` 方法使用指定技能。
 
 7. **选择奖励**
 
-    ```cpp
-    agent.SelectBuff(BuffKind buff);
-    ```
+   ```cpp
+   agent.SelectBuff(BuffKind buff);
+   ```
 
-    - 参数：
-      - `buff`：奖励种类。
-    - 返回类型：无
+   - 参数：
+     - `buff`：奖励种类。
+   - 返回类型：无
 
-    使用 `SelectBuff` 方法选择指定的奖励。
+   使用 `SelectBuff` 方法选择指定的奖励。
 
 ### 状态查询
 
 1. **判断是否连接到服务器**
 
-    ```cpp
-    bool connected{agent.IsConnected()};
-    ```
+   ```cpp
+   bool connected{agent.IsConnected()};
+   ```
 
-    - 返回类型：`bool`
+   - 返回类型：`bool`
 
-    `IsConnected` 方法指示 Agent 是否已连接到服务器。
+   `IsConnected` 方法指示 Agent 是否已连接到服务器。
 
 2. **判断游戏是否准备就绪**
 
-    ```cpp
-    bool ready{agent.IsGameReady()};
-    ```
+   ```cpp
+   bool ready{agent.IsGameReady()};
+   ```
 
-    - 返回类型：`bool`
+   - 返回类型：`bool`
 
-    `IsGameReady` 方法指示游戏是否已准备就绪，即是否已获取到所有必要的游戏状态信息。
+   `IsGameReady` 方法指示游戏是否已准备就绪，即是否已获取到所有必要的游戏状态信息。

@@ -39,34 +39,41 @@
 从你在浏览器的地址栏中输入一个网址并按下回车键开始，到最终看到网页内容，整个过程中会发生一系列复杂的操作。这些操作可以大致分为以下几个步骤：
 
 1. **DNS 解析（Domain Name System）**
+
    - **请求**：首先，你的浏览器会尝试将你输入的域名（例如 `example.com`）转换成 IP 地址，因为计算机在网络上是通过 IP 地址来识别和通信的。
    - **查询**：如果这个域名的信息不在本地缓存中，浏览器会向 DNS 服务器发送查询请求。这个过程可能涉及多个 DNS 服务器，包括根 DNS 服务器、顶级域（TLD）DNS 服务器以及权威 DNS 服务器。
    - **响应**：一旦找到匹配的 IP 地址，DNS 服务器会将结果返回给你的浏览器。
 
 2. **建立 TCP 连接**
+
    - **三次握手**：使用获得的 IP 地址，浏览器会尝试与目标服务器建立 TCP（Transmission Control Protocol）连接。这涉及到所谓的“三次握手”过程：客户端发送 SYN 包，服务器回应 ACK + SYN 包，然后客户端再次回应 ACK 包确认连接。
    - **端口**：默认情况下，HTTP 使用 80 端口，HTTPS 则使用 443 端口。如果你访问的是一个安全网站（HTTPS），还会在此阶段进行 SSL/TLS 加密握手，确保数据传输的安全性。
 
 3. **发送 [HTTP](../../../learning_resources/networking/http.md)/HTTPS 请求**
+
    - **GET 请求**：当 TCP 连接成功建立后，浏览器会通过 HTTP 或 HTTPS 协议向服务器发送一个 GET 请求，请求特定资源（如网页的 HTML 文档）。这个请求包含了用户代理信息、接受的内容类型等元数据。
    - **Host 头**：特别地，在 HTTP/1.1 及更高版本中，请求中还包括了一个 `Host` 头部，指明了具体的主机名，这对于共享同一个 IP 地址但托管多个域名的服务器来说非常重要。
 
 4. **服务器处理请求**
+
    - **接收请求**：Web 服务器接收到请求后，会根据 URL 路径查找相应的文件或调用应用程序逻辑生成动态内容。
    - **执行脚本**：如果是动态网站，服务器可能会运行服务器端脚本语言（如 PHP、Python、Node.js 等）来生成响应内容。
    - **数据库查询**：某些情况下，服务器还需要从数据库中检索数据以完成页面的构建。
 
 5. **返回响应**
+
    - **状态码**：服务器会根据处理结果返回一个 HTTP 状态码（如 200 表示成功，404 表示未找到页面等）。
    - **内容**：除了状态码外，服务器还会返回实际的网页内容，通常是以 HTML 格式为主，也可能包含 CSS 样式表、JavaScript 脚本等。
 
 6. **浏览器渲染页面**
+
    - **解析 HTML**：浏览器接收到服务器返回的数据后，开始解析 HTML 文档，构建 DOM 树（Document Object Model）。
    - **加载外部资源**：HTML 文档中可能引用了外部资源，如 CSS 文件、JS 文件、图像等。浏览器会发起额外的 HTTP 请求去获取这些资源，并按照文档中的顺序依次加载。
    - **应用样式和脚本**：当所有必要的资源都被下载下来后，浏览器会应用 CSS 样式规则，并执行 JavaScript 代码，以实现交互性和视觉效果。
    - **呈现页面**：最后，浏览器将完成的页面呈现在屏幕上供用户查看。
 
 7. **用户交互**
+
    - **事件监听**：此时，页面已经完全加载完毕，用户可以开始与之互动，比如点击链接、填写表单、滚动页面等。任何用户动作都可能触发 JavaScript 事件，导致页面更新或发起新的网络请求。
 
 8. **断开连接**
@@ -109,11 +116,11 @@
 
 - **Hugo**：创建一个新的目录作为你的站点根目录，然后在该目录下运行 `hugo new site .` 命令。这里的 `.` 表示当前目录，Hugo 会在当前目录下生成配置文件和其他必要文件，可以通过 `--format` 参数指定配置文件格式，可以为 yml 或者 toml 或者 json。当然也可以在选定的父目录下运行 `hugo new site <folder>`，其中 `<folder>` 是你想要创建的文件夹名称。
 
-   ![示例图片](img/2.png)
+  ![示例图片](img/2.png)
 
 - **Hexo**：直接在目标位置执行 `hexo init <folder>`，其中 `<folder>` 是你想要创建的文件夹名称。
 
-   ![示例图片](img/3.png)
+  ![示例图片](img/3.png)
 
 <details>
 <summary>这一串命令应该在哪里执行？</summary>
@@ -138,18 +145,18 @@
 
 - **Hugo 主题**：通常可以将存放主题文件的仓库下载到站点根目录下的 `themes` 文件夹中，下载后的目录结构应该类似于下面这样：
 
-   ```plaintext
-   my-site/
-   ├── archetypes/
-   ├── content/
-   ├── ...
-   ├── themes/
-   │   └── my-theme/
-   │       ├── layouts/
-   │       ├── static/
-   │       ├── ...
-   ├── ...
-   ```
+  ```plaintext
+  my-site/
+  ├── archetypes/
+  ├── content/
+  ├── ...
+  ├── themes/
+  │   └── my-theme/
+  │       ├── layouts/
+  │       ├── static/
+  │       ├── ...
+  ├── ...
+  ```
 
 :::warning
 
@@ -173,13 +180,13 @@
   - **theme**：指定使用的主题名称。注意要和主题文件夹的名称保持完全一致。
   - **publishDir**：指定生成的静态文件存放的目录，默认为 `public`，需要改为 `docs`。
 
-   最终配置文件中应该包含类似如下的内容：
+  最终配置文件中应该包含类似如下的内容：
 
-   ```toml
-   baseURL = "https://<username>.github.io/"
-   theme = "my-theme"
-   publishDir = "docs"
-   ```
+  ```toml
+  baseURL = "https://<username>.github.io/"
+  theme = "my-theme"
+  publishDir = "docs"
+  ```
 
 - **Hexo**
 
@@ -195,7 +202,7 @@
   deploy:
     type: git
     repo: https://github.com/<username>/<username>.github.io.git
-    branch: main  # 或者 gh-pages
+    branch: main # 或者 gh-pages
   ```
 
 :::
@@ -254,13 +261,13 @@ Front Matter 是位于 Markdown 文件开头的一段元数据，通常用于指
 
 ```yaml
 ---
-title: "Hello World"
+title: 'Hello World'
 date: 2024-12-10T16:50:49+08:00
 lastmod: 2024-12-10T19:36:29+08:00
-tags: ["Hugo", "Hexo", "GitHub Pages"]
-categories: ["posts", "tutorials"]
-description: "This is a sample post."
-summary: "A brief introduction to Front Matter."
+tags: ['Hugo', 'Hexo', 'GitHub Pages']
+categories: ['posts', 'tutorials']
+description: 'This is a sample post.'
+summary: 'A brief introduction to Front Matter.'
 draft: true
 comments: true
 hideMeta: false

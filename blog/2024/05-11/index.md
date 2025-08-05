@@ -24,12 +24,11 @@ originalUrl: https://mp.weixin.qq.com/s/qSc0TjrQH3ktxmLL_e7z9g
 **<center>生死就在一瞬间**</center>
 
 - **狭路相逢勇者胜！**  
-    [我起了，两枪秒了](https://mpvideo.qpic.cn/0bc3taadcaaayuaor5r6iftfbggdggmaamia.f10002.mp4?dis_k=4a1d09f38a89dd3f38c2af96a52706cb&dis_t=1742810725&play_scene=10120&auth_info=V7zWvK9zSCwqxJ36oihnNWNXMhhMOF94PjIZR2MzHm9laE9obxI+SlR7OBIOE38kY1I1AH0TADJnZEEcfTYAZw==&auth_key=98bd5bcf639e9001aff26d6502beeab5&vid=wxv_3452795324601843724&format_id=10002&support_redirect=0&mmversion=false)
+   [我起了，两枪秒了](https://mpvideo.qpic.cn/0bc3taadcaaayuaor5r6iftfbggdggmaamia.f10002.mp4?dis_k=4a1d09f38a89dd3f38c2af96a52706cb&dis_t=1742810725&play_scene=10120&auth_info=V7zWvK9zSCwqxJ36oihnNWNXMhhMOF94PjIZR2MzHm9laE9obxI+SlR7OBIOE38kY1I1AH0TADJnZEEcfTYAZw==&auth_key=98bd5bcf639e9001aff26d6502beeab5&vid=wxv_3452795324601843724&format_id=10002&support_redirect=0&mmversion=false)
 - **穷则战术穿插，富则火力压制！**  
-    [转起来了（](https://mpvideo.qpic.cn/0bc3tiadaaaaciaosvz6j5tfbgwdgcnaamaa.f10002.mp4?dis_k=606d8fbdd0b69818eea9e453f0e04f45&dis_t=1742810725&play_scene=10120&auth_info=CNaP2vgoR3F2xsOs/ypsMTFbNx9Jb1h8bmVORTI0Hmc6bBg0PkgxFwh5ZkRTEXQgMV4wB3hEBzY3MxYeLDEAbw==&auth_key=485ea2310a429bce6094d29f262b18db&vid=wxv_3452796039630012423&format_id=10002&support_redirect=0&mmversion=false)
+   [转起来了（](https://mpvideo.qpic.cn/0bc3tiadaaaaciaosvz6j5tfbgwdgcnaamaa.f10002.mp4?dis_k=606d8fbdd0b69818eea9e453f0e04f45&dis_t=1742810725&play_scene=10120&auth_info=CNaP2vgoR3F2xsOs/ypsMTFbNx9Jb1h8bmVORTI0Hmc6bBg0PkgxFwh5ZkRTEXQgMV4wB3hEBzY3MxYeLDEAbw==&auth_key=485ea2310a429bce6094d29f262b18db&vid=wxv_3452796039630012423&format_id=10002&support_redirect=0&mmversion=false)
 
-![毒圈](img/3.png)<center>
-太美丽了毒圈！</center>
+![毒圈](img/3.png)<center> 太美丽了毒圈！</center>
 
 ![毒圈](img/4.png)
 

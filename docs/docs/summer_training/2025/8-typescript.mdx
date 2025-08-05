@@ -1,5 +1,5 @@
 ---
-sidebar_label: "TypeScript"
+sidebar_label: 'TypeScript'
 sidebar_position: 8
 ---
 
@@ -8,6 +8,7 @@ sidebar_position: 8
 ## 从 JS 到 TS
 
 JavaScript 被广泛应用于 [Web 开发](10-web/2-js_ts.mdx)等领域，其有两个特性和 Python 相似:
+
 - 解释型语言
 - 动态类型
 
@@ -18,7 +19,7 @@ JavaScript 没有静态类型检查，而 TypeScript 弥补了这一部分。Typ
 现在你可能迫不及待想要配环境写 `Hello World!` 了，但是别急，其实 JS 的运行时远在天边近在眼前，就在你用来浏览本教程的浏览器中。以 Edge 为例，按下 F12 （~~对不起，手机端用户~~），点进控制台，我们得到了一个现成了 JavaScript 解释器。向其中打出
 
 ```js
-console.log("Hello World!");
+console.log('Hello World!');
 ```
 
 回车，我们就看到了心心念念的 `Hello World!`。当然如果你追求使用 PowerShell 或 bash 来运行 JS 代码，可以安装一个 [Node.js](https://nodejs.org/en) (Preferred!)。~~忽略[青柠起始页](https://intro.limestart.cn/)的内容。~~
@@ -43,19 +44,19 @@ console.log(a);
 ```js
 var x = 3;
 {
-    console.log(x); // !?
-    var x;
+  console.log(x); // !?
+  var x;
 }
 ```
 
 ```js
-let arr = [1, 2, 3,]; // Last comma will be ignored
+let arr = [1, 2, 3]; // Last comma will be ignored
 console.log(arr[3]);
 ```
 
 ```js
 function print_third(a, b, c) {
-    console.log(c);
+  console.log(c);
 }
 
 print_third(1, 2);
@@ -67,12 +68,12 @@ print_third(1, 2);
 
 ```js
 function name_getter_getter(name) {
-    return function () {
-        return name;
-    }
+  return function () {
+    return name;
+  };
 }
 
-let bar = name_getter_getter("Foo");
+let bar = name_getter_getter('Foo');
 console.log(bar()); // Foo
 ```
 
@@ -81,13 +82,13 @@ console.log(bar()); // Foo
 还有一个很有意思的写法：
 
 ```js
-let result = function () {
-    let sum = 0;
-    for (let i = 0; i < 100; ++i) {
-        sum += i;
-    }
-    return sum;
-}();
+let result = (function () {
+  let sum = 0;
+  for (let i = 0; i < 100; ++i) {
+    sum += i;
+  }
+  return sum;
+})();
 console.log(result); // 4950
 ```
 
@@ -113,19 +114,18 @@ fn main() {
 对象本质上就是拥有一系列属性（成员变量，成员函数）的集合体，并且这些属性是高度动态的，和 Python 如出一辙（但显然比 Python 没有底线得多）。
 
 ```js
-let name = "Tsinghua University";
+let name = 'Tsinghua University';
 let university = {
-    name, // equivalent to `name: name,`
-    location: "Haidian District, Beijing",
-    [() => "departments"]: ["DA", "CST", /* etc. */ ],
-    welcome_student(student) {
-        console.log(`Welcome to ${this.name}, ${student}!`);
-    },
-}
+  name, // equivalent to `name: name,`
+  location: 'Haidian District, Beijing',
+  [() => 'departments']: ['DA', 'CST' /* etc. */],
+  welcome_student(student) {
+    console.log(`Welcome to ${this.name}, ${student}!`);
+  },
+};
 
 // Add new...
-university.buildings = ["3rd Teaching Building", "6th Teaching Building"];
+university.buildings = ['3rd Teaching Building', '6th Teaching Building'];
 ```
 
 ## TypeScript 的类型标注
-

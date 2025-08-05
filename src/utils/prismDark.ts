@@ -5,7 +5,7 @@
  * LICENSE file in https://github.com/facebook/docusaurus/tree/main.
  */
 
-import { themes, type PrismTheme } from 'prism-react-renderer';
+import {themes, type PrismTheme} from 'prism-react-renderer';
 
 const baseTheme = themes.dracula;
 

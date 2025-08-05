@@ -91,182 +91,182 @@ xmake
 
 1. **获取所有玩家信息**
 
-    ```cpp
-    auto players_info = agent.all_player_info();
-    ```
+   ```cpp
+   auto players_info = agent.all_player_info();
+   ```
 
-    - 返回类型：`std::optional<std::reference_wrapper<std::vector<PlayerInfo> const>>`
+   - 返回类型：`std::optional<std::reference_wrapper<std::vector<PlayerInfo> const>>`
 
-    `all_player_info` 方法将返回一个包含所有玩家信息的列表。每个玩家信息包括玩家的 ID、生命值、护甲、速度、当前武器、位置和背包物品等。
+   `all_player_info` 方法将返回一个包含所有玩家信息的列表。每个玩家信息包括玩家的 ID、生命值、护甲、速度、当前武器、位置和背包物品等。
 
 2. **获取地图信息**
 
-    ```cpp
-    auto game_map = agent.map();
-    ```
+   ```cpp
+   auto game_map = agent.map();
+   ```
 
-    - 返回类型：`std::optional<std::reference_wrapper<Map const>>`
+   - 返回类型：`std::optional<std::reference_wrapper<Map const>>`
 
-    `map` 方法将返回地图信息，包括地图的长度和障碍物位置。
+   `map` 方法将返回地图信息，包括地图的长度和障碍物位置。
 
 3. **获取资源信息**
 
-    ```cpp
-    auto supplies = agent.supplies();
-    ```
+   ```cpp
+   auto supplies = agent.supplies();
+   ```
 
-    - 返回类型：`std::optional<std::reference_wrapper<std::vector<Supply> const>>`
+   - 返回类型：`std::optional<std::reference_wrapper<std::vector<Supply> const>>`
 
-    `supplies` 方法将返回一个包含所有资源信息的列表。每个资源信息包括资源的种类、位置和数量。
+   `supplies` 方法将返回一个包含所有资源信息的列表。每个资源信息包括资源的种类、位置和数量。
 
 4. **获取安全区信息**
 
-    ```cpp
-    auto safe_zone = agent.safe_zone();
-    ```
+   ```cpp
+   auto safe_zone = agent.safe_zone();
+   ```
 
-    - 返回类型：`std::optional<std::reference_wrapper<SafeZone const>>`
+   - 返回类型：`std::optional<std::reference_wrapper<SafeZone const>>`
 
-    `safe_zone` 方法将返回安全区信息，包括安全区的中心位置和半径。
+   `safe_zone` 方法将返回安全区信息，包括安全区的中心位置和半径。
 
 5. **获取自身 ID**
 
-    ```cpp
-    auto self_id = agent.self_id();
-    ```
+   ```cpp
+   auto self_id = agent.self_id();
+   ```
 
-    - 返回类型：`std::optional<int>`
+   - 返回类型：`std::optional<int>`
 
-    `self_id` 方法将返回自身玩家的 ID。
+   `self_id` 方法将返回自身玩家的 ID。
 
 ### 操作无人作战系统
 
 1. **选择出生地**
 
-    ```cpp
-    agent.ChooseOrigin(Position<float> position);
-    ```
+   ```cpp
+   agent.ChooseOrigin(Position<float> position);
+   ```
 
-    - 参数：
-      - `position`：出生地位置。
-    - 返回类型：无
+   - 参数：
+     - `position`：出生地位置。
+   - 返回类型：无
 
-    使用 `ChooseOrigin` 方法选择无人作战系统的出生地。
+   使用 `ChooseOrigin` 方法选择无人作战系统的出生地。
 
 2. **移动**
 
-    ```cpp
-    agent.Move(Position<float> position);
-    ```
+   ```cpp
+   agent.Move(Position<float> position);
+   ```
 
-    - 参数：
-      - `position`：目标位置。
-    - 返回类型：无
+   - 参数：
+     - `position`：目标位置。
+   - 返回类型：无
 
-    使用 `Move` 方法使无人作战系统移动到指定位置。
+   使用 `Move` 方法使无人作战系统移动到指定位置。
 
 3. **停止移动**
 
-    ```cpp
-    agent.Stop();
-    ```
+   ```cpp
+   agent.Stop();
+   ```
 
-    - 返回类型：无
+   - 返回类型：无
 
-    使用 `Stop` 方法停止无人作战系统的移动。
+   使用 `Stop` 方法停止无人作战系统的移动。
 
 4. **拾取资源**
 
-    ```cpp
-    agent.PickUp(SupplyKind target_supply, int count);
-    ```
+   ```cpp
+   agent.PickUp(SupplyKind target_supply, int count);
+   ```
 
-    - 参数：
-      - `target_supply`：目标资源种类。
-      - `count`：数量。
-    - 返回类型：无
+   - 参数：
+     - `target_supply`：目标资源种类。
+     - `count`：数量。
+   - 返回类型：无
 
-    使用 `PickUp` 方法使无人作战系统拾取当前脚下 1×1 方格上的资源。
+   使用 `PickUp` 方法使无人作战系统拾取当前脚下 1×1 方格上的资源。
 
 5. **放弃资源**
 
-    ```cpp
-    agent.Abandon(SupplyKind target_supply, int count);
-    ```
+   ```cpp
+   agent.Abandon(SupplyKind target_supply, int count);
+   ```
 
-    - 参数：
-      - `target_supply`：目标资源种类。
-      - `count`：数量。
-    - 返回类型：无
+   - 参数：
+     - `target_supply`：目标资源种类。
+     - `count`：数量。
+   - 返回类型：无
 
-    使用 `Abandon` 方法使无人作战系统放弃背包中的指定数量的资源。
+   使用 `Abandon` 方法使无人作战系统放弃背包中的指定数量的资源。
 
 6. **切换武器**
 
-    ```cpp
-    agent.SwitchFirearm(FirearmKind target_firearm);
-    ```
+   ```cpp
+   agent.SwitchFirearm(FirearmKind target_firearm);
+   ```
 
-    - 参数：
-      - `target_firearm`：目标武器的种类。
-    - 返回类型：无
+   - 参数：
+     - `target_firearm`：目标武器的种类。
+   - 返回类型：无
 
-    使用 `SwitchFirearm` 方法切换无人作战系统的当前武器。
+   使用 `SwitchFirearm` 方法切换无人作战系统的当前武器。
 
 7. **使用药品**
 
-    ```cpp
-    agent.UseMedicine(MedicineKind target_medicine);
-    ```
+   ```cpp
+   agent.UseMedicine(MedicineKind target_medicine);
+   ```
 
-    - 参数：
-      - `target_medicine`：药品种类。
-    - 返回类型：无
+   - 参数：
+     - `target_medicine`：药品种类。
+   - 返回类型：无
 
-    使用 `UseMedicine` 方法使用药品恢复无人作战系统的生命值。
+   使用 `UseMedicine` 方法使用药品恢复无人作战系统的生命值。
 
 8. **使用手榴弹**
 
-    ```cpp
-    agent.UseGrenade(Position<float> position);
-    ```
+   ```cpp
+   agent.UseGrenade(Position<float> position);
+   ```
 
-    - 参数：
-      - `position`：目标位置。
-    - 返回类型：无
+   - 参数：
+     - `position`：目标位置。
+   - 返回类型：无
 
-    使用 `UseGrenade` 方法投掷手榴弹攻击敌人或破坏墙体。
+   使用 `UseGrenade` 方法投掷手榴弹攻击敌人或破坏墙体。
 
 9. **攻击**
 
-    ```cpp
-    agent.Attack(Position<float> position);
-    ```
+   ```cpp
+   agent.Attack(Position<float> position);
+   ```
 
-    - 参数：
-      - `position`：目标位置。
-    - 返回类型：无
+   - 参数：
+     - `position`：目标位置。
+   - 返回类型：无
 
-    使用 `Attack` 方法使无人作战系统攻击指定位置的敌人。
+   使用 `Attack` 方法使无人作战系统攻击指定位置的敌人。
 
 ### 状态查询
 
 1. **判断是否连接到服务器**
 
-    ```cpp
-    bool connected = agent.IsConnected();
-    ```
+   ```cpp
+   bool connected = agent.IsConnected();
+   ```
 
-    - 返回类型：`bool`
+   - 返回类型：`bool`
 
-    `IsConnected` 方法指示 Agent 是否已连接到服务器。
+   `IsConnected` 方法指示 Agent 是否已连接到服务器。
 
 2. **判断游戏是否准备就绪**
 
-    ```cpp
-    bool ready = agent.IsGameReady();
-    ```
+   ```cpp
+   bool ready = agent.IsGameReady();
+   ```
 
-    - 返回类型：`bool`
+   - 返回类型：`bool`
 
-    `IsGameReady` 方法指示游戏是否已准备就绪，即是否已获取到所有必要的游戏状态信息。
+   `IsGameReady` 方法指示游戏是否已准备就绪，即是否已获取到所有必要的游戏状态信息。

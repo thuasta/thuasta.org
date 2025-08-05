@@ -49,7 +49,6 @@ originalUrl: https://mp.weixin.qq.com/s/GyXfvyHJxbEe7QB9K_w5yg
   [致敬传奇步枪手 NIKO（](https://mpvideo.qpic.cn/0b2etyaaiaaayyacuisiwntfbhwdaspaabaa.f10002.mp4?dis_k=e776c8fa50a17c4232d2b478e2536868&dis_t=1742790315&play_scene=10120&auth_info=fsT9l2YUaEj84talTn9KQEBjbBo5OTRCcWFCKRhQcXdEXwxICGsSORVNOUB1c2k=&auth_key=424ee963e68c938eb39ded11b86de2bf&vid=wxv_3463055902771625984&format_id=10002&support_redirect=0&mmversion=false)
 
 - [人造轰炸区](https://mpvideo.qpic.cn/0bc3ueaacaaa3eac6ekibrtfbiodagqqaaia.f10002.mp4?dis_k=b0424f60dbcb6fb6980d4afa4476404a&dis_t=1742790315&play_scene=10120&auth_info=UqOztapNH2pI+uGE80IuT0NHZWBNY2w3R3NkTH8dByJ0Qw4NSgNgEDkTTmsWeSJs&auth_key=b6857be8123a55c14f39137fd77d0081&vid=wxv_3463056445346791432&format_id=10002&support_redirect=0&mmversion=false)
-  
 - [生死就在一瞬间](https://mpvideo.qpic.cn/0bc3oaaaoaaa4yacsqkitftfa4gda5yaabya.f10002.mp4?dis_k=6c36f02f8ac49e000abc82dfd81ddd51&dis_t=1742790315&play_scene=10120&auth_info=BOii/pxARjhP9rKG9BIiSREXMWEdNz8wQyEySClBBCIiTA1fTAo5Qj4fHWkRKS5q&auth_key=db929ccea8b7c8fd42bbb663ef1e07b9&vid=wxv_3463056951599284226&format_id=10002&support_redirect=0&mmversion=false)
 
 - **穿越火线**：  
@@ -62,7 +61,7 @@ originalUrl: https://mp.weixin.qq.com/s/GyXfvyHJxbEe7QB9K_w5yg
 
 后续比赛的规则和游戏的数值还可能会有所调整，请各位参赛者关注群聊信息！
 
-- 决赛代码提交截止时间：5 月 23 日 23:59:59  
+- 决赛代码提交截止时间：5 月 23 日 23:59:59
 - 决赛晚会：5 月 25 日
 
 ---

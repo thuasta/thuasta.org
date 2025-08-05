@@ -42,51 +42,26 @@
 
 在提交之前需要先创建团队：
 
-1. 点击上方的“小组”菜单，进入“第八届人工智能挑战赛”：
-  ![步骤 1](img/1.png)
+1. 点击上方的“小组”菜单，进入“第八届人工智能挑战赛”： ![步骤 1](img/1.png)
 
-2. 进入初赛：
-  ![步骤 2](img/2.png)
+2. 进入初赛： ![步骤 2](img/2.png)
 
-3. 创建团队：
-  ![步骤 3](img/3.png)
+3. 创建团队： ![步骤 3](img/3.png)
 
-4. 注意创建团队之后在选择 AI 的时候会看不到自己之前提交的 AI。因为之前提交的代码都是以**个人身份**提交的，而创建团队在初赛只能提交**团队 AI**。这里我们回到“游戏”菜单，选择切换团队，之后切换到自己的队伍再次提交代码，便可以在初赛中提交。如果你之前利用 saiblo 参加过其他比赛，那么所有比赛的小组都会在这里，请注意不要选错。~~虽然之前参加过的用不到这条说明~~
-  ![步骤 4](img/4.png)
-  ![步骤 5](img/5.png)
+4. 注意创建团队之后在选择 AI 的时候会看不到自己之前提交的 AI。因为之前提交的代码都是以**个人身份**提交的，而创建团队在初赛只能提交**团队 AI**。这里我们回到“游戏”菜单，选择切换团队，之后切换到自己的队伍再次提交代码，便可以在初赛中提交。如果你之前利用 saiblo 参加过其他比赛，那么所有比赛的小组都会在这里，请注意不要选错。~~虽然之前参加过的用不到这条说明~~ ![步骤 4](img/4.png) ![步骤 5](img/5.png)
 
 最终应提交一个 `zip` 文件，其中必须包括所有的代码，目录结构应该类似于下面这样：
 
-{/* ```mdx-code-block  */}
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+{/* ```mdx-code-block */} import Tabs from '@theme/Tabs'; import TabItem from '@theme/TabItem';
 
 <Tabs>
   <TabItem value="cpp" label="C++" default>
-    ```plaintext
-    cpp_code.zip/
-    ├── src/
-    │   ├── agent/
-    │   │   └── ...
-    │   ├── main.cpp
-    │   ├── logic.cpp
-    │   └── ...
-    ├── Dockerfile
-    └── xmake.lua
-    ```
+    ```plaintext cpp_code.zip/ ├── src/ │ ├── agent/ │ │ └── ... │ ├── main.cpp
+    │ ├── logic.cpp │ └── ... ├── Dockerfile └── xmake.lua ```
   </TabItem>
   <TabItem value="python" label="Python">
-    ```plaintext
-    py_code.zip/
-    ├── src/
-    │   ├── agent/
-    │   │   └── ...
-    │   ├── main.py
-    │   ├── logic.py
-    │   └── ...
-    ├── Dockerfile
-    └── requirements.txt
-    ```
+    ```plaintext py_code.zip/ ├── src/ │ ├── agent/ │ │ └── ... │ ├── main.py │
+    ├── logic.py │ └── ... ├── Dockerfile └── requirements.txt ```
   </TabItem>
 </Tabs>
 {/* ``` */}

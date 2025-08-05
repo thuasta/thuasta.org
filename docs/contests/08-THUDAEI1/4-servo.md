@@ -22,12 +22,10 @@
 <img src="https://cloud.tsinghua.edu.cn/thumbnail/24f8d1997d1848ec9c72/1024/img/THUDAEI1/servo/3.jpg" alt="端口示意图" loading="lazy" />
 
 香橙派与拓展版的通讯采用的是 i2c 协议。需要连接三根线：SDA、SCL 和 GND，即 3、5、6 引脚。
-  
-拓展板的 3、5、6 引脚如下图所示：
-<img src="https://cloud.tsinghua.edu.cn/thumbnail/24f8d1997d1848ec9c72/1024/img/THUDAEI1/servo/4.jpg" alt="拓展板引脚" loading="lazy" />
 
-香橙派的 3、5、6 引脚如下图所示：
-<img src="https://cloud.tsinghua.edu.cn/thumbnail/24f8d1997d1848ec9c72/1024/img/THUDAEI1/servo/5.jpg" alt="香橙派引脚" loading="lazy" />
+拓展板的 3、5、6 引脚如下图所示： <img src="https://cloud.tsinghua.edu.cn/thumbnail/24f8d1997d1848ec9c72/1024/img/THUDAEI1/servo/4.jpg" alt="拓展板引脚" loading="lazy" />
+
+香橙派的 3、5、6 引脚如下图所示： <img src="https://cloud.tsinghua.edu.cn/thumbnail/24f8d1997d1848ec9c72/1024/img/THUDAEI1/servo/5.jpg" alt="香橙派引脚" loading="lazy" />
 
 将二者对应的 3、5、6 顺序连接，注意不要插错。
 

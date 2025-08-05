@@ -1,16 +1,16 @@
-import React, { type ReactNode } from 'react';
-import { ThemeClassNames } from '@docusaurus/theme-common';
+import React, {type ReactNode} from 'react';
+import {ThemeClassNames} from '@docusaurus/theme-common';
 import Link from '@docusaurus/Link';
-import { useBlogPost } from '@docusaurus/plugin-content-blog/client';
+import {useBlogPost} from '@docusaurus/plugin-content-blog/client';
 import Content from '@theme-original/BlogPostItem/Content';
 import type ContentType from '@theme/BlogPostItem/Content';
-import type { WrapperProps } from '@docusaurus/types';
+import type {WrapperProps} from '@docusaurus/types';
 import blogInfoBox from '@site/src/data/blogInfoBox';
 
 type Props = WrapperProps<typeof ContentType>;
 
 function originalArticleLink(): ReactNode {
-  const { isBlogPostPage, metadata } = useBlogPost();
+  const {isBlogPostPage, metadata} = useBlogPost();
   const originalUrl = metadata.frontMatter.originalUrl;
   if (!originalUrl || !isBlogPostPage) {
     return null;
@@ -30,7 +30,7 @@ function originalArticleLink(): ReactNode {
 }
 
 export default function ContentWrapper(props: Props): ReactNode {
-  const { isBlogPostPage } = useBlogPost();
+  const {isBlogPostPage} = useBlogPost();
   return (
     <>
       <Content {...props} />

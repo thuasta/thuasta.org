@@ -17,62 +17,62 @@
 
 1. 批量安装 Docker
 
-    轻量云-自动化助手-个人命令-选择地域-创建命令，命令内容如下：
+   轻量云-自动化助手-个人命令-选择地域-创建命令，命令内容如下：
 
-    ```bash
-    apt-get update
-    apt-get install -y ca-certificates curl
-    install -m 0755 -d /etc/apt/keyrings
-    curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc
-    chmod a+r /etc/apt/keyrings/docker.asc
+   ```bash
+   apt-get update
+   apt-get install -y ca-certificates curl
+   install -m 0755 -d /etc/apt/keyrings
+   curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc
+   chmod a+r /etc/apt/keyrings/docker.asc
 
-    echo \
-    "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian \
-    $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
-    tee /etc/apt/sources.list.d/docker.list > /dev/null
-    apt-get update
+   echo \
+   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian \
+   $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+   tee /etc/apt/sources.list.d/docker.list > /dev/null
+   apt-get update
 
-    VERSION_STRING=5:27.3.1-1~debian.12~bookworm
-    apt-get install -y docker-ce=$VERSION_STRING docker-ce-cli=$VERSION_STRING containerd.io docker-buildx-plugin docker-compose-plugin
-    ```
+   VERSION_STRING=5:27.3.1-1~debian.12~bookworm
+   apt-get install -y docker-ce=$VERSION_STRING docker-ce-cli=$VERSION_STRING containerd.io docker-buildx-plugin docker-compose-plugin
+   ```
 
-    :::warning
+   :::warning
 
-    保证所有云服务器都有完全相同的 `VERSION_STRING`，否则 Docker Swarm 无法配置成功。
+   保证所有云服务器都有完全相同的 `VERSION_STRING`，否则 Docker Swarm 无法配置成功。
 
-    :::
+   :::
 
 2. 开放端口
 
-    在腾讯云控制台设置：轻量云-防火墙模版-创建模板，规则配置为应用类型 ALL、来源全部 IPv4 地址、策略允许。创建完成后，设置实例防火墙到全部实例。
+   在腾讯云控制台设置：轻量云-防火墙模版-创建模板，规则配置为应用类型 ALL、来源全部 IPv4 地址、策略允许。创建完成后，设置实例防火墙到全部实例。
 
 3. 配置 Docker Swarm
 
-    :::tip
+   :::tip
 
-    参考 <https://docs.docker.com/engine/swarm/swarm-tutorial/create-swarm/>
+   参考 <https://docs.docker.com/engine/swarm/swarm-tutorial/create-swarm/>
 
-    :::
+   :::
 
-    所有机器中，有一台配置为 manager，其他配置为 worker。这个可以随意指定一台。
+   所有机器中，有一台配置为 manager，其他配置为 worker。这个可以随意指定一台。
 
-    首先在控制台-轻量云-服务器-manager 对应的服务器-概要-网络与域名-IPv4-（内）查看到内网 IP 地址，格式应该是 10.x.x.x。然后 SSH 登陆 manager，运行 `docker swarm init --advertise-addr 10.x.x.x`（自行替换 IP 地址）。运行完成后会输出一段 `To add a worker to this swarm, run the following comand...`，把这一段命令复制下来。
+   首先在控制台-轻量云-服务器-manager 对应的服务器-概要-网络与域名-IPv4-（内）查看到内网 IP 地址，格式应该是 10.x.x.x。然后 SSH 登陆 manager，运行 `docker swarm init --advertise-addr 10.x.x.x`（自行替换 IP 地址）。运行完成后会输出一段 `To add a worker to this swarm, run the following comand...`，把这一段命令复制下来。
 
-    然后可以通过自动化助手，或者手动逐个连接 worker，运行刚才复制的命令。
+   然后可以通过自动化助手，或者手动逐个连接 worker，运行刚才复制的命令。
 
-    配置完毕后，在 manager 运行 `docker node ls` 查看各节点情况。
+   配置完毕后，在 manager 运行 `docker node ls` 查看各节点情况。
 
 4. 配置 Portainer
 
-    在 manager 上，运行 `curl -L https://downloads.portainer.io/ce-lts/portainer-agent-stack.yml -o portainer-agent-stack.yml` 下载部署配置文件，运行 `docker stack deploy -c portainer-agent-stack.yml portainer` 部署。
+   在 manager 上，运行 `curl -L https://downloads.portainer.io/ce-lts/portainer-agent-stack.yml -o portainer-agent-stack.yml` 下载部署配置文件，运行 `docker stack deploy -c portainer-agent-stack.yml portainer` 部署。
 
-    访问任一 manager 或 worker 的 9443 端口（假设 IP 为 1.2.3.4，则访问 <https://1.2.3.4:9443> ），浏览器应该会提醒不安全，忽略并继续访问即可。这是初始配置和后续所有管理操作的地址。
+   访问任一 manager 或 worker 的 9443 端口（假设 IP 为 1.2.3.4，则访问 <https://1.2.3.4:9443> ），浏览器应该会提醒不安全，忽略并继续访问即可。这是初始配置和后续所有管理操作的地址。
 
-    在 Swarm 里面配置各个 node 的 labels，添加一个 `role` label（注意不要和 docker swarm 自己的 role 混淆），锐驰型配置为 `gateway`，其他的配置为 `worker`。
+   在 Swarm 里面配置各个 node 的 labels，添加一个 `role` label（注意不要和 docker swarm 自己的 role 混淆），锐驰型配置为 `gateway`，其他的配置为 `worker`。
 
 5. 配置 DNS 记录
 
-    配置 cluster.thuasta.org 的 A 记录到每一个 worker（重复添加即可），但不建议配置到 manager 以免被打。以后就可以访问 <https://cluster.thuasta.org:9443> 来管理了。
+   配置 cluster.thuasta.org 的 A 记录到每一个 worker（重复添加即可），但不建议配置到 manager 以免被打。以后就可以访问 <https://cluster.thuasta.org:9443> 来管理了。
 
 ## 应用
 
@@ -138,7 +138,7 @@ services:
         condition: any
     environment:
       NAME: saiblo-worker
-      
+
       AGENT_BUILD_TIMEOUT: 300
       AGENT_CPUS: 0.5
       AGENT_MEM_LIMIT: 1g
