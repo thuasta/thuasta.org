@@ -19,59 +19,59 @@ React 框架特点：
 
 - TypeScript 和 React
 
-  ```bash
-  npm install -g typescript create-react-app
-  ```
+    ```bash
+    npm install -g typescript create-react-app
+    ```
 
 - 创建 React 应用
 
-  ```bash
-  npx create-react-app react-tutorial --template typescript
-  ```
+    ```bash
+    npx create-react-app react-tutorial --template typescript
+    ```
 
 - 进入 create-react-app 创建的文件夹并安装 TypeScript 相关依赖
 
-  ```bash
-  cd react-tutorial
-  npm install typescript @types/node @types/react @types/react-dom @types/jest --save-dev
-  ```
+    ```bash
+    cd react-tutorial
+    npm install typescript @types/node @types/react @types/react-dom @types/jest --save-dev
+    ```
 
-  可看到文件架构如下，结构代码主要在 `src` 内。
+    可看到文件架构如下，结构代码主要在 `src` 内。
 
-  ```plaintext
-  react-tutorial/
-  ├── node_modules/
-  ├── public/
-  ├── src/
-  │   ├── App.css
-  │   ├── App.tsx
-  │   ├── index.css
-  │   ├── index.tsx
-  │   ├── ...
-  ├── .gitignore
-  ├── package.json
-  ├── package-lock.json
-  ├── README.md
-  ├── tsconfig.json
-  ```
+    ```plaintext
+    react-tutorial/
+    ├── node_modules/
+    ├── public/
+    ├── src/
+    │   ├── App.css
+    │   ├── App.tsx
+    │   ├── index.css
+    │   ├── index.tsx
+    │   ├── ...
+    ├── .gitignore
+    ├── package.json
+    ├── package-lock.json
+    ├── README.md
+    ├── tsconfig.json
+    ```
 
 - 启动 React，在浏览器打开 `localhost:3000` 查看应用
 
-  ```bash
-  npm start
-  ```
+    ```bash
+    npm start
+    ```
 
 ## 理解 TSX
 
 React 对 TypeScript 语言作了一定的拓展，拓展后的 TSX 在拥有 TypeScript 特性的同时具有一些类似HTML的特征，其中最显著的特点就是标签语法的引入。
 
-```typescript
+``` typescript
 const p = <p>Hello world!</p>;
 ```
 
 这定义了一个标签对象，讲过编译后，会变成如下浏览器可以直接执行的TS代码
 
-```typescript
+``` typescript
 const p = React.createElement('p', null, 'Hello world!');
 ```
 
@@ -147,6 +147,7 @@ export default function ShoppingList() {
 
 以上代码中，`ShoppingList` 组件返回了一个包含 `products` 列表中所有产品的 `ul` 标签，每个产品都由一个 `li` 标签表示。`map` 函数用于将 `products` 列表中的每个产品转换为 `li` 标签，并根据是否是水果呈现不同的颜色，添加到 `listItems` 数组中。最后，`listItems` 数组被渲染为 `ul` 标签的子元素。
 
+
 ## 属性 Props
 
 类似 HTML 规定标签属性语法，你可以通过通过 `props` 实现父组件对子组件的控制。具体而言，`props` 会包装成一个对象传入函数组件的参数之中。
@@ -154,22 +155,20 @@ export default function ShoppingList() {
 ```tsx
 function Todo(props) {
   return (
-    <li>
-      {props.person} should {props.todo}
-    </li>
-  );
+    <li>{props.person} should {props.todo}</li>
+  )
 }
+
 
 export default function TodoList() {
   return (
-    <ul
-      style={{
-        backgroundColor: 'black',
-        color: 'pink',
-      }}>
-      <Todo person="I" todo="play Genshen Impact" />
-      <Todo person="ljr" todo="play Honkai: Star Rail" />
-      <Todo person="John" todo="cope with his bugs" />
+    <ul style={{
+      backgroundColor: 'black',
+      color: 'pink'
+    }}>
+      <Todo person="I" todo="play Genshen Impact"/>
+      <Todo person="ljr" todo="play Honkai: Star Rail"/>
+      <Todo person="John" todo="cope with his bugs"/>
     </ul>
   );
 }
@@ -180,12 +179,10 @@ export default function TodoList() {
 实际上，`props` 是一个对象，它包含了组件的所有属性。在上述代码中，`props` 对象包含了 `person` 和 `todo` 属性，这些属性被传递给了 `Todo` 组件。其中，函数组件 `Todo` 另一种写法是：
 
 ```tsx
-function Todo({person, todo}) {
+function Todo({ person, todo }) {
   return (
-    <li>
-      {person} should {todo}
-    </li>
-  );
+    <li>{person} should {todo}</li>
+  )
 }
 ```
 
@@ -194,15 +191,12 @@ function Todo({person, todo}) {
 类似函数的参数，函数组件的props也可以指定默认值，例如：
 
 ```tsx
-function Todo({person = 'John', todo}) {
+function Todo({ person = 'John', todo }) {
   return (
-    <li>
-      {person} should {todo}
-    </li>
-  );
+    <li>{person} should {todo}</li>
+  )
 }
 ```
-
 以上代码中，`person` 属性有一个默认值 `'John'`，如果父组件没有传递 `person` 属性，那么 `person` 的值就会是 `'John'`。
 
 ## 状态 State
@@ -210,29 +204,27 @@ function Todo({person = 'John', todo}) {
 函数组件之中需要使用 Hooks，形而上地写成 `const [state, setState] = useState(initState);`，状态是组件自我管理的数据，不需要依赖父组件的控制。
 
 ```tsx
-import {useState} from 'react'; //要使用useState，我们首先需要进行导入
+import { useState } from 'react'; //要使用useState，我们首先需要进行导入
 
 const products = [
-  {title: 'Cabbage', isFruit: false, id: 1},
-  {title: 'Garlic', isFruit: false, id: 2},
-  {title: 'Apple', isFruit: true, id: 3},
+  { title: 'Cabbage', isFruit: false, id: 1 },
+  { title: 'Garlic', isFruit: false, id: 2 },
+  { title: 'Apple', isFruit: true, id: 3 },
 ];
 
 export default function ShoppingList() {
+
   const [targetId, setTargetId] = useState(1);
 
-  function Next() {
+  function Next(){
     setTargetId(targetId + 1);
   }
 
   return (
     <div>
-      <button onClick={Next}>Next</button>
-      <h2>
-        {' '}
-        {targetId}/{products.length}{' '}
-      </h2>
-      <p>You need to buy {products[targetId - 1].title}</p>
+    <button onClick={Next}>Next</button>
+    <h2> {targetId}/{products.length} </h2>
+    <p>You need to buy {products[targetId - 1].title}</p>
     </div>
   );
 }
@@ -243,33 +235,33 @@ export default function ShoppingList() {
 此外， useState 也支持直接使用展开语法进行状态的更新，例如：
 
 ```tsx
-import {useState} from 'react';
+import { useState } from 'react';
 
 export default function Form() {
   const [person, setPerson] = useState({
     firstName: 'Barbara',
     lastName: 'Hepworth',
-    email: 'bhepworth@sculpture.com',
+    email: 'bhepworth@sculpture.com'
   });
 
   function handleFirstNameChange(e) {
     setPerson({
       ...person,
-      firstName: e.target.value,
+      firstName: e.target.value
     });
   }
 
   function handleLastNameChange(e) {
     setPerson({
       ...person,
-      lastName: e.target.value,
+      lastName: e.target.value
     });
   }
 
   function handleEmailChange(e) {
     setPerson({
       ...person,
-      email: e.target.value,
+      email: e.target.value
     });
   }
 
@@ -277,98 +269,107 @@ export default function Form() {
     <>
       <label>
         First name:
-        <input value={person.firstName} onChange={handleFirstNameChange} />
+        <input
+          value={person.firstName}
+          onChange={handleFirstNameChange}
+        />
       </label>
       <label>
         Last name:
-        <input value={person.lastName} onChange={handleLastNameChange} />
+        <input
+          value={person.lastName}
+          onChange={handleLastNameChange}
+        />
       </label>
       <label>
         Email:
-        <input value={person.email} onChange={handleEmailChange} />
+        <input
+          value={person.email}
+          onChange={handleEmailChange}
+        />
       </label>
       <p>
-        {person.firstName} {person.lastName} ({person.email})
+        {person.firstName}{' '}
+        {person.lastName}{' '}
+        ({person.email})
       </p>
     </>
   );
 }
+
 ```
 
 此外，**State 是隔离且私有的**，换句话说，State 是屏幕上组件实例内部的状态，如果你渲染同一个组件两次，每个副本都会有**完全隔离的 state**，改变其中一个不会影响另一个。
 
 例如：
-
 ```tsx
-import {useState} from 'react'; //要使用useState，我们首先需要进行导入
+import { useState } from 'react'; //要使用useState，我们首先需要进行导入
 
 const products = [
-  {title: 'Cabbage', isFruit: false, id: 1},
-  {title: 'Garlic', isFruit: false, id: 2},
-  {title: 'Apple', isFruit: true, id: 3},
+  { title: 'Cabbage', isFruit: false, id: 1 },
+  { title: 'Garlic', isFruit: false, id: 2 },
+  { title: 'Apple', isFruit: true, id: 3 },
 ];
 
 function ShoppingList() {
+
   const [targetId, setTargetId] = useState(1);
 
-  function Next() {
-    if (targetId === 3) setTargetId(1);
-    else setTargetId(targetId + 1);
+  function Next(){
+    if(targetId === 3)
+      setTargetId(1);
+    else
+      setTargetId(targetId + 1);
   }
 
   return (
     <div>
-      <button onClick={Next}>Next</button>
-      <h2>
-        {' '}
-        {targetId}/{products.length}{' '}
-      </h2>
-      <p>You need to buy {products[targetId - 1].title}</p>
+    <button onClick={Next}>Next</button>
+    <h2> {targetId}/{products.length} </h2>
+    <p>You need to buy {products[targetId - 1].title}</p>
     </div>
   );
 }
 
-export default function MyApp() {
-  return (
+export default function MyApp(){
+  return(
     <>
       <ShoppingList />
       <ShoppingList />
     </>
   );
-}
+} 
 ```
-
 可以看到，上下两个ShoppingList中的targetId状态是相互独立的。
 
 组件调用（渲染）的时机：
-
 1. 初次渲染，React会调用根组件。
 2. 对于后续的渲染, React 会调用内部状态更新触发了渲染的函数组件。
 
 调用某个组件时会递归地渲染该组件本身以及其所有的子组件（所有该函数组件会返回的内容）
 
-对于情况二，例如：
 
+
+对于情况二，例如：
 ```tsx
-import {useState} from 'react';
+import { useState } from 'react';
 
 export default function Form() {
   const [isSent, setIsSent] = useState(false);
   const [message, setMessage] = useState('Hi!');
   if (isSent) {
-    return <h1>Your message is on its way!</h1>;
+    return <h1>Your message is on its way!</h1>
   }
   return (
-    <form
-      onSubmit={(e) => {
-        e.preventDefault();
-        setIsSent(true);
-        sendMessage(message);
-      }}>
+    <form onSubmit={(e) => {
+      e.preventDefault();
+      setIsSent(true);
+      sendMessage(message);
+    }}>
       <textarea
         placeholder="Message"
         value={message}
-        onChange={(e) => setMessage(e.target.value)}
+        onChange={e => setMessage(e.target.value)}
       />
       <button type="submit">Send</button>
     </form>
@@ -389,9 +390,8 @@ function sendMessage(message) {
 3. React 根据新的 isSent 值重新渲染组件。
 
 让我们更深入地考虑 state 和渲染之间的关系。请看下面的例子，看看你点击“+3”按钮时会发生什么：
-
 ```tsx
-import {useState} from 'react';
+import { useState } from 'react';
 
 export default function Counter() {
   const [number, setNumber] = useState(0);
@@ -399,16 +399,13 @@ export default function Counter() {
   return (
     <>
       <h1>{number}</h1>
-      <button
-        onClick={() => {
-          setNumber(number + 1);
-          setNumber(number + 1);
-          setNumber(number + 1);
-        }}>
-        +3
-      </button>
+      <button onClick={() => {
+        setNumber(number + 1);
+        setNumber(number + 1);
+        setNumber(number + 1);
+      }}>+3</button>
     </>
-  );
+  )
 }
 ```
 
@@ -421,7 +418,6 @@ export default function Counter() {
 {/* ![img](/images/react/update_state.png) */}
 
 在了解这些原理后，我们再来分析上述的例子，在按下按钮后，发生了三次 setNumber() ，当前快照 number 为 0 ，生成一张新快照，这三次 setNumber 分别做了这样的事情：
-
 1. setNumber(number + 1)：number 是 0 所以 setNumber(0 + 1)。React 准备在下一次渲染时将 number 更改为 1。
 2. setNumber(number + 1)：number 是 0 所以 setNumber(0 + 1)。React 准备在下一次渲染时将 number 更改为 1。
 3. setNumber(number + 1)：number 是 0 所以 setNumber(0 + 1)。React 准备在下一次渲染时将 number 更改为 1。
@@ -433,9 +429,8 @@ export default function Counter() {
 这让你可以更新多个 state 变量——甚至来自多个组件的 state 变量，而不会触发太多的重新渲染。但这也意味着只有在你的事件处理函数及其中任何代码执行完成之后，UI 才会更新。这种特性也就是**批处理**，它会使你的 React 应用运行得更快。它还会帮你避免处理只​​更新了一部分 state 变量的令人困惑的“半成品”渲染。
 
 那么，如果我希望在下次渲染前多次更新同一个 `state` 并且我需要用到这个 `state` 在变更过程中的中间值，应该怎么做呢？请看下面的例子：
-
 ```tsx
-import {useState} from 'react';
+import { useState } from 'react';
 
 export default function Counter() {
   const [number, setNumber] = useState(0);
@@ -443,16 +438,13 @@ export default function Counter() {
   return (
     <>
       <h1>{number}</h1>
-      <button
-        onClick={() => {
-          setNumber((n) => n + 1);
-          setNumber((n) => n + 1);
-          setNumber((n) => n + 1);
-        }}>
-        +3
-      </button>
+      <button onClick={() => {
+        setNumber(n => n + 1);
+        setNumber(n => n + 1);
+        setNumber(n => n + 1);
+      }}>+3</button>
     </>
-  );
+  )
 }
 ```
 
@@ -463,18 +455,18 @@ export default function Counter() {
 
 当你在下次渲染期间调用 useState 时，React 会遍历队列。之前的 number state 的值是 0，所以这就是 React 作为参数 n 传递给第一个更新函数的值。然后 React 会获取你上一个更新函数的返回值，并将其作为 n 传递给下一个更新函数，以此类推：
 
-| 更新队列   | n   | 返回值    |
-| ---------- | --- | --------- |
-| n => n + 1 | 0   | 0 + 1 = 1 |
-| n => n + 1 | 1   | 1 + 1 = 2 |
-| n => n + 1 | 2   | 2 + 1 = 3 |
+| 更新队列       | n | 返回值       |
+|------------|---|-----------|
+| n => n + 1 | 0 | 0 + 1 = 1 |
+| n => n + 1 | 1 | 1 + 1 = 2 |
+| n => n + 1 | 2 | 2 + 1 = 3 |
 
-React 会保存 3 为最终结果并从 useState 中返回。这就是为什么在上面的示例中点击“+3”正确地将值增加“+3”。
+React 会保存 3 为最终结果并从 useState 中返回。
+这就是为什么在上面的示例中点击“+3”正确地将值增加“+3”。
 
 下面我们考虑，替换 state 后更新 state 会发生什么：
-
 ```tsx
-import {useState} from 'react';
+import { useState } from 'react';
 
 export default function Counter() {
   const [number, setNumber] = useState(0);
@@ -482,15 +474,12 @@ export default function Counter() {
   return (
     <>
       <h1>{number}</h1>
-      <button
-        onClick={() => {
-          setNumber(number + 5);
-          setNumber((n) => n + 1);
-        }}>
-        增加数字
-      </button>
+      <button onClick={() => {
+        setNumber(number + 5);
+        setNumber(n => n + 1);
+      }}>增加数字</button>
     </>
-  );
+  )
 }
 ```
 
@@ -499,14 +488,14 @@ export default function Counter() {
 1. setNumber(number + 5)：number 为 0，所以 setNumber(0 + 5)。React 将 “替换为 5” 添加到其队列中。
 2. setNumber(n => n + 1)：n => n + 1 是一个更新函数。React 将该函数添加到其队列中。
 3. setNumber(42)：React 将 “替换为 42” 添加到其队列中。
-
+   
 在下一次渲染期间，React 会遍历 state 队列：
 
-| 更新队列    | n           | 返回值    |
-| ----------- | ----------- | --------- |
-| “替换为 5”  | 0（未使用） | 5         |
-| n => n + 1  | 5           | 5 + 1 = 6 |
-| “替换为 42” | 6（未使用） | 42        |
+| 更新队列       | n      | 返回值       |
+|------------|--------|-----------|
+| “替换为 5”    | 0（未使用） | 5         |
+| n => n + 1 | 5      | 5 + 1 = 6 |
+| “替换为 42”   | 6（未使用） | 42        |
 
 然后 React 会保存 42 为最终结果并从 useState 中返回。
 
@@ -519,16 +508,16 @@ export default function Counter() {
 
 实际上，setState(x) 会像 setState(n => x) 一样运行，只是没有使用 n！因此，上述代码也可以解释为
 
-| 更新队列   | n           | 返回值    |
-| ---------- | ----------- | --------- |
-| n => 5     | 0（未使用） | 5         |
-| n => n + 1 | 5           | 5 + 1 = 6 |
-| n => 42    | 6（未使用） | 42        |
+| 更新队列       | n      | 返回值       |
+|------------|--------|-----------|
+| n => 5    | 0（未使用） | 5         |
+| n => n + 1 | 5      | 5 + 1 = 6 |
+| n => 42   | 6（未使用） | 42        |
 
 此外，需要注意的是，React 会在组件更新后的状态与更新前一致时，跳过对组件的重新渲染。
-
 - 对于数字、字符串等类型，React 会比较值是否相等。
-- 对于数组、对象等复杂类型，React 将检查引用的地址是否相等。这种行为可以优化性能，但有时会造成意外的组件不更新，请注意这一点
+- 对于数组、对象等复杂类型，React 将检查引用的地址是否相等。
+这种行为可以优化性能，但有时会造成意外的组件不更新，请注意这一点
 
 ## 副作用 Effect
 
@@ -540,26 +529,23 @@ Effect 允许你指定由渲染本身，而不是特定事件引起的副作用�
 
 `useEffect Hook` 语法由三部分构成:
 
-```tsx
-useEffect(
-  () => {
-    // 在这⾥写你需要执⾏的副作⽤
-    // 例如获取数据、设定计时器等
-    return () => {
-      // 在这⾥写副作⽤的清除，不需要清除的副作⽤可以不写返回值
-      // ⽐如设定计时器之后需要回收计时器
-      // 下⼀次渲染的时候上⼀次渲染所定义的副作⽤会被这个函数清除
-      // 组件本身销毁的时候也会执⾏
-    };
-  } /* depList(依赖列表) ⽤于控制上述副作⽤何时触发 */,
-);
+``` tsx
+useEffect(() => {
+  // 在这⾥写你需要执⾏的副作⽤
+  // 例如获取数据、设定计时器等
+  return () => {
+  // 在这⾥写副作⽤的清除，不需要清除的副作⽤可以不写返回值
+  // ⽐如设定计时器之后需要回收计时器
+  // 下⼀次渲染的时候上⼀次渲染所定义的副作⽤会被这个函数清除
+  // 组件本身销毁的时候也会执⾏
+  };
+}, /* depList(依赖列表) ⽤于控制上述副作⽤何时触发 */);
 ```
 
 什么时候执行副作用，依赖于 `useEffect` Hook 的第二个参数（依赖列表）
-
-- 如果依赖列表缺失（即 `undefined`），每一次渲染都会执行副作用
-- 如果依赖列表是空列表（即 `[]`），只在第一次渲染时执行副作用（多用于组件初始化的时候从服务器拉取数据）
-- 如果依赖列表里面有变量，则在依赖列表中变量发生改变的时候执行副作用
+  - 如果依赖列表缺失（即 `undefined`），每一次渲染都会执行副作用
+  - 如果依赖列表是空列表（即 `[]`），只在第一次渲染时执行副作用（多用于组件初始化的时候从服务器拉取数据）
+  - 如果依赖列表里面有变量，则在依赖列表中变量发生改变的时候执行副作用
 
 ## 反向数据流
 
@@ -568,51 +554,52 @@ useEffect(
 这里我们沿用先前的代码进行说明：
 
 ```tsx
-import {useState} from 'react'; //要使用useState，我们首先需要进行导入
+import { useState } from 'react'; //要使用useState，我们首先需要进行导入
 
 const products = [
-  {title: 'Cabbage', isFruit: false, id: 1},
-  {title: 'Garlic', isFruit: false, id: 2},
-  {title: 'Apple', isFruit: true, id: 3},
+  { title: 'Cabbage', isFruit: false, id: 1 },
+  { title: 'Garlic', isFruit: false, id: 2 },
+  { title: 'Apple', isFruit: true, id: 3 },
 ];
 
 function ShoppingList(props) {
+
   const [targetId, setTargetId] = useState(1);
 
-  function Next() {
-    if (targetId === 3) setTargetId(1);
-    else setTargetId(targetId + 1);
+  function Next(){
+    if(targetId === 3)
+      setTargetId(1);
+    else
+      setTargetId(targetId + 1);
   }
 
   return (
     <div>
-      <button onClick={Next}>Next</button>
-      <h2>
-        {' '}
-        {targetId}/{products.length}{' '}
-      </h2>
-      <button onClick={props.buy}>购买 {products[targetId - 1].title}</button>
+    <button onClick={Next}>Next</button>
+    <h2> {targetId}/{products.length} </h2>
+    <button onClick={props.buy}>购买 {products[targetId - 1].title}</button>
     </div>
   );
 }
 
-export default function MyApp() {
+export default function MyApp(){
   const [number, setNumber] = useState(0);
-
-  function Buy() {
+   
+  function Buy(){
     setNumber(number + 1);
   }
 
-  return (
+  return(
     <>
       <ShoppingList buy={Buy} />
       <p>总购买数量：{number}</p>
     </>
   );
-}
+} 
 ```
 
 在上述代码中，`ShoppingList` 组件通过 `props.buy` 将 `number` 的改变传递给了父组件 `MyApp`，从而实现了反向数据流。
+
 
 ### Next.js 路由
 
@@ -624,7 +611,8 @@ Next.js 从 v13 起就使用了新的路由模式 —— App Router。从 v13.4 
 
 那么这两者到底有什么区别呢？为什么要选择更新到App Router呢？
 
-Pages Router 是 Next.js 最早的路由方案，它将 pages 目录下的所有文件都视作路由文件，并且文件名就是路由的路径。例如，我们有一个 pages 目录，其结构如下：
+Pages Router 是 Next.js 最早的路由方案，它将 pages 目录下的所有文件都视作路由文件，并且文件名就是路由的路径。
+例如，我们有一个 pages 目录，其结构如下：
 
 ```
 └── pages
@@ -640,7 +628,7 @@ Pages Router 是 Next.js 最早的路由方案，它将 pages 目录下的所有
 ```
 src/
 └── app
-    ├── page.js
+    ├── page.js 
     ├── layout.js
     ├── template.js
     ├── loading.js
@@ -660,25 +648,24 @@ src/
 
 默认根布局是服务端组件，且不能设置为客户端组件。
 
-使用 `useRouter` 进行路由跳转的，例如:
 
+使用 `useRouter` 进行路由跳转的，例如:
 ```tsx
-import {useRouter} from 'next/router';
+import { useRouter } from 'next/router'
 
 export default function Home() {
-  const router = useRouter();
+  const router = useRouter()
 
   const goToAbout = () => {
-    router.push('/about');
-  };
+    router.push('/about')
+  }
 
   return (
     <div>
       <h1>Home Page</h1>
       <button onClick={goToAbout}>Go to About Page</button>
     </div>
-  );
+  )
 }
 ```
-
 在按下按钮后会前往`About`页面

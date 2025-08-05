@@ -26,22 +26,22 @@ module.exports = {
   entry: './src/index.js',
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'dist')
   },
   module: {
     rules: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: 'babel-loader',
-      },
-    ],
+        use: 'babel-loader'
+      }
+    ]
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/index.html',
-    }),
-  ],
+      template: './src/index.html'
+    })
+  ]
 };
 ```
 
@@ -82,7 +82,6 @@ npm scripts 和 Gulp 是前端开发中的任务自动化工具，帮助开发�
       gulp.watch('src/scss/*.scss', gulp.series('styles'));
     });
     ```
-
   </TabItem>
 </Tabs>
 
@@ -106,10 +105,11 @@ npm scripts 和 Gulp 是前端开发中的任务自动化工具，帮助开发�
 
 ```js
 // 使用 JavaScript 实现简单的懒加载
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function() 
+{
   const lazyImages = document.querySelectorAll('img.lazy');
   const lazyLoad = () => {
-    lazyImages.forEach((image) => {
+    lazyImages.forEach(image => {
       if (image.getBoundingClientRect().top < window.innerHeight) {
         image.src = image.dataset.src;
         image.classList.remove('lazy');
@@ -141,21 +141,21 @@ AJAX（异步 JavaScript 和 XML）是一种在不重新加载整个页面的情
 ```js
 // 使用 Fetch API 发起 GET 请求
 fetch('https://api.example.com/data')
-  .then((response) => response.json())
-  .then((data) => console.log(data))
-  .catch((error) => console.error(error));
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error(error));
 
 // 使用 Fetch API 发起 POST 请求
 fetch('https://api.example.com/data', {
   method: 'POST',
-  body: JSON.stringify({key: 'value'}),
+  body: JSON.stringify({ key: 'value' }),
   headers: {
-    'Content-Type': 'application/json',
-  },
+    'Content-Type': 'application/json'
+  }
 })
-  .then((response) => response.json())
-  .then((data) => console.log(data))
-  .catch((error) => console.error(error));
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error(error));
 ```
 
 ### 前端安全

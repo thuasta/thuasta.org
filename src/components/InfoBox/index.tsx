@@ -1,4 +1,4 @@
-import {ReactNode} from 'react';
+import { ReactNode } from 'react';
 
 import styles from './styles.module.css';
 
@@ -28,19 +28,19 @@ export default function InfoBox({
           <div className={styles.content}>
             <div className={styles.contentInner}>
               <div className={styles.flexContainer}>
-                <div
-                  className={styles.imageContainer}
-                  style={{width: `${imageWidth}%`}}>
+                <div className={styles.imageContainer} style={{ width: `${imageWidth}%` }}>
                   <div className={styles.imageWrapper}>
-                    <img src={imageUrl} alt={alt} className={styles.image} />
+                    <img
+                      src={imageUrl}
+                      alt={alt}
+                      className={styles.image}
+                    />
                   </div>
                 </div>
                 <div className={styles.textContainer}>
                   <div className={styles.textContent}>
                     {title && <p className={styles.title}>{title}</p>}
-                    {description && (
-                      <p className={styles.description}>{description}</p>
-                    )}
+                    {description && <p className={styles.description}>{description}</p>}
                     {children}
                   </div>
                 </div>

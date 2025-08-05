@@ -1,18 +1,18 @@
 ---
 sidebar_position: 7
-sidebar_label: 'C#'
+sidebar_label: "C#"
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import {Sandpack} from '@codesandbox/sandpack-react';
+import { Sandpack } from "@codesandbox/sandpack-react";
 
 # C\#
 
 C# 是一门编程语言~~废话~~。其在基本的语法方面可以被归类为 C 语言家族，但与此同时与 C/C++ 不同的是，C# 是一门**强制面向对象**语言，这意味着**任何**在 C# 中编写的代码都需要放进类中，例如下面是一个简单的 `Hello World!`
 
 ```csharp
-public class Program
+public class Program 
 {
     public static void Main(String[] args)
     {
@@ -40,7 +40,7 @@ public class Program
         int[] arr = [1, -2, -3, 4];
         for (int i = 0; i < 4; ++i)
         {
-            if (arr[i] >= 0)
+            if (arr[i] >= 0) 
             {
                 Console.WriteLine("Non-Negative!");
             }
@@ -52,7 +52,7 @@ public class Program
         // Is equivalent to...
         foreach (int num in arr)
         {
-            if (num >= 0)
+            if (num >= 0) 
             {
                 Console.WriteLine("Non-Negative!");
             }
@@ -103,7 +103,6 @@ C# 中的变量类型分为 **值类型** 和 **引用类型**，值类型是较
             }
         }
         ```
-
   </TabItem>
   <TabItem value="Utils/Point.cs" label="Utils/Point.cs">
         ```csharp
@@ -121,7 +120,6 @@ C# 中的变量类型分为 **值类型** 和 **引用类型**，值类型是较
         }
 
         ```
-
   </TabItem>
 </Tabs>
 
@@ -145,9 +143,9 @@ private void UpdateWalls()
         var existingWall = map.CityWall.FirstOrDefault(w => w.wallPos == position); // Bug happens Here!!
 
         if (existingWall == null)
-        {
+        { 
             map.UpdateWall(position);
-        }
+        }            
     }
 }
 ```
@@ -196,7 +194,7 @@ public class Program
         {
             distance = point.EuclidDistance();
         }
-        Console.WriteLine(distance); // WriteLine accepts a `string?`, and will
+        Console.WriteLine(distance); // WriteLine accepts a `string?`, and will 
                                      // print an empty line when meets a null.
     }
 
@@ -206,7 +204,6 @@ public class Program
     }
 }
 ```
-
 当然其中的 `if` 语句可以用一行解决:
 
 ```csharp
@@ -223,7 +220,7 @@ public class Program
     public static void Main(string[] args)
     {
         Point? point = GetPoint();
-        if (Available(point))
+        if (Available(point)) 
         {
             point.EuclidDistance(); // Warning Here! Compiler don't know it's not null!
         }
@@ -245,7 +242,7 @@ public class Program
 
 ```csharp
 Point? point = GetPoint();
-if (Available(point))
+if (Available(point)) 
 {
     var distance = point!.EuclidDistance(); // No warning!
     // distance here is `double`, not `double?`
@@ -284,17 +281,17 @@ private static int Repeat(string msg, int? time)
 
 关于 ? 和 ! 的用法可能有些眼花缭乱？不用担心！总结到下表了！
 
-| 用法 | 示例 | 等价写法 | 备注 |
+|  用法   |   示例  |  等价写法 | 备注 |
 | --- | --- | --- | --- |
 | 标记可空类型 | `int?` | `Nullable<int>` |
 | Elvis 运算符(空条件运算符) | `point?.EuclidDistance()` | `(point != null) ? point.EuclidDistance() : null` |
 | 空下标运算符 | `arr?[0]` | `(arr != null) ? arr[0] : null` | `arr` 为可取下标的可空类型 |
-| 空容忍运算符 | `point!` | 见脚注[^1] | 只有当你确定来源可靠时再使用；不改变运行时程序表现 |
+| 空容忍运算符 | `point!` | 见脚注[^1] | 只有当你确定来源可靠时再使用；不改变运行时程序表现
 | 空合并运算符 | `num ?? 0` | `num != null ? num : 0` 或者 `num.GetValueOrDefault(0)` |
 | 空合并赋值运算符 | `num ??= 0` | `num = num ?? 0` |
 
-[^1]: 可以使用预处理语句忽略编译器警告，如:
-
+[^1]: 
+    可以使用预处理语句忽略编译器警告，如:
     ```csharp
     #pragma warning disable CS8604
     Use(point);
@@ -414,7 +411,6 @@ class Person( /* Arguments for primary constructor */ , int age )
     }
 }
 ```
-
 思考：这里 setter 为什么不直接写 `Age = value > 0 ? value : 0`？
 
 此时这里的 Age 更相当于一个访问类的接口，其由一对 `getter` 和 `setter` 方法对组成，我们并不关心这名字是否真正代表了一个变量，一块真实存在的内存空间，我们只需要知道，可以调用这一个 getter/setter 对，并且得到结果，其思想和下面的 const getter 是类似的：
@@ -492,7 +488,6 @@ class Line
             }
         }
         ```
-
   </TabItem>
   <TabItem value="Persons/Person.cs" label="Persons/Person.cs">
         ```csharp
@@ -514,7 +509,6 @@ class Line
             public string GithubID = github_id;
         }
         ```
-
   </TabItem>
 </Tabs>
 
@@ -543,7 +537,6 @@ OOP 的另一个重要特征是多态，而在 C# 中自然也有相应的机制
             }
         }
         ```
-
   </TabItem>
   <TabItem value="Persons/Person.cs" label="Persons/Person.cs">
         ```csharp
@@ -581,7 +574,6 @@ OOP 的另一个重要特征是多态，而在 C# 中自然也有相应的机制
             }
         }
         ```
-
   </TabItem>
 </Tabs>
 
@@ -626,7 +618,7 @@ class Adult() : IAdult
     // Work doesn't have a default implementation! A class should implement it!
     public string Work()
     {
-        return
+        return 
             "Work! Work! Work! Work!\n" +
             "Work! Work! Work! Work!\n" +
             "Work! Work! Work! Work!\n";

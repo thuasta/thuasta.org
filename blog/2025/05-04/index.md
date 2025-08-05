@@ -41,7 +41,10 @@ originalUrl: https://mp.weixin.qq.com/s/hayZgcXwEJMIBYyCiQz69g
 
 ## 漫画异格
 
-![图片](img/3.jpeg) ![图片](img/4.jpeg) ![图片](img/5.jpeg) ![图片](img/6.jpeg)
+![图片](img/3.jpeg)
+![图片](img/4.jpeg)
+![图片](img/5.jpeg)
+![图片](img/6.jpeg)
 
 ## 推送概览
 

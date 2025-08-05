@@ -20,18 +20,15 @@ originalUrl: https://mp.weixin.qq.com/s/4B4q9sdvNK4q9S3anGgFOg
 （以第一作者/共同第一作者计）
 
 其中，经自动化系推荐的 3 个项目获
-
 <h3><mark>
 一等奖 1 项<br />
 三等奖 2 项
 </mark></h3>
 
 经秀钟书院推荐的 1 个项目获
-
 <h3><mark>二等奖 1 项</mark></h3>
 
 经校科协推荐的 1 个项目获
-
 <h3><mark>三等奖 1 项</mark></h3>
 </center>
 

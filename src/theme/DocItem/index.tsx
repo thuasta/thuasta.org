@@ -1,10 +1,10 @@
-import React, {type ReactNode} from 'react';
+import React, { type ReactNode } from 'react';
 import clsx from 'clsx';
-import {useLayoutDoc} from '@docusaurus/plugin-content-docs/client';
+import { useLayoutDoc } from '@docusaurus/plugin-content-docs/client';
 import Link from '@docusaurus/Link';
 import DocItem from '@theme-original/DocItem';
 import type DocItemType from '@theme/DocItem';
-import type {WrapperProps} from '@docusaurus/types';
+import type { WrapperProps } from '@docusaurus/types';
 
 import styles from '/node_modules/@docusaurus/theme-classic/src/theme/DocItem/Layout/styles.module.css';
 
@@ -22,13 +22,10 @@ function HintHeader(docPath: string): ReactNode {
       <div
         className={clsx(
           'alert alert--success margin-bottom--md',
-          styles.docItemCol,
+          styles.docItemCol
         )}
         role="alert">
-        阅读
-        <strong>
-          <Link to={enDocPath}>英文原版</Link>
-        </strong>
+        阅读<strong><Link to={enDocPath}>英文原版</Link></strong>
       </div>
     ) : null;
   }
@@ -49,13 +46,9 @@ function HintFooter(docPath: string): ReactNode {
         <div
           className={clsx(
             'alert alert--success margin-bottom--md',
-            styles.docItemCol,
-          )}
+            styles.docItemCol)}
           role="alert">
-          返回
-          <strong>
-            <Link to={zhDocPath}>中文文档</Link>
-          </strong>
+          返回<strong><Link to={zhDocPath}>中文文档</Link></strong>
         </div>
       </>
     ) : null;

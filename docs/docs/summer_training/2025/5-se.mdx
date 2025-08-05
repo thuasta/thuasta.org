@@ -1,5 +1,5 @@
 ---
-sidebar_label: '软件工程'
+sidebar_label: "软件工程"
 sidebar_position: 5
 ---
 
@@ -27,7 +27,6 @@ int match(const char* str1, const char* str2){
 这种代码或许足够应付程设作业，但却很难完成真实的开发需求。其中一点原因是，你写的代码的生命周期并不止于一次作业，它可能被不同的人（与你合作的开发者、或者未来的你）使用。想象如果你在与他人合作时看到一个`match`函数，看到其函数签名为两个极为相似的`const char*`，返回值是不知所以的`int`，这个函数到底是什么意思？究竟`str1`是子串还是`str2`是子串？而当你想要追究到底，细看函数实现时，噩梦才刚刚开始——不明所以的变量命名，挤在一起的字母和运算符，if内的赋值号——要不还是重写吧！
 
 因此，软件工程意在避免这些。MIT开设的软件工程课程[MIT 6.102](https://web.mit.edu/6.102/www/sp25/classes/01-static-checking/#the_goals_of_6102)中，写出好的代码有三个特征:
-
 - Safe from bugs.
 - Easy to understand.
 - Ready for change.
@@ -90,7 +89,6 @@ bool CoffeeMaker::makeCoffee(CoffeeType type, int coffee_number) {
 这种代码的嵌套层数过高，最深处甚至有7层，最要命的是，这一段代码的核心逻辑恰好藏在嵌套最深处，我们不仅要顶着电脑屏幕不够长的风险，又要在编写核心逻辑时心中牢记前六层循环和条件语句带来的额外条件——这咖啡还是不用做了！~~这段代码的改进方式留作课后习题。~~
 
 另一个风格不良代码的例子:
-
 ```c
 printf("1*1=1");
 printf("1*2=2 2*2=4");
@@ -108,22 +106,19 @@ printf("1*9=9 2*9=18 3*9=27 4*9=36 5*9=45 6*9=54 7*9=63 8*9=72 9*9=81");
 ## 详细且有用的注释
 
 回到上面的代码，观察其函数签名：
-
 ```c
 int match(const char* str1, const char* str2);
 ```
 
 这一函数签名包含的信息很少，例如以下信息是并未体现在函数签名中的
-
 - 作为参数的 `const char*` 类型，代表的是字符指针？字符数组？还是C风格字符串？（i.e. 对`str1`, `str2`的假设并不清楚）
 - 返回值为 `int`，其代表什么意思？下标从 0 开始还是从 1 开始？如果不匹配，返回多少？处理错误的方式是返回特殊值还是直接 `throw`？
 
 显然这些问题对于使用这一函数来说至关重要，而函数的*文档注释*可以帮助程序员在避免深入内部实现的前提下了解函数的功能，如
-
 ```cpp
-/**
+/** 
  * @brief Find the first index that the substring `pattern` appears in `text`.
- *
+ * 
  * KMP Algorithm is used to match the substring. For more details about KMP,
  * see https://en.wikipedia.org/wiki/Knuth-Morris-Pratt_algorithm
  *
@@ -150,7 +145,7 @@ public double square_root(double num)
 ```
 
 ```python
-# Example from
+# Example from 
 # https://github.com/thuasta/saiblo-worker/blob/main/saiblo_worker/base_match_judger.py
 @abstractmethod
 async def judge(
@@ -182,7 +177,6 @@ async def judge(
 1. 正常运行并输出
 2. 在运行前你的代码编辑器会发现错误
 3. 运行时错误(Runtime Error)
-
 ```python
 # Assume that utils is a module in this project.
 # What is a priority queue? See https://en.wikipedia.org/wiki/Priority_queue
@@ -205,13 +199,13 @@ class Node():
     def __init__(self, state, cost):
         self._state = state
         self._cost = cost
-
+    
     def __lt__(self, other):
         return self._cost < other._cost
 
     def get_state(self):
         return self._state
-
+    
 if __name__ == "__main__":
     state_list = [
         State([1, 2, 3]), State([4, 5, 6]), State([7, 8, 9])
@@ -234,7 +228,7 @@ from typing import List
 from utils import PriorityQueue
 
 # State and Node definition...
-
+    
 if __name__ == "__main__":
     state_list: List[State] = [
         State([1, 2, 3]), State([4, 5, 6]), State([7, 8, 9])
@@ -255,7 +249,6 @@ if __name__ == "__main__":
 这种将问题在编译时/运行前暴露出来的检查叫做静态检查；将问题在运行时以RE的形式暴露出来为动态检查；如果一段代码既没有静态检查，也没有动态检查，那么它在面对预料之外的输入（或者代码写出bug）时很可能会出现 Wrong Answer。我们希望问题暴露地越早越好——因此静态检查>动态检查>运行时WA。
 
 下面是静态检查和动态检查的另一个例子：
-
 ```cpp
 // Version 1: Dynamic Checking
 int daysInAMonth(std::string_view month, int year) {
@@ -349,7 +342,7 @@ def factorial(n: int) -> int:
     Args:
         n: a integer number, the factorial of which will be calculated,
            and should be non-negative.
-
+    
     Returns:
         the factorial of `n`, i.e. n!
     """
@@ -379,7 +372,6 @@ class TestFactorial(unittest.TestCase):
 请注意我们在实际看到 `factorial` 的实现之前就已经可以着手编写测试了，这种测试显然不涉及内部实现的细节，称作黑盒测试。与之相对的白盒测试是在了解内部实现细节的基础上，针对可能出现 bug 的地方编写测试。实际开发中，我们在编写新模块的具体实现之前，先为其编写测试，开发的目标便由 "实现一个功能" 变为了 "通过所有的测试"。这种编写代码的方式为测试先行。
 
 用于评估测试集的完全程度的指标称作覆盖率 (coverage)，有三种覆盖率 (自翻，并非准确名词)：
-
 - 语句覆盖率：代表所有测试集是否执行了模块中的每一行代码
 - 分支覆盖率：对于每一个分支语句 (`if`/各种loop/`break`/`continue`), 测试集是否走遍了每一个分支。
 - 路径覆盖率：代码从调用到返回，经过每一个分支语句的一个方式称作路径；此覆盖率描述是否走遍了所有的路径。
@@ -392,7 +384,9 @@ class TestFactorial(unittest.TestCase):
 
 ## 工欲善其事，必先利其器
 
-:::warning 本章节假设你使用 VSCode 作为代码编辑器。对于其他代码编辑器，如果存在插件市场，则应该可以下载类似功能的插件。:::
+:::warning
+本章节假设你使用 VSCode 作为代码编辑器。对于其他代码编辑器，如果存在插件市场，则应该可以下载类似功能的插件。
+:::
 
 ### 拼写检查
 
@@ -413,7 +407,6 @@ class TestFactorial(unittest.TestCase):
 软件工程的最后一个主题是 CI/CD, 全称为 Continuous Integration / Continuous Delivery，即持续集成/持续部署。这一名称乍看很抽象，其中内涵也需解释—— CI 代表将修改的代码持续地且频繁地放入共享代码库中（并进行测试），而 CD 代表将测试通过的代码自动部署至生产环境，并且便于开发者在时机成熟时快速发布可靠的软件。
 
 还是很抽象，不如先上手看看 CI/CD 到底如何实现的。假设我们有如下 git 仓库
-
 ```
 ├── .github
 │   └── workflows
@@ -458,7 +451,6 @@ jobs:      # Defining the jobs of the workflow
 注意到我们使用了两个别人写的 action, 包括 `actions/checkout@v4` 和 `actions/setup-python@v5`. 以后者为例，这一 `action` 实际上[存放在 GitHub 中](https://github.com/actions/setup-python/tree/v5/)，其根目录下的 `action.yml` 是该 action 的内容。可以看到其存在 `inputs` 字段，我们用到了其中的 `python-version`，并用 `with` 字段进行了指定。
 
 再看一个更复杂的 workflow，用于科协网站的部署：
-
 ```yml
 # https://github.com/thuasta/thuasta.org/blob/main/.github/workflows/build.yml
 on:
@@ -489,9 +481,8 @@ jobs:
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     environment:
       name: github-pages
-      url:
-        ${{ steps.deployment.outputs.page_url }} # access the output of
-        # an action
+      url: ${{ steps.deployment.outputs.page_url }} # access the output of
+                                                    # an action
     needs: build # After build, then deploy
     permissions:
       id-token: write
@@ -513,6 +504,7 @@ jobs:
       - run: |
           npm install
           npm run typecheck
+
 ```
 
 这是一个含有三个 jobs 的 workflow。其中 `build` 和 `deploy` 都用 `needs` 来指定 job 运行的先后顺序，如果不指定这三个将并行运行，显然不是我们所希望的。`deploy` 语句还指定了条件——只在被 `push` 的时候运行，防止 PR 时出现了意外的重置网站。

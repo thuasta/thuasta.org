@@ -1,19 +1,16 @@
 import React from 'react';
 import clsx from 'clsx';
 
-export function ScheduleItem({date, time, type, title, theme, icon, children}) {
+export function ScheduleItem({ date, time, type, title, theme, icon, children }) {
   return (
     <tr className="schedule-item">
-      <td>
-        <strong>{date}</strong>
-      </td>
+      <td><strong>{date}</strong></td>
       <td>{time}</td>
       <td>
-        <span
-          className={clsx(
-            'schedule-badge',
-            type.includes('讲座') ? 'badge--primary' : 'badge--success',
-          )}>
+        <span className={clsx(
+          'schedule-badge',
+          type.includes('讲座') ? 'badge--primary' : 'badge--success'
+        )}>
           {type}
         </span>
       </td>
@@ -24,16 +21,20 @@ export function ScheduleItem({date, time, type, title, theme, icon, children}) {
         </div>
       </td>
       <td>
-        <span className="schedule-theme">{theme}</span>
+        <span className="schedule-theme">
+          {theme}
+        </span>
       </td>
     </tr>
   );
 }
 
-export function ScheduleTable({children}) {
+export function ScheduleTable({ children }) {
   return (
     <div className="schedule-table-container">
-      <table className="schedule-table">{children}</table>
+      <table className="schedule-table">
+        {children}
+      </table>
     </div>
   );
 }

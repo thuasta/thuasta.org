@@ -5,9 +5,7 @@ authors: [zidonghuayu]
 tags: [signups]
 originalUrl: https://mp.weixin.qq.com/s/w9EnKJ9ueU3IjKB9RtMDiA
 ---
-
 <!-- truncate -->
-
 ![活动内容](img/1.png)
 
 ---

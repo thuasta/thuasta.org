@@ -49,9 +49,9 @@ NumPy 是 Python 中科学计算的基础包。它是一个 Python 库，提供�
 
 - 运行游戏需要安装 NumPy 和 Pygame：
 
-  ```bash
-  pip install numpy pygame
-  ```
+    ```bash
+    pip install numpy pygame
+    ```
 
 - 代码可以通过[**链接**](https://cloud.tsinghua.edu.cn/d/71e62493db9748809840/)下载。
 

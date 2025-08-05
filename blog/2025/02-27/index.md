@@ -9,7 +9,6 @@ originalUrl: https://mp.weixin.qq.com/s/XS3RWjzcMLvoIkkhs8r35Q
 <center>
 
 ![具身智能挑战赛](img/1.png)
-
 <h2>
 
 ![图片](img/2.png)让你的机器人管家“活”起来！![图片](img/2.png)</h2></center>
@@ -60,7 +59,7 @@ originalUrl: https://mp.weixin.qq.com/s/XS3RWjzcMLvoIkkhs8r35Q
 
 - 扫码加入比赛微信群，获取最新报名信息！
 
-  ![报名群二维码](img/5.png)
+    ![报名群二维码](img/5.png)
 
 - 若二维码过期，请[点击链接](https://cloud.tsinghua.edu.cn/d/4abf010edfd947fbb140/)获取最新二维码进群：
 

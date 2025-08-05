@@ -22,7 +22,8 @@ originalUrl: https://mp.weixin.qq.com/s/xohyg8ktb8XyvlTFqyN-9Q
 
 教学内容包括计算成像基础、成像系统设计、系统仿真、构建计算光场成像系统和智能图像分析实验等环节。通过本课程的学习，学生将对计算成像的基本知识和应用有初步了解。培养学生从事交叉学科研究的兴趣与技能，并引导学生参加计算机视觉挑战赛、计算机视觉顶级会议等。
 
-![课堂 1](img/1.webp) ![课堂 2](img/2.jpeg)
+![课堂 1](img/1.webp)
+![课堂 2](img/2.jpeg)
 
 ### 交叉项目训练 - 智能机器视觉
 
@@ -42,7 +43,8 @@ originalUrl: https://mp.weixin.qq.com/s/xohyg8ktb8XyvlTFqyN-9Q
 
 2. **足部三维测量**：利用多深度相机系统实现足部特征维度测量。
 
-![足部三维测量 1](img/4.jpeg) ![足部三维测量 2](img/5.jpeg)
+![足部三维测量 1](img/4.jpeg)
+![足部三维测量 2](img/5.jpeg)
 
 ### 交叉项目训练 - 数字生物学
 

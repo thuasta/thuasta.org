@@ -17,9 +17,9 @@ git clone https://github.com/thuasta/thuei-1.git
 1. 在 `HwHiAiUser` 中输入 `su` 命令进入管理员界面。
 2. 将所需的模块从 `thuei-1` 文件夹复制到 `thuei-1/Functions/`，例如：
 
-   ```bash
-   cp -r ./ArmIK ./Functions/ArmIK
-   ```
+    ```bash
+    cp -r ./ArmIK ./Functions/ArmIK
+    ```
 
 :::
 
@@ -34,7 +34,8 @@ git clone https://github.com/thuasta/thuei-1.git
 
 :::warning
 
-因为香橙派板子较大，电机线长度不够，小车左侧（远端）电机可能需要公母延长线与驱动口相连，切勿强行连接，以免损坏线缆。 <img src="https://cloud.tsinghua.edu.cn/thumbnail/24f8d1997d1848ec9c72/1024/img/THUDAEI1/move/3.jpg" alt="连接示意图" loading="lazy" />
+因为香橙派板子较大，电机线长度不够，小车左侧（远端）电机可能需要公母延长线与驱动口相连，切勿强行连接，以免损坏线缆。
+<img src="https://cloud.tsinghua.edu.cn/thumbnail/24f8d1997d1848ec9c72/1024/img/THUDAEI1/move/3.jpg" alt="连接示意图" loading="lazy" />
 
 :::
 

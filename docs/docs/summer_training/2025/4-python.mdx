@@ -1,8 +1,7 @@
 ---
-sidebar_label: 'Python'
+sidebar_label: "Python"
 sidebar_position: 4
 ---
-
 # Python
 
 ## Why Python?
@@ -11,11 +10,9 @@ Python 是由荷兰人 Guido van Rossum 创造的编程语言，经过[漫长的
 
 ![easy-python](images/before-after-python.jpeg)
 
-这里假定阅读本文的人都已经通过程设课程对 C 和 C++ 有初步的了解，_最主要的是能够熟练地摆弄指针_。但 Python 有几个和 C 与 C++ 不同之处：
-
+这里假定阅读本文的人都已经通过程设课程对 C 和 C++ 有初步的了解，*最主要的是能够熟练地摆弄指针*。但 Python 有几个和 C 与 C++ 不同之处：
 - 解释型语言：编程语言可分为解释型和编译型两种；对于后者，如 C，源代码需要经过编译器处理成可运行的二进制文件 (如果是 Windows 下，通常会有 `.exe` 扩展名)；前者不需要编译，而是将源代码交给另一个程序去运行，这一程序被称为解释器。
-- 动态类型语言：Python 同样存在数据类型，但和 C 等静态类型语言不同的是，Python的变量在运行前并不与类型绑定，即你只有在运行时才能知道变量的具体类型，而在运行之前解释器不会为你做任何的静态检查。_这一点通常误被叫做强类型/弱类型，但静态类型/动态类型才是对这一特征的更贴切的描述_。例如
-
+- 动态类型语言：Python 同样存在数据类型，但和 C 等静态类型语言不同的是，Python的变量在运行前并不与类型绑定，即你只有在运行时才能知道变量的具体类型，而在运行之前解释器不会为你做任何的静态检查。*这一点通常误被叫做强类型/弱类型，但静态类型/动态类型才是对这一特征的更贴切的描述*。例如
 ```python
 import random
 
@@ -24,10 +21,9 @@ if random.random() < 0.5: # 50% Chance
     num_or_str = "Now I am a string!"
 print(type(num_or_str)) # What is the type of num_or_str?
 ```
-
 - 不需要显式操作指针：之后详细说明。
 
-学习 Python ~~不仅可以让你学会和蟒蛇打交道，还~~可以使得日常用编程处理小问题方便很多，其良好的生态可以让你不必重复造轮子，相对更高阶的语法和丰富的语法糖更让精力可以放在有必要的地方。Let's start Python!
+学习 Python ~~不仅可以让你学会和蟒蛇打交道，还~~可以使得日常用编程处理小问题方便很多，其良好的生态可以让你不必重复造轮子，相对更高阶的语法和丰富的语法糖更让精力可以放在有必要的地方。Let's start Python! 
 
 ![snake](images/python-as-snake.jpeg)
 
@@ -65,15 +61,12 @@ Hello World!
 ```
 
 刚才的程序麻雀虽小，五脏俱全，我们至少可以从刚才的代码知道两条信息：
-
 - Python 有 [Built-in Functions](https://docs.python.org/3/library/functions.html)，它们是不需要导入任何外部模块就可以直接使用的函数；`print()` 在其列。
 - Python 不存在显式的程序入口，它简单地将你给它的代码从头运行到尾；我们也可以人为地加上一个程序入口标记:
-
 ```python
 if __name__ == "__main__":
     print("Hello World!")
 ```
-
 此处的 `if __name__ == "__main__":`便充当了代码入口的作用；虽然 Python 作为一个解释器并没有那么聪明能够直接认出这一句然后直接开始执行，但是这句话本质上是一个`if`条件句，在我们的`main.py`程序中`__name__ == "__main__"`是为 `True`的（Accept it，暂且不要想[为什么](https://docs.python.org/3/library/__main__.html)），所以后面的语句将会被执行。
 
 哦对了，Python 的语句分割靠换行，代码块分割靠缩进！不要滥用分号和大括号。
@@ -85,13 +78,12 @@ if __name__ == "__main__":
 ### 变量声明
 
 变量声明时不需要额外关键字，也不需要指定类型，只需要直接赋值，如：
-
 ```python
 a = 3 # int type
 PI = 3.1415926
 hello_world = "Hello World!" # str type
 colleges = [ # list
-    "Dushi College", "Rixin College",
+    "Dushi College", "Rixin College", 
     "Zhishan College", "Wuqiong College"
 ]
 grades = { # dictionary
@@ -131,7 +123,6 @@ Type "help", "copyright", "credits" or "license" for more information.
 ```
 
 我们都很熟悉加，减和乘，左移和右移(是[算术右移](https://en.wikipedia.org/wiki/Arithmetic_shift))，按位与(`&`)和按位或(`|`)，按位异或(`^`)；而对于其他运算符，解说如下：
-
 - `/` 是除法运算符，其结果**一定是一个 `float` 类型**；`//` 是整除运算符，如果是 `int` 相整除，其结果仍为 `int`，采用**向下取整**；如果两个操作数有一个为`float`，则结果为 `float` 类型，但其值是一个整数，仍然是向下取整。整除不支持 `complex`。
 - `**` 为乘方运算符。支持`int`, `float`之间任何合法的指数操作，`complex` 可以为底数，但不能为指数。
 
@@ -149,7 +140,7 @@ Built-in Function中, `abs()` 用于为`int`, `float`, `complex` 取模长；`po
 ```
 >>> if true:
 ...     pass
-...
+... 
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 NameError: name 'true' is not defined. Did you mean: 'True'?
@@ -169,32 +160,24 @@ NameError: name 'true' is not defined. Did you mean: 'True'?
 ![and-is-and](images/and-is-and.jpg)
 
 而能够产生 bool 值的运算符，包括 `>`, `>=`, `<`, `<=`, `==`, `is`, `in`等，前六者适用于数值之间的比较, 以及任何自定义算数比较运算符的类型。`==`主要用于比较值是否相等，`is` 用于比较二者是否是同一对象，i.e., 二者的“本体”所占据的是否是同一块内存空间。如：
-
 ```python
 a = [3, 4]
 b = [3, 4]
 print(a == b, a is b)
 ```
-
 输出为
-
 ```
 True False
 ```
-
 需要注意的是：对于`True`, `False`, `None`三者，它们在你的整个程序里都是唯一的，因此可以使用`is`来比较。实际操作中，只使用 `is` 来比较这三个值；其他的判等都用`==`。
-
 ```python
 a = (3 > 2)
 print(a is True)
 ```
-
 输出
-
 ```
 True
 ```
-
 `if` 语句大家都很熟悉，在 Python 中，`if` 后直接跟条件，不刚需括号，写完后尾随一个冒号 `:` 表示`if`的开始，缩进表示 `if` 的范围，如：
 
 ```python
@@ -214,36 +197,31 @@ else:
 ### 字符串，可迭代对象和循环
 
 单行字符串可以由 `'` 或 `"` 引起，其内部如果需要包含引号则需要转义，但是如果用单引号引起，双引号则不用转义，反之亦然，如：
-
 ```python
 comment = "Using L'Hospital's rule, this problem can be easily solved."
 advice = 'I think "Wuqiong College" is a good choice for AI learners.'
 ```
 
 三个双引号用于引起多行字符串，也用于文档注释中(在[软件工程](5-se.mdx)中提到)，例子:
-
 ```python
 # -*- coding: utf-8 -*-
 # ^ Specify the encoding of the source file, since the string contains
 #   non-ascii characters
-tao_hua_yuan_ji = """晋太元中，武陵人捕鱼为业。缘溪行，忘路之远近。忽逢桃花林，夹岸数百步，中无杂树，芳草鲜美，落英缤纷。渔人甚异之。复前行，欲穷其林。
-林尽水源，便得一山，山有小口，髣髴若有光。便舍船，从口入。初极狭，才通人。复行数十步，豁然开朗。土地平旷，屋舍俨然。有良田美池桑竹之属。阡陌交通，鸡犬相闻。其中往来种作，男女衣著，悉如外人。黄发垂髫，并怡然自乐。
-见渔人，乃大惊，问所从来。具答之。便要还家，设酒杀鸡作食。村中闻有此人，咸来问讯。自云先世避秦时乱，率妻子邑人来此绝境，不复出焉，遂与外人间隔。问今是何世，乃不知有汉，无论魏晋。此人一一为具言所闻，皆叹惋。馀人各复延至其家，皆出酒食。停数日，辞去。此中人语云：“不足为外人道也。”
-既出，得其船，便扶向路，处处志之。及郡下，诣太守，说如此。太守即遣人随其往，寻向所志，遂迷，不复得路。
+tao_hua_yuan_ji = """晋太元中，武陵人捕鱼为业。缘溪行，忘路之远近。忽逢桃花林，夹岸数百步，中无杂树，芳草鲜美，落英缤纷。渔人甚异之。复前行，欲穷其林。 
+林尽水源，便得一山，山有小口，髣髴若有光。便舍船，从口入。初极狭，才通人。复行数十步，豁然开朗。土地平旷，屋舍俨然。有良田美池桑竹之属。阡陌交通，鸡犬相闻。其中往来种作，男女衣著，悉如外人。黄发垂髫，并怡然自乐。 
+见渔人，乃大惊，问所从来。具答之。便要还家，设酒杀鸡作食。村中闻有此人，咸来问讯。自云先世避秦时乱，率妻子邑人来此绝境，不复出焉，遂与外人间隔。问今是何世，乃不知有汉，无论魏晋。此人一一为具言所闻，皆叹惋。馀人各复延至其家，皆出酒食。停数日，辞去。此中人语云：“不足为外人道也。” 
+既出，得其船，便扶向路，处处志之。及郡下，诣太守，说如此。太守即遣人随其往，寻向所志，遂迷，不复得路。 
 南阳刘子骥，高尚士也，闻之，欣然规往。未果，寻病终。后遂无问津者。"""
 ```
 
 你可以把字符串当作一个类，访问其内置的方法，如
-
 ```python
 s = "oh no all my words are in the lowercase"
 print(s.title())
 words = s.split(' ')
 print(words)
 ```
-
 输出
-
 ```
 Oh No All My Words Are In The Lowercase
 ['oh', 'no', 'all', 'my', 'words', 'are', 'in', 'the', 'lowercase']
@@ -267,7 +245,6 @@ print("Largest known prime is", primes[-1])  # Access the last element
 和 `str` 一样, `list` 也有很多方法，如`pop`, `append` 等。这些方法会使得 `list` 改变其自身的值，因此 `list` 是**可变(Mutable)类型**。可变类型是学习Python, C#, TypeScript, 或者 Java 等语言所必须掌握的概念，并且 C/C++ 并不存在与之对应的概念，而是以指针和引用的显式操作替代，这一点之后会提及。
 
 元组类似列表，但是是**不可变(Immutable)类型**，其由由逗号分割的多个值组成，由可选的小括号包围。元组也可以用下标访问，如
-
 ```python
 position = 3, 4
 print(position[0])
@@ -292,7 +269,6 @@ print(lst) # [1, 2, 3, 4, 5]
 ```
 
 字符串也是 Immutable 的, btw. 另外一个可迭代对象是字典 (Dictionary)，由大括号包围，其内部是一系列键值对，可以理解为另类的列表，只不过下标不再局限于整数。键值对中的 键(key) 是用于查找的令牌，而值就是实际存放的值；键只能是 Immutable 类型，因为 dict 内部采用哈希表实现，而对键可以求哈希的前提就是键是 Immutable 的。
-
 ```python
 encyclopedia = {
     (3, 4): 5, # Tuple can be a key
@@ -309,7 +285,6 @@ encyclopedia[[]] = "empty list"
 ```
 
 对于 `list`, `tuple`, `dict`这三个可迭代类型，其基本上都是容器；`in` 运算符可以判断容器是否包含某值
-
 ```python
 my_favorite_number = [42, 52]
 if 32 in my_favorite_number:
@@ -322,7 +297,6 @@ if 3 + 4j in encyclopedia: # when iterating through dict, we are actually iterat
 ```
 
 Python 中的循环分为 `while` 循环和 `for` 循环；前者和 C 一样是一个加强版的 `if`，后者则只支持范围 `for`，用于遍历可迭代对象，如：
-
 ```python
 import random # Import a module. random is a built-in module so you don't
               # have to install it
@@ -371,7 +345,6 @@ if __name__ == "__main__":
     plus_one(lst) # pass by *reference*
     print(lst) # [2, 3 (4+4j), 6.5]
 ```
-
 ```python
 def multiply(a, b):
     a *= b
@@ -384,9 +357,7 @@ if __name__ == "__main__":
     multiply(lst, 4)
     print(lst) # [1, 1, 1, 1]. Yes, you can multiply a list by an integer
 ```
-
 函数也可以存在返回值
-
 ```python
 def square_root(num):
     return pow(num, 0.5)
@@ -420,7 +391,7 @@ class Triangle():
         self.point1 = point1
         self.point2 = point2
         self.point3 = point3
-
+    
     def length(self):
         return [
             euclid_distance(self.point1, self.point2),
@@ -477,7 +448,7 @@ class EvilMembers():
 
     def access_member(self):
         return self.member
-
+    
 evil = EvilMembers()
 if random.random() < 0.5:
     evil.new_member()
@@ -527,13 +498,13 @@ class Rational():
             raise ZeroDivisionError("zero cannot be denominators")
         self._num = numerator # Members begin with "_" is protected members
         self._deno = denominator # Though, they can still be accessed, with a warning
-
+        
     def __str__(self):
         return f"{self._num / self._deno}"
 
     def __float__(self):
         return self._num / self._deno
-
+    
 approximately_pi = Rational(22, 7)
 print(approximately_pi) # 22 / 7
 print(float(approximately_pi) * 7) # 22
@@ -544,7 +515,6 @@ print(float(approximately_pi) * 7) # 22
 ### 变量作用域
 
 Python 变量的作用域有四种，由短到长分别是：
-
 - 局部变量/函数域变量：由定义之时其，至**函数终结**时结束；注意此类变量的作用域不会被缩进定义的代码块所限制。
 - 闭包变量 (Enclosing)：在函数内部可以定义函数，且内层函数可以方位外层的函数域变量，这一变量对于内层函数来说是闭包变量；这类似于其他语言 lambda 表达式的捕获现象。
 - 全局变量：在函数之外定义的变量；在程序的任何地方都可以访问，但是函数内部访问时需要用 `global` 关键字声明。不要使用全局变量，全局常量是可以的。

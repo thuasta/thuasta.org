@@ -47,47 +47,47 @@
 
 1. Colmap下载
 
-   下载 release 版本即可。
+    下载 release 版本即可。
 
-   - [Colmap](https://github.com/colmap/colmap)
-   - [Colmap 3.8](https://github.com/colmap/colmap/releases/tag/3.8)
+    - [Colmap](https://github.com/colmap/colmap)
+    - [Colmap 3.8](https://github.com/colmap/colmap/releases/tag/3.8)
 
 2. Visual Studio 2019 下载
 
-   :::warning
+    :::warning
 
-   注意不要下载 2022，可能会报错。
+    注意不要下载 2022，可能会报错。
 
-   :::
+    :::
 
-   安装后在 installer 中安装 C++ 相关内容。
+    安装后在 installer 中安装 C++ 相关内容。
 
 3. CUDA 安装
 
-   :::warning
+    :::warning
 
-   仅适用有显卡的机器。
+    仅适用有显卡的机器。
 
-   :::
+    :::
 
    - 进入 [CUDA Toolkit Archive](https://developer.nvidia.com/cuda-toolkit-archive)，选择 CUDA11.8（几乎是最适配版本，官方给出 11.6，但有些问题），之后按照系统安装即可（在 VS2019 安装后再安装 CUDA）。
    - 安装结束后，打开终端键入：
 
-     ```bash
-     nvcc --version
-     ```
+        ```bash
+        nvcc --version
+        ```
 
    - 显示如下，即为成功。（此处为安装的是 CUDA11.3）
 
-     ![CUDA 安装成功](img/3.png)
+        ![CUDA 安装成功](img/3.png)
 
 ### anaconda 安装与配置
 
 1. 使用 git clone 自动下载源码，终端输入：
 
-   ```bash
-   git clone https://github.com/graphdeco-inria/gaussian-splatting.git --recursive
-   ```
+    ```bash
+    git clone https://github.com/graphdeco-inria/gaussian-splatting.git --recursive
+    ```
 
 2. 下载完成后检查 `gaussian-splatting/submodules/` 中是否有 `diff-gaussian-rasterization`，并检查其下是否为空；检查 `diff-gaussian-rasterization/third_party/glm` 中是否有内容。同样检查 `submodules/simple-knn`。如果没有内容，可通过以下链接手动下载并解压到相应位置：
 
@@ -97,21 +97,21 @@
 
 3. 在 anaconda 中新建环境 `gaussian_splatting`，按照下述命令安装：
 
-   ```bash
-   # 安装 pytorch
-   pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
-   pip install plyfile tqdm
-   pip install diff-gaussian-rasterization
-   pip install submodules/simple-knn
-   ```
+    ```bash
+    # 安装 pytorch
+    pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+    pip install plyfile tqdm
+    pip install diff-gaussian-rasterization
+    pip install submodules/simple-knn
+    ```
 
 4. 安装可视化软件（Windows 系统，确保在 `gaussian-splatting` 目录下，且安装了 [cmake](../../../learning_resources/build_sys/cmake.md)）：
 
-   ```bash
-   cd SIBR_viewers
-   cmake -Bbuild .
-   cmake --build build --target install --config RelWithDebInfo
-   ```
+    ```bash
+    cd SIBR_viewers
+    cmake -Bbuild .
+    cmake --build build --target install --config RelWithDebInfo
+    ```
 
 ## 实验与结果
 

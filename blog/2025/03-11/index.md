@@ -18,14 +18,15 @@ originalUrl: https://mp.weixin.qq.com/s/160fTB7fkZiL4TOt-eb1FA
 
 <!-- truncate -->
 
-![学校环境](img/2.webp) ![学校环境](img/3.webp)
+![学校环境](img/2.webp)
+![学校环境](img/3.webp)
 
 ## 宣讲会信息
 
 为帮助同学们深入了解 MBZUAI 的**学术环境与招生政策**，自动化系科协学创部邀请了 MBZUAI 招生负责人与 2025 级博士新生进行专场分享，具体安排如下：
 
-- **时间：2025 年 3 月 14 日（本周五）10:00-11:30**
-- **地点：中央主楼 511**
+- **时间：2025 年 3 月 14 日（本周五）10:00-11:30**  
+- **地点：中央主楼 511**  
 
 ### 主讲嘉宾
 
@@ -35,7 +36,7 @@ originalUrl: https://mp.weixin.qq.com/s/160fTB7fkZiL4TOt-eb1FA
 
 ### 活动内容
 
-1. MBZUAI 学术体系与科研资源详解。
+1. MBZUAI 学术体系与科研资源详解。  
 2. 硕士/博士项目申请流程与录取标准详解。
 3. 互动答疑环节。
 
@@ -43,7 +44,8 @@ originalUrl: https://mp.weixin.qq.com/s/160fTB7fkZiL4TOt-eb1FA
 
 请有意参与的同学扫描下方二维码填写报名问卷，以便统计人数并预留座位。<center>
 
-![报名二维码](img/4.jpeg) ![图片](img/5.png)</center>
+![报名二维码](img/4.jpeg)
+![图片](img/5.png)</center>
 
 ---
 
