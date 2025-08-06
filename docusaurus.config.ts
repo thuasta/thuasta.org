@@ -117,7 +117,7 @@ export default {
     prism: {
       theme: PrismLight,
       darkTheme: PrismDark,
-      additionalLanguages: ['bash', 'cmake', 'powershell', 'toml'],
+      additionalLanguages: ['bash', 'cmake', 'powershell', 'toml', 'csharp'],
     },
     docs: {
       sidebar: {

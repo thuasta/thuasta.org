@@ -2,4 +2,651 @@
 sidebar_position: 7
 sidebar_label: "C#"
 ---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import { Sandpack } from "@codesandbox/sandpack-react";
+
 # C\#
+
+C# 是一门编程语言~~废话~~。其在基本的语法方面可以被归类为 C 语言家族，但与此同时与 C/C++ 不同的是，C# 是一门**强制面向对象**语言，这意味着**任何**在 C# 中编写的代码都需要放进类中，例如下面是一个简单的 `Hello World!`
+
+```csharp
+public class Program 
+{
+    public static void Main(String[] args)
+    {
+        Console.WriteLine("Hello World!");
+    }
+}
+```
+
+甚至 `Main` 函数也要放在 `class Program` 中！这太 OOP 了！
+
+## 想必学完 C 和 Python 后，下面的内容都能速通吧
+
+```csharp
+public class Program
+{
+    public static void Main(String[] args)
+    {
+        // Defining Variables
+        int d = 3;
+        const double PI = 3.1415926;
+        decimal area = (decimal)(PI * d * d / 4.0); // Cast double into decimal
+        // `double`s are binary real numbers, so there will be some errors when dealing with decimal numbers.
+        // while `decimal`s can deal these number well, *but not absolutely free from errors :(*.
+
+        int[] arr = [1, -2, -3, 4];
+        for (int i = 0; i < 4; ++i)
+        {
+            if (arr[i] >= 0) 
+            {
+                Console.WriteLine("Non-Negative!");
+            }
+            else
+            {
+                Console.WriteLine("Negative!");
+            }
+        }
+        // Is equivalent to...
+        foreach (int num in arr)
+        {
+            if (num >= 0) 
+            {
+                Console.WriteLine("Non-Negative!");
+            }
+            else
+            {
+                Console.WriteLine("Negative!");
+            }
+        }
+    }
+}
+```
+
+这段代码展示了最基本的 `if`, `for` 等结构和最基本的定义变量的方法。可以说在这些方面 C# 与 C++ 极为类似。
+
+## 变量类型
+
+C# 中的变量类型分为 **值类型** 和 **引用类型**，值类型是较为低阶的类型，它们在 C# 中的表现和在 C, C++ 中的表现很相似，因为这些类型的拷贝花销十分少，任何时候都可以传值，因此为这些变量分配的内存地址直接存放值本身，~~如果有编程语言将它们的行为设计成不与C/C++类似，emmmm，会有吗？~~。
+
+值类型包括：`bool`, `byte`(8 位无符号整数), `char` (16 位 Unicode 字符), `decimal`(128位精确的十进制值), `double`, `float`, `int` (32-bit), `long`(64-bit), `sbyte`(8位有符号整数), `short`(16位有符号整数), `uint`, `ulong`, `ushort`(三者的无符号版本).
+
+`sizeof` 运算符可以得到变量所占的字节数。
+
+与值类型相对应的是**引用类型**，引用类型的行为对于 C#, Python, Java, JavaScript 都十分类似：分配的内存地址存放指向对象真实位置的**引用**，而等号赋值 `=` 和判等运算符(哦，这里要排除JavaScript) `==` 默认比较/赋值这一**内存地址**，这一行为在对象判等和函数传参时需要十分的注意。例子如：
+
+<Tabs>
+  <TabItem value="Program.cs" label="Program.cs" default>
+        ```csharp
+        namespace CSDemo;
+
+        using Utils;
+
+        public class Program
+        {
+            public static void Main(string[] args)
+            {
+                Point point = new(1, 2);
+                double distance = DistanceDouble(point);
+
+                Console.WriteLine(distance);
+                Console.WriteLine("(" + point.X + ", " + point.Y + ")"); // (2, 4)
+            }
+
+            private static double DistanceDouble(Point point)
+            {
+                point.X *= 2.0;
+                point.Y *= 2.0;
+                return point.EuclidDistance();
+            }
+        }
+        ```
+  </TabItem>
+  <TabItem value="Utils/Point.cs" label="Utils/Point.cs">
+        ```csharp
+        namespace CSDemo.Utils;
+
+        class Point(double x, double y)
+        {
+            public double X { get; set; } = x;
+            public double Y { get; set; } = y;
+
+            public double EuclidDistance()
+            {
+                return Math.Sqrt(Math.Pow(X, 2) + Math.Pow(Y, 2));
+            }
+        }
+
+        ```
+  </TabItem>
+</Tabs>
+
+这一例子说明传参默认是传递引用，而我们定义的 `Point` 类型很不幸是 Mutable 的，而我们定义的函数又*恰好*会改变其值，如果我们对这种函数不了解，很容易掉入陷阱。下面是另一个关于引用类型判等的真实例子，来自THUAI8的回放器：
+
+```csharp
+// https://github.com/thuasta/thuai-8/commit/ae8c666f558b78dd3b4f9dd1b0cabc61bc862fb8
+private void UpdateWalls()
+{
+    HashSet<Position> currentWalls = new HashSet<Position>();
+    // add wall
+    foreach (var wall in walls)
+    {
+        float x = wall["x"]?.Value<float>() ?? 0f;
+        float y = wall["y"]?.Value<float>() ?? 0f;
+        float angle = wall["angle"]?.Value<float>() ?? 0f;
+
+        Position position = new Position(x, y, angle);
+        currentWalls.Add(position);
+
+        var existingWall = map.CityWall.FirstOrDefault(w => w.wallPos == position); // Bug happens Here!!
+
+        if (existingWall == null)
+        { 
+            map.UpdateWall(position);
+        }            
+    }
+}
+```
+
+这段代码的作用是更新墙体信息，其实现方法是逐个比对现有墙体是否存在于已经渲染的墙体中，如果不存在则添加一个。问题在于 `var existingWall` 一行中，判断墙体是否相等使用了`==`，这一比较**比较的是内存地址**，而我们用于比较的对象都是刚刚构造的，因此比较无论墙体是否相等**一定不通过**，导致程序认为这些墙体都是新的！正是每一刻都大量增加的墙体导致了 THUAI8 前端的低性能。解决这一方法的问题是将 `==` 比较改成 `.Equals()` 比较，`Equals()` 方法是从 `System.Object` 继承而来的方法，而 `Object` 是所有类的父类，也就是说所有对象都会有 `Equals()` 方法，我们可以在继承的同时重写它。实际操作时，一般不去重写 `==`，而是重写 `Equals()`，令后者实现值比较，前者保留地址比较(C# 里有些内置类型重写了 `==`，如 `string`，请注意！)，例如：
+
+```csharp
+// In Point.cs
+public override bool Equals(object? obj) // use keyword `override` if you do want to override
+{
+    if (obj == null || obj is not Point)
+    {
+        return false;
+    }
+    var point = (Point)obj; // Dynamic cast
+    return Math.Abs(this.EuclidDistance() - point.EuclidDistance()) < 1e-6;
+}
+```
+
+## C# 中的 null?!
+
+既然引用类型里面存的是个地址（也就是说是个指针），那么就不可避免存在空引用的问题，如：
+
+```csharp
+Point point; // Unassigned value, use of which will cause compilation error.
+
+point = null; // Null value. Warning here!
+
+var distance = point.EuclidDistance(); // Dynamic Error!!!
+```
+
+这里展示了两种异常值，一种是未赋值，实际上此时其内部的值已经被赋值为 `null`，但如果尝试在此时使用，在运行前就会报错；一种是 `null`，即空引用，尝试对其解引用会报错。实际上在将此值赋值为 `null` 的时候就会发出警告，因为其类型 `Point` 默认是非空的，而可以为 `null` 的类型为 `Nullable<Point>`，或者叫 `Point?`，此时赋值为 `null` 便不会警告，同时也会提醒其使用者检查是否为空值，如：
+
+```csharp
+namespace CSDemo;
+
+using Utils;
+
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        Point? point = GetPoint();
+        double? distance = null;
+        if (point != null)
+        {
+            distance = point.EuclidDistance();
+        }
+        Console.WriteLine(distance); // WriteLine accepts a `string?`, and will 
+                                     // print an empty line when meets a null.
+    }
+
+    private static Point? GetPoint()
+    {
+        // Somehow it will return a `Point?`
+    }
+}
+```
+当然其中的 `if` 语句可以用一行解决:
+
+```csharp
+double? distance = point?.EuclidDistance();
+```
+
+`EuclidDistance()` 返回 `double` 类型，则 `?.EuclidDistance()` 的类型是 `double?`，其在 `point` 为 `null` 的时候则不调用函数，返回 `null`，反之则调用函数正常返回其值。
+
+如果一个 `?` 类型你**十分确定**其为非空，则你也可以正常使用，但会产生一个编译器警告：
+
+```csharp
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        Point? point = GetPoint();
+        if (Available(point)) 
+        {
+            point.EuclidDistance(); // Warning Here! Compiler don't know it's not null!
+        }
+    }
+
+    private static bool Available(Point? point)
+    {
+        return point != null;
+    }
+
+    private static Point? GetPoint()
+    {
+        // Somehow it will return a `Point?`
+    }
+}
+```
+
+我们当然不要忽视警告，因此要告诉编译器我们确定它非空，可以利用 `!` 运算符，如
+
+```csharp
+Point? point = GetPoint();
+if (Available(point)) 
+{
+    var distance = point!.EuclidDistance(); // No warning!
+    // distance here is `double`, not `double?`
+}
+```
+
+`!` 运算符不影响程序的运行时表现 (该 `throw` 时还是 `throw`)，不过会消除编译警告。
+
+对于某些 Nullable ，一种处理方法是当其为空值时给予其一个默认值，下面的两种写法是等价的：
+
+```csharp
+int? x = GetOptionalInt(); // Somehow we've got an `int?`
+int? y = GetOptionalInt();
+
+if (x is null)
+{
+    x = 0;
+}
+// Is the same as...
+y ??= 0; // y = y ?? 0;
+
+Point point = new(x, y); // x, y here is not null.
+```
+
+这种操作在处理可空参数时也同样好用：
+
+```csharp
+private static int Repeat(string msg, int? time)
+{
+    for (int i = 0; i < (time ?? 1); ++i)
+    {
+        Console.WriteLine(msg);
+    }
+}
+```
+
+关于 ? 和 ! 的用法可能有些眼花缭乱？不用担心！总结到下表了！
+
+|  用法   |   示例  |  等价写法 | 备注 |
+| --- | --- | --- | --- |
+| 标记可空类型 | `int?` | `Nullable<int>` |
+| Elvis 运算符(空条件运算符) | `point?.EuclidDistance()` | `(point != null) ? point.EuclidDistance() : null` |
+| 空下标运算符 | `arr?[0]` | `(arr != null) ? arr[0] : null` | `arr` 为可取下标的可空类型 |
+| 空容忍运算符 | `point!` | 见脚注[^1] | 只有当你确定来源可靠时再使用；不改变运行时程序表现
+| 空合并运算符 | `num ?? 0` | `num != null ? num : 0` 或者 `num.GetValueOrDefault(0)` |
+| 空合并赋值运算符 | `num ??= 0` | `num = num ?? 0` |
+
+[^1]: 
+    可以使用预处理语句忽略编译器警告，如:
+    ```csharp
+    #pragma warning disable CS8604
+    Use(point);
+    #pragma warning restore CS8604
+    ```
+
+## C# 中的 OOP
+
+### 类的定义，构造函数和实例
+
+类可以有成员变量和成员函数，每个属性都要在定义时指定其访问级别，否则默认为 `private` ，如：
+
+```csharp
+public class Point
+{
+    public double x, y;
+
+    public static double EuclidDistance(Point point)
+    {
+        // ...
+    }
+}
+```
+
+类内的和类同名，无返回值类型的函数为其构造函数，别忘了添加访问权限：
+
+```csharp
+class Person
+{
+    private string First;
+    private string Last;
+
+    public Person(string first, string last)
+    {
+        First = first;
+        Last = last;
+    }
+}
+```
+
+这一构造函数可以说很初级且重要，因为它简单地给每个字段进行了初始化，可以预见的是如果我们重载其他的构造函数，最终也要回到调用此构造函数上。C# 存在主构造函数 (primary constructor) 机制，将参数列表放在类名之后，则构成一个主构造函数，其他所有构造函数都借用主构造函数，如下面的"构造张三"：
+
+```csharp
+class Person(string first, string last)
+{
+    private string First = first;
+    private string Last = last;
+
+    public Person() : this("San", "Zhang") { } // Default Constructor
+
+    public Person(Person person): this(person.First, person.Last) { } // Copy Constructor
+}
+```
+
+构造函数由 `new` 关键字调用，将会返回一个刚刚构造的对象的引用：
+
+```csharp
+Person person = new Person();
+// or...
+Person person = new();
+```
+
+注意构造函数不会在没有 `new` 的情况下被隐式调用，尤其是在赋值运算符中——这种赋值会直接复制一份引用，而非拷贝一个对象。
+
+### 类的封装
+
+类的每个成员都有访问级别 —— `public`，`private`，`protected`，`internal` 和 `protected internal`.
+
+`public`, `private`, `protected` 和 C++ 中的访问级别类似，`internal` 为*程序集内部可访问*；所谓程序集，就是由一个 `.csproj` 文件统领下的集合而成的模块，会共同参与编译；`protected internal` 的属性，可访问范围是 `protected` 和 `internal` 的并集。
+
+成员的访问级别是优先级最高的；C# 中，变量的 getter 和 setter 可能有各自的访问级别，但不会超出成员本身的级别，比如一个 `private` 的成员不可能拥有一个 `public` 的 `getter`。`getter` 和 `setter` 是当变量被访问或者被赋值时被调用的特殊方法，例如:
+
+```csharp
+class Person(string first, string last, int age)
+{
+    public string First { get; private set; } = first; // Default Getter and Setters -- Just the value
+    public string Last { get; private set; } = last;
+
+    public int Age { get; private set; } = age;
+
+    public Person() : this("San", "Zhang", 0) { } // Default Constructor
+
+    public Person(Person person): this(person.First, person.Last, 0) { } // Copy Constructor
+
+    public void Birthday()
+    {
+        Console.WriteLine("Happy birthday to {0} {1}!", First, Last); // public getters are called
+        Age++; // private setter is called
+    }
+}
+```
+
+当然 getter 和 setter 可以自定义，~~但是不支持单独自定义~~：
+
+```csharp
+class Person( /* Arguments for primary constructor */ , int age )
+{
+    private int _age = age; // Backing private field
+
+    public int Age
+    {
+        get
+        {
+            return _age;
+        }
+        private set
+        {
+            _age = value > 0 ? value : 0; // Here `value` is a special value, in fact, it looks like:
+            /*
+            private void setAge(int value)
+            {
+                _age = value > 0 ? value : 0;
+            }
+            */
+            // But the method is called implicitly.
+        }
+    }
+}
+```
+思考：这里 setter 为什么不直接写 `Age = value > 0 ? value : 0`？
+
+此时这里的 Age 更相当于一个访问类的接口，其由一对 `getter` 和 `setter` 方法对组成，我们并不关心这名字是否真正代表了一个变量，一块真实存在的内存空间，我们只需要知道，可以调用这一个 getter/setter 对，并且得到结果，其思想和下面的 const getter 是类似的：
+
+```cpp
+// Note that it's a cpp file!
+class Person
+{
+public:
+    const int& Age = _age;
+
+    // There should be a setter, but it's not very elegant in C++, it's just a method :(
+private:
+    int _age;
+}
+```
+
+如果不指定 getter 和 setter，那么 C# 会自动生成一对和变量访问等级相同的；如果指定了，则 C# 会忠实地按照你的显式指定行事，绝对不会多生成一个，因此像下面的代码：
+
+```csharp
+class Person(/* ... */, string identity)
+{
+    public string Identity { get; } = identity;
+}
+```
+
+则 C# 将不会为 Identity 字段创建 setter —— 它是只读的！无论内部还是外部都无法修改其值！~~当然这还涉及到老生常谈的 Mutable 问题，因为你可以轻易拿到此字段的引用~~当然你也可以用类似方法创建只写对象， readonly 和 writeonly，天造地设的一对！虽然 writeonly 好像没啥用（？）
+
+初始化也是一种特殊的赋值，如果你希望某字段有特殊的初始化规则又希望其只读，可以使用 `init`：
+
+```csharp
+class Line
+{
+    private int _length;
+
+    public int Length
+    {
+        get => _length;
+        init => _length = value > 0 ? value : 0;
+    }
+
+    public Line(int len)
+    {
+        Length = len;
+    }
+}
+```
+
+### 类的继承
+
+类的继承，和 C++ 的 OOP 类似，用于表达 Is-A 的关系，子类将继承父类的所有属性，"子类实例 is a 父类"。基本语法如下:
+
+<Tabs>
+  <TabItem value="Program.cs" label="Program.cs" default>
+        ```csharp
+        namespace CSDemo;
+
+        using Persons;
+
+        public class Program
+        {
+            public static void Main(string[] args)
+            {
+                Person person = new ComputerScienceStudent
+                ("example@email.com", "2025114514", "Zhang San");
+                // Here `person` has static type `Person`, and dynamic type `ComputerScienceStudent`.
+
+                Console.WriteLine(person.Name);
+                // Console.WriteLine(person.GithubID); // Compilation Error!
+
+                ComputerScienceStudent cs_student = (ComputerScienceStudent)person;
+                Console.WriteLine(cs_student.GithubID); // Ok! However...
+
+                Student student = (Student)new Person("Alice"); // Dynamic Error!
+            }
+        }
+        ```
+  </TabItem>
+  <TabItem value="Persons/Person.cs" label="Persons/Person.cs">
+        ```csharp
+        namespace CSDemo.Persons;
+
+        class Person(string name)
+        {
+            public string Name = name;
+        }
+
+        class Student(string student_id, string name) : Person(name)
+        {
+            public string StudentID = student_id;
+        }
+
+        class ComputerScienceStudent(string github_id, string student_id, string name)
+            : Student(student_id, name)
+        {
+            public string GithubID = github_id;
+        }
+        ```
+  </TabItem>
+</Tabs>
+
+静态类型是某个引用被声明得到的类型，而动态类型是一个引用运行时实际指向的示例的类型。这段代码说明，一个静态类型为父类的引用类型是可以指向子类的，但却不能在不经过类型转换的情况下直接访问子类的属性，因为它的静态类型还是 `Person`，编译器无法在运行前知晓它的动态类型。
+
+将父类引用转换为子类引用是危险的，如果父类引用的动态类型不是子类（或子类的子类），那么将直接抛出异常；而转换成功后就可以访问子类的字段了！
+
+OOP 的另一个重要特征是多态，而在 C# 中自然也有相应的机制 —— 子类可以重写父类的函数，如
+
+<Tabs>
+  <TabItem value="Program.cs" label="Program.cs" default>
+        ```csharp
+        namespace CSDemo;
+
+        using Persons;
+
+        public class Program
+        {
+            public static void Main(string[] args)
+            {
+                Persons.Person person = new ComputerScienceStudent
+                ("example@email.com", "2025114514", "Zhang San");
+                Console.WriteLine(person.Greeting());
+                // Hello! I am Zhang San, and my student ID is 2025114514.
+                // Welcome to follow my Github account: example@email.com.
+            }
+        }
+        ```
+  </TabItem>
+  <TabItem value="Persons/Person.cs" label="Persons/Person.cs">
+        ```csharp
+        namespace CSDemo.Persons;
+
+        class Person(string name)
+        {
+            public string Name = name;
+
+            public virtual string Greeting()
+            {
+                return "Hello! I am " + Name + ".";
+            }
+        }
+
+        class Student(string student_id, string name) : Person(name)
+        {
+            public string StudentID = student_id;
+
+            public override string Greeting()
+            {
+                return "Hello! I am " + Name + ", and my student ID is " + StudentID + ".";
+            }
+        }
+
+        class ComputerScienceStudent(string github_id, string student_id, string name)
+            : Student(student_id, name)
+        {
+            public string GithubID = github_id;
+
+            public override string Greeting()
+            {
+                return base.Greeting()
+                + "\nWelcome to follow my Github account: " + GithubID + ".";
+            }
+        }
+        ```
+  </TabItem>
+</Tabs>
+
+子类可以重写父类的虚函数，被重写而来的函数默认也会变为虚函数；在重写时需要使用关键字 `override`，并使用相同的函数签名。使用继承时，`base` 将会是自身作为"直系父类"的引用，不会出现歧义，因为 C# 放弃了多继承机制，一个类最多只有一个父类；采用 `base` 机制可以在重写函数的时候方便地调用父类的同名函数。
+
+可以重写的函数大致有四类，一类是带有 `virtual` 关键字的函数，一类是带有 `override` 关键字的函数，一类是抽象类中带有 `abstract` 关键字的函数，最后一类便是接口中的纯虚函数；在 Java 和 C# 这样的语言中，抽象类占有极高的地位，这两种语言甚至愿意为了抽象类单独设计与普通的继承不同的关键字 —— C# 中，利用关键字 `abstract class` 声明抽象类，`interface` 声明接口，所有接口需要在名字的最前方加入 `I` 以表明这是一个接口，比如：
+
+```csharp
+interface IPerson
+{
+    public string Greeting()
+    {
+        return "Hi!";
+    }
+}
+
+interface IAdult : IPerson
+{
+    // No implementation for Greeting. And add new methods...
+
+    public string Work();
+}
+
+abstract class AbstractPerson(string name) : IPerson
+{
+    public string Name = name;
+
+    public abstract string Greeting(); // Implementation for Greeting. However, it's implemented into an abstract method
+}
+
+class Person(string name) : AbstractPerson(name)
+{
+    public override string Greeting() // Implementation for the abstract method
+    {
+        return "Hello! I am " + Name + ".";
+    }
+}
+
+class Adult() : IAdult
+{
+    // Greeting has a default implementation, so it's unnecessary.
+    // Work doesn't have a default implementation! A class should implement it!
+    public string Work()
+    {
+        return 
+            "Work! Work! Work! Work!\n" +
+            "Work! Work! Work! Work!\n" +
+            "Work! Work! Work! Work!\n";
+    }
+}
+```
+
+`abstract class` 和 `interface` 存在一些不同之处：`interface` 只能存在方法，不能存在成员变量，所有方法都可以被重写 (并且不可以使用 `override` 关键字！)，`interface` 内容许存在仅仅声明的方法，也可以存在提供默认实现的方法，任何 `class` (包括 `abstract class`) 在继承 `interface` 的时候都要为所有不存在默认实现的方法提供实现(Implementation)；`interface` 可以在继承 `interface` 的时候提供额外的默认实现，或者增加方法。`interface` 是实现 (implementation) 与接口 (interface) 分离做到极致的产物。
+
+`abstract class` 更接近 C++ 中抽象类的概念，它可以容许抽象方法的存在，也可以有成员变量，在方法前加上关键字 `abstract`，这样 `abstract class` 中的方法就可以不写实现（~~或者说 abstract 就是它的实现，如何理解可以看个人想法~~），一般的 `class` 不容许 `abstract` 方法的存在，因此所有继承而来的 `abstract` 方法必须被重写，并且加上 `override` 关键字。需要注意的是继承 `abstract class` 的类重写抽象方法必须加 `override` 关键字，也就一定要允许后续的重写；继承 `interface` 的类提供实现的时候不可以加 `override`，但是可以加 `virtual`，只有带 `virtual` 关键字的方法可被接着重写！
+
+简而言之，`interface` 提供一种契约，传进去的类需要有一些方法可供调用；而 `abstract class` 顾名思义是一些有公共特征的类提取公共特征（成员变量，方法）而抽象出来的类。
+
+### `System.Object`
+
+所有类隐式地继承了 `System.Object` 类（也可以写成 `object`），`System.Object` 中的一些方法可以被重写，从而发挥重要作用，一个例子就是之前讲过的 `Object.Equals()` 方法；`Object` 中可供重写的虚函数共有四个：
+
+- `bool Equals(object? obj)`: 用于判等，通常用于值比较。默认实现和 `==` 相同。
+- `int GetHashCode()`: 用于计算 [哈希值](https://en.wikipedia.org/wiki/Hash_function)，一个知识点是 `Equals()` 和 `GetHashCode()` 应该是配套的；默认实现是基于地址的哈希值算法，和 `Equals()` 配套；`Equals` 和 `GetHashCode` 要么都不重写，要么同时重写！
+- `~Object()`。用于对象在被 GC 回收后做一些善后工作；C# 和 C++ 不同，其内存管理不依赖 [RAII](https://en.wikipedia.org/wiki/Resource_acquisition_is_initialization) 的写法，而是有一套单独的 GC 机制，简单来说就是每隔一段时间有专人帮你把垃圾清理掉（这当然会损失一定的性能！），这样你就不用费心地手动管理内存了。C#, Java, Python 等语言均依赖类似机制。
+- `string? ToString()`: 将对象转化为 `string?` 类型；默认实现是返回动态类型的全名。
+
+### struct vs class
+
+### record
+
+### namespace
+
+## 委托和事件
+
+## 项目和包管理
