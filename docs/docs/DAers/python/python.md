@@ -18,6 +18,12 @@ sidebar_label: "Python入门与实战文档"
 
 ---
 
+:::tip
+
+PDF 下载：[DA-Python入门与实战文档](./DA-Python入门与实战文档.pdf)
+
+:::
+
 ## 目录
 
 - [DA-Python入门与实战文档](#da-python入门与实战文档)
