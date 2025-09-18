@@ -21,7 +21,7 @@
     "@docusaurus/core": "3.8.1",
     "@docusaurus/faster": "3.8.1",
     "@docusaurus/preset-classic": "3.8.1",
-    "@easyops-cn/docusaurus-search-local": "^0.51.0",
+    "@easyops-cn/docusaurus-search-local": "^0.52.1",
     "@mdx-js/react": "^3.0.0",
     "@react-spring/web": "^10.0.0",
     "clsx": "^2.1.1",
@@ -51,8 +51,8 @@
     "lint-staged": "^16.0.0",
     "prettier": "^3.5.3",
     "stylelint": "^16.16.0",
-    "stylelint-config-standard": "^38.0.0",
-    "typescript": "~5.8.2"
+    "stylelint-config-standard": "^39.0.0",
+    "typescript": "~5.9.2"
   },
   "browserslist": {
     "production": [
