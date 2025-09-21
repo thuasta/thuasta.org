@@ -37,7 +37,7 @@
   overflow-x: auto;
   margin: 2rem 0;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px rgb(0 0 0 / 10%);
 }
 
 /* 表格样式 */
@@ -84,14 +84,14 @@
 }
 
 /* 响应式适配 */
-@media (max-width: 996px) {
+@media (width <= 996px) {
   .schedule-table th:nth-child(5),
   .schedule-table td:nth-child(5) {
     display: none;
   }
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .schedule-table th,
   .schedule-table td {
     padding: 8px 10px;

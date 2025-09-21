@@ -61,9 +61,9 @@ React 框架特点：
     npm start
     ```
 
-## 理解 TSX
+## TSX
 
-React 对 TypeScript 语言作了一定的拓展，拓展后的 TSX 在拥有 TypeScript 特性的同时具有一些类似HTML的特征，其中最显著的特点就是标签语法的引入。
+React 对 TypeScript 语言作了一定的拓展，拓展后的 TSX 在拥有 TypeScript 特性的同时具有一些类似 HTML 的特征，其中最显著的特点就是标签语法的引入。
 
 ``` typescript
 const p = <p>Hello world!</p>;
@@ -95,7 +95,7 @@ React 框架支持两种组件，一种是类组件，一种是函数组件，�
 
 函数组件可以理解为返回标签的 TypeScript 函数，换言之，函数组件的返回值，就是这个组件在屏幕上（浏览器里的）展示形式。
 
-```typescript
+```tsx
 function RedSquare() {
   return <div style={{width: 100, height: 100, backgroundColor: "red"}} />;
 }
@@ -111,7 +111,6 @@ const App = () => {
 }
 
 export default APP;
-
 ```
 
 以上的 RedSquare 与 App 都是函数组件，其中 App 组件返回了一个包含 RedSquare 组件的 div 标签，效果是在浏览器中显示一个红色的正方形。其中`export default`关键字指定了文件中的主要组件。
@@ -120,7 +119,7 @@ export default APP;
 
 此外，React还支持通过组件列表进行渲染。
 
-```typescript
+```tsx
 const products = [
   { title: 'Cabbage', isFruit: false, id: 1 },
   { title: 'Garlic', isFruit: false, id: 2 },
@@ -296,7 +295,6 @@ export default function Form() {
     </>
   );
 }
-
 ```
 
 此外，**State 是隔离且私有的**，换句话说，State 是屏幕上组件实例内部的状态，如果你渲染同一个组件两次，每个副本都会有**完全隔离的 state**，改变其中一个不会影响另一个。
@@ -347,8 +345,6 @@ export default function MyApp(){
 2. 对于后续的渲染, React 会调用内部状态更新触发了渲染的函数组件。
 
 调用某个组件时会递归地渲染该组件本身以及其所有的子组件（所有该函数组件会返回的内容）
-
-
 
 对于情况二，例如：
 ```tsx
@@ -601,7 +597,7 @@ export default function MyApp(){
 在上述代码中，`ShoppingList` 组件通过 `props.buy` 将 `number` 的改变传递给了父组件 `MyApp`，从而实现了反向数据流。
 
 
-### Next.js 路由
+## Next.js 路由
 
 路由（routers）是应用的重要组成部分。所谓路由，有多种定义，对于应用层的单页应用程序而言，路由是一个决定 URL 如何呈现的库，在服务层实现 API 时，路由是解析请求并将请求定向到处理程序的组件。简单的来说，在 Next.js 中，路由决定了一个页面如何渲染或者一个请求该如何返回。
 
@@ -614,7 +610,7 @@ Next.js 从 v13 起就使用了新的路由模式 —— App Router。从 v13.4 
 Pages Router 是 Next.js 最早的路由方案，它将 pages 目录下的所有文件都视作路由文件，并且文件名就是路由的路径。
 例如，我们有一个 pages 目录，其结构如下：
 
-```
+```plaintext
 └── pages
     ├── index.js
     ├── about.js
@@ -625,7 +621,7 @@ Pages Router 是 Next.js 最早的路由方案，它将 pages 目录下的所有
 
 升级为新的 App Router 后，现在的目录结构类似于：
 
-```
+```plaintext
 src/
 └── app
     ├── page.js 
@@ -647,7 +643,6 @@ src/
 定义一个布局，你需要新建一个名为 layout.js的文件，该文件默认导出一个 React 组件，该组件应接收一个 children prop，chidren 表示子布局（如果有的话）或者子页面。
 
 默认根布局是服务端组件，且不能设置为客户端组件。
-
 
 使用 `useRouter` 进行路由跳转的，例如:
 ```tsx
