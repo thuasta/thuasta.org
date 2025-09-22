@@ -7,7 +7,7 @@ type Options = {
 const RAW_PATH_REGEX = /rawPath\s*[:=]\s*['"]([^'"]+)['"]/i;
 
 async function getVideoUrl(url: string, options?: Options): Promise<string | null> {
-    const { signal, proxy = "https://cors-anywhere.herokuapp.com/", timeout = 30000 } = options || {};
+    const { signal, proxy = "https://cors-anywhere.herokuapp.com/", timeout = 20000 } = options || {};
 
     const controller = new AbortController();
     const handler = () => controller.abort();
