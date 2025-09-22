@@ -38,7 +38,7 @@
     "@kesills/eslint-config-airbnb-typescript": "^20.0.0",
     "@typescript-eslint/eslint-plugin": "^8.29.0",
     "@typescript-eslint/parser": "^8.29.0",
-    "eslint": "^8.57.1",
+    "eslint": "^9.36.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^10.1.1",
     "eslint-import-resolver-typescript": "^4.2.1",
