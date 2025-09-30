@@ -20,7 +20,7 @@
     "@codesandbox/sandpack-react": "^2.20.0",
     "@docusaurus/core": "3.8.1",
     "@docusaurus/faster": "3.8.1",
-    "@docusaurus/preset-classic": "3.8.1",
+    "@docusaurus/preset-classic": "3.9.1",
     "@easyops-cn/docusaurus-search-local": "^0.52.1",
     "@mdx-js/react": "^3.0.0",
     "@react-spring/web": "^10.0.0",
