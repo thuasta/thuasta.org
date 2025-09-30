@@ -67,7 +67,7 @@ $$Q(s_t, a_t) \leftarrow Q(s_t, a_t) + \alpha[r_{t+1} + \gamma Q(s_{t+1}, a_{t+1
 
 #### $\epsilon$-贪婪策略
 
-$$\pi(a|s) = \begin{cases} 1 - \epsilon + \frac{\epsilon}{|A|} & \text{if } a = \arg\max_{a'} Q(s, a') \frac{\epsilon}{|A|} & \text{otherwise}\end{cases}$$
+$$\pi(a|s) = \begin{cases} 1 - \epsilon + \frac{\epsilon}{|A|} & \text{if } a = \arg\max_{a'} Q(s, a') \\ \frac{\epsilon}{|A|} & \text{otherwise}\end{cases}$$
 
 其中$|A|$是动作空间大小。
 
