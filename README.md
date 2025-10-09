@@ -6,7 +6,7 @@
 
 > [!IMPORTANT]
 >
-> 要求 Node.js >= 18
+> 要求 Node.js >= 20
 
 ### 安装依赖
 
