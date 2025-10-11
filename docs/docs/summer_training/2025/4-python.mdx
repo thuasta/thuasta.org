@@ -532,6 +532,62 @@ TODO
 
 ### 列表推导式
 
+[列表推导式 (List Comprehensions)](https://docs.python.org/3.13/tutorial/datastructures.html#list-comprehensions) 是一种实用的构造列表的方式. 假设我们现在需要用到一个包含 $9^2$ 以内平方数的列表, 可以以以下代码构造:
+
+```python
+squares = []
+
+for i in range(10):
+  squares.append(i ** 2)
+
+print(squares) # [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+```
+
+其等价于
+
+```python
+squares = [i ** 2 for i in range(10)]
+```
+
+这是一个颇为有趣的语法糖, 并且由于这种方式不存在列表逐个扩容的过程, 在面对大型数组的构造时这种方法效率还会更高. 更多例子:
+
+```python
+# squares, but only contains even numbers:
+even_squares = [i ** 2 for i in range(10) if i % 2 == 0]
+```
+
+```python
+# A point set
+points = [(x, y) for i in range(10) for j in range(5) if x != y]
+```
+
+```python
+# Identity Matrix!
+n = 10
+matrix = [[1 if i == j else 0 for i in range(n)] for j in range(n)]
+```
 ### 上下文管理器
 
 ### 常用 Built-in
+
+### 常用库
+
+#### math, random
+
+#### os, sys
+
+#### logging
+
+#### typing, abc
+
+#### request
+
+#### dataclasses
+
+#### asyncio
+
+#### numpy, matplotlib
+
+#### pytorch
+
+#### pygame
