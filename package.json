@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "3.9.1",
-    "@docusaurus/tsconfig": "3.9.1",
+    "@docusaurus/tsconfig": "3.9.2",
     "@docusaurus/types": "3.9.1",
     "@kesills/eslint-config-airbnb-typescript": "^20.0.0",
     "@typescript-eslint/eslint-plugin": "^8.29.0",
