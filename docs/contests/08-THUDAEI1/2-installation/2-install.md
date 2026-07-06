@@ -4,7 +4,7 @@
 
 材料准备：
 
-- 一块已[拆卸外壳](dismantle)的香橙派；
+- 一块已[拆卸外壳](/contests/THUDAEI1/installation/dismantle)的香橙派；
 - 小车底盘；
 - 白色塑料柱短柱 4 个，长柱 3 个，下图中左为短柱，右为长柱：
     <img src="https://cloud.tsinghua.edu.cn/thumbnail/24f8d1997d1848ec9c72/1024/img/THUDAEI1/install/0.jpg" alt="短柱和长柱" loading="lazy"/>
@@ -38,7 +38,7 @@
 将小车翻回来，找到刚才放置的螺丝并用铜柱拧紧：
 <img src="https://cloud.tsinghua.edu.cn/thumbnail/24f8d1997d1848ec9c72/1024/img/THUDAEI1/install/6.jpg" alt="安装铜柱" loading="lazy"/>
 
-连接好拓展板与香橙派通讯所需的三根杜邦线（接线顺序见[颜色识别与机械臂教程](../servo#连接香橙派与拓展板)）：
+连接好拓展板与香橙派通讯所需的三根杜邦线（接线顺序见[颜色识别与机械臂教程](/contests/THUDAEI1/servo/#连接香橙派与拓展板)）：
 <img src="https://cloud.tsinghua.edu.cn/thumbnail/24f8d1997d1848ec9c72/1024/img/THUDAEI1/install/7.jpg" alt="连接杜邦线" loading="lazy"/>
 
 再用一颗 M3 螺丝穿过拓展板的孔位固定到铜柱上，完成后如下图所示：

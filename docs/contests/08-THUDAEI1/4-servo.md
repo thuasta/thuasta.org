@@ -71,7 +71,7 @@ python ColorDetect.py
 <summary>可能的问题及解决方案</summary>
 
 - 摄像头没有显示
-  - 驱动问题，解决方案参考[摄像头调试文档](camera/#常见问题排查)。
+  - 驱动问题，解决方案参考[摄像头调试文档](/contests/THUDAEI1/camera/#常见问题排查)。
   - 硬件连接问题，摄像头不支持热插拔，连接好以后重启香橙派。
 - 程序无法运行
   - 库缺失，使用 `pip install` 安装相应的库。

@@ -6,15 +6,9 @@
 
 ## 准备工作
 
-:::tip
-
-使用 Windows 操作系统的选手可参考如下[**视频教程**](https://cloud.tsinghua.edu.cn/f/9f18a58882614cbea368/)，了解如何配置 C++ SDK 开发环境。
-
-:::
-
 ### 环境要求
 
-- 要求 XMake >= 2.8.8，安装方法请参考 [XMake 官方文档](https://xmake.io/#/zh-cn/guide/installation)。若您没有开启代理，可以使用如下Windows 下载地址：[XMake 直链下载](https://hub.nuaa.cf/xmake-io/xmake/releases/download/v2.9.1/xmake-v2.9.1.win64.exe)
+- 要求 XMake >= 2.8.8，安装方法请参考 [XMake 官方文档](https://xmake.io/#/zh-cn/guide/installation)。
 
 - 具备 C++20 支持的 C++ 编译器工具链。推荐使用 MSVC。可使用如下 VS Build Tools 下载地址：[Visual Studio Build Tools](https://aka.ms/vs/17/release/vs_BuildTools.exe)
 

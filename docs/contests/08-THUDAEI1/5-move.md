@@ -8,7 +8,7 @@
 git clone https://github.com/thuasta/thuei-1.git
 ```
 
-详情可见[克隆仓库文档](servo/#克隆仓库)，推荐使用在 root 用户中进行克隆。
+详情可见[克隆仓库文档](/contests/THUDAEI1/servo/#克隆仓库)，推荐使用在 root 用户中进行克隆。
 
 :::warning
 
