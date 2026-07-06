@@ -1,3 +1,5 @@
+@import 'katex/dist/katex.min.css';
+
 :root {
   --ifm-color-primary: #2160fd;
   --ifm-color-primary-dark: #1959fc;
@@ -6,6 +8,9 @@
   --ifm-color-primary-light: #3d72f8;
   --ifm-color-primary-lighter: #477af8;
   --ifm-color-primary-lightest: #6791fc;
+  --ifm-font-family-base: -apple-system, BlinkMacSystemFont, 'PingFang SC',
+    'Hiragino Sans GB', 'Noto Sans SC', 'Microsoft YaHei', 'Segoe UI', Helvetica,
+    Arial, sans-serif;
 
   --docusaurus-highlighted-code-line-bg: rgb(0 0 0 / 10%);
 }
@@ -14,22 +19,19 @@
   --docusaurus-highlighted-code-line-bg: rgb(66 66 66 / 35%);
 }
 
-[data-theme='dark'] svg {
+[data-theme='dark'] .footer svg {
   fill: #f3f3f3;
 }
 
 .theme-announcement-bar {
-  font-size: 20px;
-
-  --site-announcement-bar-stripe-color1: #e8d7ff;
-  --site-announcement-bar-stripe-color2: #ffe9d1;
-
-  background: repeating-linear-gradient(35deg,
-      var(--site-announcement-bar-stripe-color1),
-      var(--site-announcement-bar-stripe-color1) 20px,
-      var(--site-announcement-bar-stripe-color2) 10px,
-      var(--site-announcement-bar-stripe-color2) 40px);
+  background: rgb(33 96 253 / 8%);
+  color: var(--ifm-color-primary);
+  font-size: 15px;
   font-weight: bold;
+}
+
+[data-theme='dark'] .theme-announcement-bar {
+  background: rgb(33 96 253 / 16%);
 }
 
 /* 日程表容器 */
