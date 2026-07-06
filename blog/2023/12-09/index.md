@@ -59,11 +59,11 @@ originalUrl: https://mp.weixin.qq.com/s/QK4TDeszIBz9n9G4HAuZoQ
 
 1. 漫步者 TWS1 Pro 无线蓝牙耳机
 
-    ![蓝牙耳机](img\4.png)
+    ![蓝牙耳机](img/4.png)
 
 2. 3D-JP 城市建筑拼图 puzzle
 
-    ![拼图](img\5.png)
+    ![拼图](img/5.png)
     <center><small>（拼图具体图案可能与上图不同）</small></center>
 
 ---
