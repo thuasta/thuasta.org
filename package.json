@@ -10,6 +10,7 @@
     "serve": "docusaurus serve",
     "format": "prettier --write .",
     "format:diff": "prettier --list-different .",
+    "lint": "npm run lint:js && npm run lint:css",
     "lint:js": "eslint --cache --report-unused-disable-directives \"**/*.{js,jsx,ts,tsx,mjs}\"",
     "lint:js:fix": "eslint --cache --report-unused-disable-directives \"**/*.{js,jsx,ts,tsx,mjs}\" --fix",
     "lint:css": "stylelint \"**/*.css\"",
@@ -25,6 +26,7 @@
     "@mdx-js/react": "^3.0.0",
     "@react-spring/web": "^10.0.0",
     "clsx": "^2.1.1",
+    "katex": "^0.16.22",
     "prism-react-renderer": "^2.4.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
@@ -67,6 +69,6 @@
     ]
   },
   "engines": {
-    "node": ">=20.0"
+    "node": ">=22.0"
   }
 }

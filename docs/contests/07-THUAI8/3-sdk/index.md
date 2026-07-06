@@ -22,12 +22,6 @@ pip install -r requirements.txt
 
 C++ 的编译和包管理等相对 Python 复杂很多 ~~（因为 Python 压根也不用编译）~~。这里介绍一下如何用 VSCode 打造一个适用于 THUAI 的较为舒适的开发环境。
 
-:::tip
-
-使用 Windows 操作系统的选手可参考往年[**视频教程**](https://cloud.tsinghua.edu.cn/f/9f18a58882614cbea368/) ，了解如何配置 C++ SDK 开发环境。
-
-:::
-
 #### 下载 Visual Studio 2022
 
 我们并非要使用 VS2022 作为编辑器，而是要使用其附带的 MSVC 编译器，其对新版的 C++ 特性有比较好的支持（本次的 SDK 使用了很新的 C++23 标准）。如果你的电脑中还存留着程设课程留下的 VS2012，那么你以后大概率不会再有使用 VS2012 的需求，可以将其删除并以 VS2022 代之。

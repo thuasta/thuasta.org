@@ -7,7 +7,7 @@ CMake is a powerful cross-platform build system that generates build files, Make
 CMake uses a file called `CMakeLists.txt` to define settings, source files, libraries, and other configurations. A typical `CMakeLists.txt` for a simple project would look like:
 
 ```cmake
-cmake_minimum_required(VERSION 3.0)
+cmake_minimum_required(VERSION 3.16)
 
 project(MyProject)
 
@@ -19,7 +19,7 @@ add_executable(${PROJECT_NAME} ${SOURCES})
 target_include_directories(${PROJECT_NAME} PRIVATE "${CMAKE_CURRENT_LIST_DIR}/include")
 
 set_target_properties(${PROJECT_NAME} PROPERTIES
-    CXX_STANDARD 14
+    CXX_STANDARD 17
     CXX_STANDARD_REQUIRED ON
     CXX_EXTENSIONS OFF
 )

@@ -71,7 +71,7 @@ C 语言是一种通用的、被广泛使用的、面向过程的计算机程序
 <center>
 
 欢迎关注紫冬科协哔哩哔哩官方号[【THUASTA】](https://space.bilibili.com/676450636)  
-欢迎关注紫冬科协官方网站 [https://thuasta.org](https:/thuasta.org)  
+欢迎关注紫冬科协官方网站 [https://thuasta.org](https://thuasta.org)  
 获取更多紫冬科创信息~</center>
 
 编辑 | 自动化系学生科协  

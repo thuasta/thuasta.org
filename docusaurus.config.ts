@@ -9,31 +9,21 @@ import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 import type { Options as DocsOptions } from '@docusaurus/plugin-content-docs';
 import type { Options as BlogOptions } from '@docusaurus/plugin-content-blog';
-// import type { Options as IdealImageOptions } from '@docusaurus/plugin-ideal-image';
 
 export default {
   title: '清华大学自动化系学生科协',
-  tagline: 'ASTAers are cool',
+  tagline: '赛事 · 培训 · 技术文档 —— 清华大学自动化系学生科技社群',
   favicon: 'img/favicon.ico',
   url: 'https://thuasta.org',
   baseUrl: '/',
   organizationName: 'thuasta',
   projectName: 'thuasta.org',
+  trailingSlash: true,
 
   future: {
     v4: true,
     experimental_faster: true,
   },
-
-  stylesheets: [
-    {
-      href: 'https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css',
-      type: 'text/css',
-      integrity:
-        'sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM',
-      crossorigin: 'anonymous',
-    },
-  ],
 
   i18n: {
     defaultLocale: 'zh',
@@ -42,7 +32,6 @@ export default {
 
   markdown: {
     format: 'detect',
-    // mermaid: true,
   },
 
   themes: [
@@ -57,17 +46,6 @@ export default {
       },
     ],
   ],
-
-  // plugins: [
-  //   [
-  //     'ideal-image',
-  //     {
-  //       max: 1030,
-  //       min: 640,
-  //       disableInDev: true,
-  //     } satisfies IdealImageOptions,
-  //   ],
-  // ],
 
   presets: [
     [
@@ -86,23 +64,15 @@ export default {
           blogSidebarTitle: '所有推送',
           // editUrl: 'https://github.com/thuasta/thuasta.org/tree/main/',
           blogSidebarCount: 'ALL',
-          feedOptions: {
-            type: null,
-          },
         } satisfies BlogOptions,
         theme: {
           customCss: './src/css/custom.css',
         },
-        // sitemap: {
-        //   lastmod: 'date',
-        //   priority: null,
-        //   changefreq: null,
-        // },
-        // svgr: {
-        //   svgrConfig: {
-        //     svgoConfig: undefined,
-        //   },
-        // },
+        sitemap: {
+          lastmod: 'date',
+          priority: null,
+          changefreq: null,
+        },
       } satisfies Preset.Options,
     ],
   ],
@@ -129,8 +99,8 @@ export default {
       playgroundPosition: 'bottom',
     },
     announcementBar: {
-      id: 'announcementBar',
-      content: '🎉️ <b><a target="_blank" href="https://thuasta.org/blog/welcome">征稿，启动！</a></b> 🥳️',
+      id: 'announcement-2026-07',
+      content: '🚀 <b><a href="/docs/summer_training/2026/vibe_coding/">2026 暑培开讲了，第一课 Vibe Coding →</a></b>',
     },
     navbar: {
       hideOnScroll: true,
