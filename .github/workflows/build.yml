@@ -1,7 +1,14 @@
+name: build
+
 on:
   pull_request:
   push:
+    branches: [main]
   workflow_dispatch:
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build:
@@ -13,9 +20,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22.x
+          cache: npm
 
       - run: |
-          npm install --omit=dev
+          npm ci --omit=dev
           npm run build
 
       - uses: actions/upload-pages-artifact@v3
@@ -44,7 +52,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22.x
+          cache: npm
 
       - run: |
-          npm install
+          npm ci
           npm run typecheck
