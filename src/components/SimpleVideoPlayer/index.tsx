@@ -11,13 +11,13 @@ interface Props {
 }
 
 const SimpleVideoPlayer: React.FC<Props> = ({ url, source = "direct" }) => {
-    const [link, setLink] = useState<string>("");
+    const [thuLink, setThuLink] = useState<string>("");
     const [loading, setLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
     const isBrowser = useIsBrowser();
 
     useEffect(() => {
-        if (!isBrowser) return;
+        if (!isBrowser || source !== "THU") return;
 
         let aborted = false;
         const controller = new AbortController();
@@ -34,28 +34,29 @@ const SimpleVideoPlayer: React.FC<Props> = ({ url, source = "direct" }) => {
                 if (!real) {
                     throw new Error("视频链接解析超时");
                 }
-                setIfNotAborted(() => setLink(real));
-            } catch (e: any) {
-                if (e.name === "AbortError") return;
-                setIfNotAborted(() => setError(e.message || "Failed to load video link"));
+                setIfNotAborted(() => setThuLink(real));
+            } catch (e) {
+                if (e instanceof Error && e.name === "AbortError") return;
+                const message = e instanceof Error ? e.message : "Failed to load video link";
+                setIfNotAborted(() => setError(message));
             } finally {
                 setIfNotAborted(() => setLoading(false));
             }
         };
 
-        if (source === "THU") {
-            getThuLink(url);
-        } else if (source === "direct") {
-            setLink(url);
-        } else {
-            setError("Video source unimplemented");
-        }
+        getThuLink(url);
 
         return () => {
             aborted = true;
             controller.abort();
         };
     }, [isBrowser, source, url]);
+
+    if (source !== "THU" && source !== "direct") {
+        return <div className={styles.error}>视频加载失败：Video source unimplemented</div>;
+    }
+
+    const link = source === "direct" ? url : thuLink;
 
     if (error) {
         return <div className={styles.error}>视频加载失败：{error}</div>;

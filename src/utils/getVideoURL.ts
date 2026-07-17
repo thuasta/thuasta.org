@@ -40,8 +40,8 @@ async function getVideoUrl(url: string, options?: Options): Promise<string | nul
         }
         const raw = rawPathMatch[1].replace(/\\u002D/g, '-');
         return raw;
-    } catch (e: any) {
-        if (e?.name === 'AbortError') {
+    } catch (e) {
+        if (e instanceof Error && e.name === 'AbortError') {
             console.warn('getVideoUrl aborted');
             return null;
         }

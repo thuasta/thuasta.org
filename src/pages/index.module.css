@@ -236,13 +236,13 @@
   text-decoration: none;
 }
 
-.postRow:hover .postTitle {
-  color: var(--link);
-}
-
 .postTitle {
   font-size: 1.05rem;
   font-weight: 500;
+}
+
+.postRow:hover .postTitle {
+  color: var(--link);
 }
 
 .postDate {
@@ -268,7 +268,7 @@
 
 /* Responsive */
 
-@media (max-width: 900px) {
+@media (width <= 900px) {
   .tileGrid {
     grid-template-columns: 1fr;
   }
@@ -284,7 +284,7 @@
   }
 }
 
-@media (max-width: 560px) {
+@media (width <= 560px) {
   .hero {
     padding-top: 56px;
   }
