@@ -9,6 +9,11 @@ updates:
     directory: "/" # Location of package manifests
     schedule:
       interval: "weekly"
+    ignore:
+      # typescript-eslint ^8 declares peer support for eslint ^8.57 || ^9 only.
+      # Drop this once typescript-eslint supports eslint 10.
+      - dependency-name: "eslint"
+        versions: [">=10"]
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
