@@ -274,6 +274,14 @@ function Hero(): ReactNode {
             作业仓库
             <ExternalLinkIcon />
           </Link>
+          <Link
+            className={styles.secondaryAction}
+            to="https://www.bilibili.com/video/BV1HnuR6SEBr"
+            target="_blank"
+            rel="noopener noreferrer">
+            课程回放
+            <ExternalLinkIcon />
+          </Link>
         </div>
 
         <div className={styles.heroFacts} aria-label="课程概况">

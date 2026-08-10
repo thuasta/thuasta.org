@@ -134,6 +134,14 @@ export default {
           label: 'GitHub',
           position: 'right',
         },
+        {
+          href: 'https://space.bilibili.com/676450636',
+          html: '<span class="navbar-bilibili-icon" aria-hidden="true"></span><span class="navbar-bilibili-label">Bilibili</span>',
+          'aria-label': '自动化系学生科协 Bilibili 主页',
+          title: 'Bilibili',
+          className: 'navbar-bilibili-link',
+          position: 'right',
+        },
       ],
     },
     footer: {
