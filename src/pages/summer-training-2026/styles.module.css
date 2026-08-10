@@ -761,7 +761,7 @@
 .primaryDarkAction {
   flex: 0 0 auto;
   color: #fff;
-  background: var(--course-text);
+  background: var(--course-dark);
 }
 
 .primaryDarkAction:hover {

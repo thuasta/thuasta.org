@@ -23,6 +23,24 @@
   fill: #f3f3f3;
 }
 
+.navbar-bilibili-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar-bilibili-icon {
+  display: inline-block;
+  width: 24px;
+  height: 20px;
+  background: currentColor;
+  mask: url('/img/bilibili.svg') center / contain no-repeat;
+}
+
+.navbar-bilibili-label {
+  display: none;
+}
+
 .theme-announcement-bar {
   background: rgb(33 96 253 / 8%);
   color: var(--ifm-color-primary);
@@ -87,6 +105,20 @@
 
 /* 响应式适配 */
 @media (width <= 996px) {
+  .navbar-bilibili-link {
+    justify-content: flex-start;
+    gap: 0.65rem;
+  }
+
+  .navbar-bilibili-icon {
+    width: 22px;
+    height: 18px;
+  }
+
+  .navbar-bilibili-label {
+    display: inline;
+  }
+
   .schedule-table th:nth-child(5),
   .schedule-table td:nth-child(5) {
     display: none;
