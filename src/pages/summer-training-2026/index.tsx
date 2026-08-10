@@ -88,7 +88,7 @@ const lectures: Lecture[] = [
     detail:
       '在 minigit 中理解分支指针与快进合并，最后用真实 Git 完成远程交付。',
     cover: '/course/2026/covers/07-minigit-part-two-and-ssh.png',
-    slides: '/course/2026/slides/07-minigit-part-two-and-ssh.pptx',
+    slides: '/course/2026/slides/07-minigit-part-two-and-ssh.pdf',
   },
 ];
 
