@@ -125,6 +125,11 @@ export default {
         },
         { to: '/blog', label: '推送', position: 'left' },
         {
+          to: '/summer-training-2026',
+          label: '2026 暑培',
+          position: 'left',
+        },
+        {
           href: 'https://github.com/thuasta',
           label: 'GitHub',
           position: 'right',
