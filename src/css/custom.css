@@ -1,4 +1,4 @@
-@import 'katex/dist/katex.min.css';
+@import url('katex/dist/katex.min.css');
 
 :root {
   --ifm-color-primary: #2160fd;
@@ -8,9 +8,9 @@
   --ifm-color-primary-light: #3d72f8;
   --ifm-color-primary-lighter: #477af8;
   --ifm-color-primary-lightest: #6791fc;
-  --ifm-font-family-base: -apple-system, BlinkMacSystemFont, 'PingFang SC',
-    'Hiragino Sans GB', 'Noto Sans SC', 'Microsoft YaHei', 'Segoe UI', Helvetica,
-    Arial, sans-serif;
+  --ifm-font-family-base: -apple-system, blinkmacsystemfont, 'PingFang SC',
+    'Hiragino Sans GB', 'Noto Sans SC', 'Microsoft YaHei', 'Segoe UI', helvetica,
+    arial, sans-serif;
 
   --docusaurus-highlighted-code-line-bg: rgb(0 0 0 / 10%);
 }
